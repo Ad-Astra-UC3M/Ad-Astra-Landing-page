@@ -32,7 +32,7 @@ export default function InteractiveModel({ appearance: appearanceOverrides }) {
   useFrame(({ pointer }, delta) => {
     if (!groupRef.current || reducedMotion) return;
 
-    const targetX = BASE_ROTATION.x + pointer.y * INTERACTION.strengthX;
+    const targetX = BASE_ROTATION.x - pointer.y * INTERACTION.strengthX;
     const targetY = BASE_ROTATION.y + pointer.x * INTERACTION.strengthY;
 
     groupRef.current.rotation.x = THREE.MathUtils.damp(

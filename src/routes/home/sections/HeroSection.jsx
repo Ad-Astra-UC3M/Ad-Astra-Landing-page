@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
+import Button from "../../../components/ui/Button";
 import InteractiveModel, { SpaceBackground } from "../components/InteractiveModel";
 
 // Controles visuales del hero. Estos valores sobreescriben los defaults de
@@ -25,7 +26,7 @@ const SPACE_APPEARANCE = {
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-black">
+    <section className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0" aria-hidden="true">
         <Canvas
           camera={{ position: [0, 0, 5], fov: 50 }}
@@ -48,10 +49,41 @@ export default function HeroSection() {
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,8,0.42)_100%)]" />
 
-      <div className="relative z-10 px-6 text-center drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]">
-        <TextSpanWrapper animateOnLoad className="text-brand-surface">
-          Hero Section
+      <div className="relative z-10 flex w-full flex-col items-center gap-8 px-6 text-center">
+        <TextSpanWrapper
+          animateOnLoad
+          className="text-brand-surface drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]"
+        >
+          AD ASTRA
         </TextSpanWrapper>
+
+        <div className="flex w-full max-w-4xl flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
+          <Button
+            to="/join"
+            size="md"
+            className="w-full sm:w-auto sm:min-w-60"
+          >
+            Únete a nosotros
+          </Button>
+          <Button
+            to="/sponsors"
+            variant="outline"
+            color="surface"
+            size="md"
+            className="w-full sm:w-auto sm:min-w-76"
+          >
+            Colabora como sponsor
+          </Button>
+          <Button
+            to="/projects"
+            variant="ghost"
+            color="surface"
+            size="md"
+            className="w-full sm:w-auto"
+          >
+            Ver proyectos →
+          </Button>
+        </div>
       </div>
 
       <p className="absolute bottom-3 right-4 z-10 text-[10px] text-white/45">

@@ -14,7 +14,7 @@ export const EARTH_TEXTURES = {
 export const SUN_DIRECTION = new THREE.Vector3(-5, 3.5, 1.5).normalize();
 
 export const BASE_ROTATION = {
-  x: THREE.MathUtils.degToRad(-8),
+  x: THREE.MathUtils.degToRad(20),
   y: THREE.MathUtils.degToRad(-88),
   z: THREE.MathUtils.degToRad(-7),
 };
