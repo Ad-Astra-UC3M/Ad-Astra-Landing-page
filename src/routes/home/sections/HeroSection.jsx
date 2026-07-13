@@ -49,7 +49,9 @@ export default function HeroSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,8,0.42)_100%)]" />
 
       <div className="relative z-10 px-6 text-center drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]">
-        <TextSpanWrapper className="text-brand-surface">Hero Section</TextSpanWrapper>
+        <TextSpanWrapper animateOnLoad className="text-brand-surface">
+          Hero Section
+        </TextSpanWrapper>
       </div>
 
       <p className="absolute bottom-3 right-4 z-10 text-[10px] text-white/45">

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 // El siguiente componente esta basado en el text wrap de la pagina https://landonorris.com/ y lo he replicado en React
 // He usado este video para parte del codigo https://www.youtube.com/watch?v=9H34nxxVEgc
 
@@ -5,7 +7,25 @@
  * Componente que aplica el efecto de deslizamiento de texto como en la pagina de Lando Norris.
  * Utiliza dos capas por letra y CSS en línea para el retraso escalonado (staggering).
  */
-export default function TextSpanWrapper({ children, makeSmall = false, className = '', classname = '' }) {
+export default function TextSpanWrapper({
+    children,
+    makeSmall = false,
+    animateOnLoad = false,
+    className = '',
+    classname = '',
+}) {
+    const [hasRevealed, setHasRevealed] = useState(!animateOnLoad)
+
+    useEffect(() => {
+        if (!animateOnLoad) return undefined
+
+        const frameId = window.requestAnimationFrame(() => {
+            setHasRevealed(true)
+        })
+
+        return () => window.cancelAnimationFrame(frameId)
+    }, [animateOnLoad])
+
     // 1. Segmenter: Divide el texto en caracteres de forma segura (incluyendo emojis)
     // Usa 'grapheme' para dividir correctamente emojis y caracteres compuestos
     const text = typeof children === 'string' ? children : String(children ?? '')
@@ -17,24 +37,27 @@ export default function TextSpanWrapper({ children, makeSmall = false, className
         ? Array.from(segmenter.segment(text))
         : [...text].map(ch => ({ segment: ch }))
 
-    // Clase base para el contenedor de la animación (overflow: hidden y altura fija)
+    // La altura en em sigue siempre el tamaño de la tipografía heredada.
     const letterContainerClasses = `
-        inline-block relative 
-        h-[1.25rem] sm:h-[1.5rem] ${!makeSmall ? ' md:h-[3rem] lg:h-[3.75rem]' : ''} leading-none overflow-hidden
+        inline-block relative h-[1em] align-top leading-none overflow-hidden
         transition-colors duration-300
     `
 
     // Clase para las capas animadas (movimiento vertical)
     const layerClasses = `
-        block
+        block h-full
         transition-transform duration-300 timing-custom-ease
         motion-reduce:transition-none 
     `
 
+    const revealClasses = animateOnLoad && !hasRevealed
+        ? 'motion-safe:translate-y-full'
+        : 'translate-y-0'
+
     const resolvedClassName = className || classname
 
     const headingClasses = `
-        font-extrabold uppercase group text-xl sm:text-2xl
+        font-extrabold uppercase group leading-none text-xl sm:text-2xl
         ${!makeSmall ? ' md:text-5xl lg:text-6xl' : ''}
         ${resolvedClassName}
     `
@@ -52,9 +75,9 @@ export default function TextSpanWrapper({ children, makeSmall = false, className
                         key={letter + index}
                         className={letterContainerClasses}
                     >
-                        {/* -------------------- CAPA SUPERIOR (Inicialmente visible) -------------------- */}
+                        {/* -------------------- CAPA SUPERIOR (Contenido principal) -------------------- */}
                         <span
-                            className={`${layerClasses} group-hover:-translate-y-full`}
+                            className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
                             style={{ transitionDelay: delay }}
                         >
                             {letter}
@@ -63,7 +86,7 @@ export default function TextSpanWrapper({ children, makeSmall = false, className
                         {/* -------------------- CAPA INFERIOR (Oculta, se desliza hacia arriba) -------------------- */}
                         <span
                             aria-hidden="true"
-                            className={`${layerClasses} group-hover:-translate-y-full`}
+                            className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
                             style={{ transitionDelay: delay }}
                         >
                             {letter}

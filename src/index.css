@@ -22,6 +22,9 @@
 
   --font-astra-display: "Wild World", "Arial Black", Impact, system-ui, sans-serif;
   --font-astra-serif: "Bodoni 72", "Bodoni 72 Smallcaps", "Bodoni MT", Didot, "Bodoni Moda", Georgia, serif;
+
+  /* Curva personalizada para TextSpanWrapper */
+  --timing-custom-ease: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @layer base {
