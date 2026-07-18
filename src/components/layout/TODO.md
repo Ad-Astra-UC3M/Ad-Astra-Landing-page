@@ -1,5 +1,5 @@
 # Layout Components a crear
 
-- [] RootLayout.jsx
-- [] Navbar.jsx
-- [] Footer.jsx
+- [x] RootLayout.jsx
+- [x] Navbar.jsx
+- [x] Footer.jsx

@@ -1,10 +1,10 @@
 # Components a crear para la homepage (en orden de aparición)
 
-- [] HeroSection.jsx
+- [90%] HeroSection.jsx
 - [] ProjectsPreviewSection.jsx
 - [] TeamPreviewSection.jsx
-- [] TechnicalAreasSection.jsx
-- [] CompetitionsTimelineSection.jsx
+- [100%] TechnicalAreasSection.jsx
+- [90%] CompetitionsTimelineSection.jsx
 - [] SponsorsPreviewSection.jsx
 - [] AboutUsPreviewSection.jsx
 - [] JoinCTASection.jsx
