@@ -54,7 +54,7 @@ export default function HeroSection() {
           <div className="text-left">
             <TextSpanWrapper
               animateOnLoad
-              className="text-brand-surface drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]"
+              className="text-brand-surface drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)] pointer-events-auto"
             >
               AD ASTRA
             </TextSpanWrapper>
