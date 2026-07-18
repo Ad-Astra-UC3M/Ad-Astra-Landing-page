@@ -4,9 +4,9 @@ const baseClasses =
 	"inline-flex items-center justify-center whitespace-nowrap rounded-lg font-astra-serif font-normal underline-offset-6 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 motion-reduce:transition-none";
 
 const sizeClasses = {
-	sm: "px-4 py-2 text-base",
-	md: "px-5 py-2.5 text-lg",
-	lg: "px-6 py-3 text-xl",
+	sm: "px-2 py-2 text-base",
+	md: "px-2.5 py-2.5 text-lg",
+	lg: "px-4 py-3 text-xl",
 };
 
 const colorClasses = {
