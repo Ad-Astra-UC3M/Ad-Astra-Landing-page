@@ -22,9 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+outputs/
 
 # Optional npm cache directory
 .npm
 
 # Environment variables file
 .env
+
+.vercel
