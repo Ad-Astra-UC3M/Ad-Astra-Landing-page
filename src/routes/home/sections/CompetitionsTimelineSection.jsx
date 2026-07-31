@@ -1,7 +1,12 @@
-import { ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
 import { Timeline } from "../../../components/ui/Timeline";
 
 const competitions = [
+  {
+    id: "association-today",
+    title: "Hoy",
+    content: <AssociationMilestone />,
+  },
   {
     id: "sigma-2026",
     title: "2026",
@@ -90,6 +95,29 @@ function CompetitionEntry({
           <ArrowUpRightIcon />
         </span>
       </a>
+    </div>
+  );
+}
+
+function AssociationMilestone() {
+  return (
+    <div className="max-w-2xl border-y border-brand-primary/15 py-7 md:py-9">
+      <div className="mb-5 flex flex-wrap items-center gap-3">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#dfe9bd] px-3 py-1 text-sm font-semibold text-[#28412e]">
+          <CheckIcon aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
+          Completado
+        </span>
+        <span className="text-sm font-medium text-brand-ink/65">
+          ~20 miembros · 3 proyectos
+        </span>
+      </div>
+
+      <h3 className="text-3xl text-brand-primary md:text-5xl">Fundación</h3>
+
+      <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-brand-ink/80 md:text-lg">
+        Hoy comienza la asociación: construimos la marca y el equipo que dará
+        forma a nuestros proyectos.
+      </p>
     </div>
   );
 }

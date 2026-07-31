@@ -6,6 +6,7 @@ import {
   useTransform,
 } from "motion/react";
 import { useRef, useState } from "react";
+import TextSpanWrapper from "./TextSpanWrapper";
 
 function TimelineDebugger({ progress }) {
   const [value, setValue] = useState(0);
@@ -51,9 +52,12 @@ export function Timeline({
       } ${className}`}
     >
       <header className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-        <h2 className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl">
+        <TextSpanWrapper
+          as="h2"
+          className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl"
+        >
           {title}
-        </h2>
+        </TextSpanWrapper>
 
         <p className="max-w-2xl text-base font-medium leading-relaxed text-brand-ink/80 md:text-lg">
           {description}
