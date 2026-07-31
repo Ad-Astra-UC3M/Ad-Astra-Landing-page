@@ -4,6 +4,7 @@ import propulsionImage from "../../../assets/technical-areas/propulsion.png";
 import recoveryMissionImage from "../../../assets/technical-areas/recovery-mission.png";
 import softwareDataImage from "../../../assets/technical-areas/software-data.png";
 import structuresMechanismsImage from "../../../assets/technical-areas/structures-mechanisms.png";
+import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
 
 const technicalAreas = [
 	{
@@ -57,9 +58,13 @@ export default function TechnicalAreasSection() {
 
 			<div className="relative mx-auto max-w-7xl">
 				<header className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-					<h2 className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl">
+					<TextSpanWrapper
+						as="h2"
+						id="technical-areas-title"
+						className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl"
+					>
 						Ingeniería que conecta disciplinas
-					</h2>
+					</TextSpanWrapper>
 
 					<p className="max-w-2xl text-base font-medium leading-relaxed text-brand-ink/80 md:text-lg">
 						Cada proyecto reúne especialidades distintas para convertir retos
@@ -80,7 +85,7 @@ export default function TechnicalAreasSection() {
 function TechnicalAreaEntry({ title, description, image }) {
 	return (
 		<article
-			className="group relative grid min-h-72 grid-cols-[minmax(8rem,0.8fr)_minmax(0,1fr)] items-center gap-4 overflow-hidden rounded-2xl border border-brand-primary/15 bg-brand-surface/80 p-5 shadow-[0_18px_44px_rgba(47,51,103,0.07)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-primary/45 hover:shadow-[0_24px_50px_rgba(47,51,103,0.13)] sm:gap-6 sm:p-7 motion-reduce:transform-none motion-reduce:transition-none"
+			className="group relative grid min-h-72 grid-cols-[minmax(8rem,0.8fr)_minmax(0,1fr)] items-center gap-1 overflow-hidden rounded-2xl border border-brand-primary/15 bg-brand-surface/80 pr-8 shadow-[0_18px_44px_rgba(47,51,103,0.07)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-brand-primary/45 hover:shadow-[0_24px_50px_rgba(47,51,103,0.13)] sm:gap-6 sm:p-7 motion-reduce:transform-none motion-reduce:transition-none"
 		>
 			<div
 				className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-accent/0 transition-colors duration-300 group-hover:bg-brand-accent/25 motion-reduce:transition-none"
@@ -96,9 +101,9 @@ function TechnicalAreaEntry({ title, description, image }) {
 			/>
 
 			<div className="relative">
-				<h4 className="leading-none text-brand-primary">
+				<h3 className="leading-none text-brand-primary">
 					{title}
-				</h4>
+				</h3>
 				<p className="mt-4 max-w-md text-base leading-relaxed text-brand-ink">
 					{description}
 				</p>
