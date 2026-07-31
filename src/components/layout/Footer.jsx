@@ -3,6 +3,7 @@ import { Heart } from 'pixelarticons/react'
 
 
 import circleLogo from "../../assets/circle_logo.png";
+import AnimatedWordmark from "../brand/AnimatedWordmark";
 
 const footerSections = [
 	{
@@ -75,7 +76,7 @@ export default function Footer() {
 
 			<div className="relative mx-auto z-10 grid max-w-7xl gap-14 px-6 py-16 sm:px-8 ">
 				<section className="max-w-md" aria-label="AD ASTRA UC3M">
-					<h2 className="text-3xl text-brand-surface sm:text-4xl">Ad Astra {/*Cambiar por SVG logo*/}</h2>
+					<AnimatedWordmark as="h2" className="h-8 sm:h-10" />
 					<p className="mt-4 max-w-sm text-xl leading-8 text-brand-surface/85">
 						Ingeniería para llegar a las estrellas
 					</p>
