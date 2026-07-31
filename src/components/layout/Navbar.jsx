@@ -43,11 +43,13 @@ export default function Navbar() {
 			transition-transform duration-300 ${hidden ? "-translate-y-2/1" : "translate-y-0"}`}
 		>
 			<div className="flex h-full flex-1 items-center justify-start">
-				<img
-					src={FullLogo}
-					alt="Ad Astra UC3M Logo"
-					className="h-full w-auto"
-				/>
+				<NavLink to="/" className="flex h-full items-center justify-start">
+					<img
+						src={FullLogo}
+						alt="Ad Astra UC3M Logo"
+						className="h-full w-auto"
+					/>
+				</NavLink>
 			</div>
 			<div className="hidden flex-1 justify-center md:flex">
 				<DesktopNavbar />
