@@ -9,10 +9,12 @@ import { useEffect, useState } from 'react'
  */
 export default function TextSpanWrapper({
     children,
+    as: Heading = 'h1',
     makeSmall = false,
     animateOnLoad = false,
     className = '',
     classname = '',
+    ...headingProps
 }) {
     const [hasRevealed, setHasRevealed] = useState(!animateOnLoad)
 
@@ -33,9 +35,32 @@ export default function TextSpanWrapper({
         ? new Intl.Segmenter(undefined, { granularity: 'grapheme' })
         : null
 
-    const letters = segmenter
-        ? Array.from(segmenter.segment(text))
-        : [...text].map(ch => ({ segment: ch }))
+    let staggerIndex = 0
+    const textGroups = text
+        .split(/(\s+)/)
+        .filter(Boolean)
+        .map((group, groupIndex) => {
+            if (/^\s+$/.test(group)) {
+                return {
+                    key: `space-${groupIndex}`,
+                    isWhitespace: true,
+                    value: group,
+                }
+            }
+
+            const letters = segmenter
+                ? Array.from(segmenter.segment(group))
+                : [...group].map(ch => ({ segment: ch }))
+
+            return {
+                key: `word-${groupIndex}`,
+                isWhitespace: false,
+                letters: letters.map(({ segment }) => ({
+                    segment,
+                    staggerIndex: staggerIndex++,
+                })),
+            }
+        })
 
     // La altura en em sigue siempre el tamaño de la tipografía heredada.
     const letterContainerClasses = `
@@ -57,43 +82,62 @@ export default function TextSpanWrapper({
     const resolvedClassName = className || classname
 
     const headingClasses = `
+        ${resolvedClassName}
         font-extrabold uppercase group leading-none text-xl sm:text-2xl
         ${!makeSmall ? ' md:text-5xl lg:text-6xl' : ''}
-        ${resolvedClassName}
     `
 
     return (
-        <h1 aria-label={text} className={headingClasses}>
-            {letters.map((segment, index) => {
-                const letter = segment.segment === ' ' ? '\u00A0' : segment.segment
-
-                // El retraso se calcula dinámicamente y se aplica como CSS en línea
-                const delay = `${index * 0.01}s`
+        <Heading {...headingProps} aria-label={text} className={headingClasses}>
+            {textGroups.map((group) => {
+                if (group.isWhitespace) {
+                    return (
+                        <span
+                            key={group.key}
+                            aria-hidden="true"
+                            className="whitespace-pre-wrap"
+                        >
+                            {group.value}
+                        </span>
+                    )
+                }
 
                 return (
                     <span
-                        key={letter + index}
-                        className={letterContainerClasses}
+                        key={group.key}
+                        className="inline-block whitespace-nowrap"
                     >
-                        {/* -------------------- CAPA SUPERIOR (Contenido principal) -------------------- */}
-                        <span
-                            className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
-                            style={{ transitionDelay: delay }}
-                        >
-                            {letter}
-                        </span>
+                        {group.letters.map(({ segment, staggerIndex: index }) => {
+                            // El retraso sigue siendo global aunque las letras se agrupen por palabras.
+                            const delay = `${index * 0.01}s`
 
-                        {/* -------------------- CAPA INFERIOR (Oculta, se desliza hacia arriba) -------------------- */}
-                        <span
-                            aria-hidden="true"
-                            className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
-                            style={{ transitionDelay: delay }}
-                        >
-                            {letter}
-                        </span>
+                            return (
+                                <span
+                                    key={segment + index}
+                                    className={letterContainerClasses}
+                                >
+                                    {/* -------------------- CAPA SUPERIOR (Contenido principal) -------------------- */}
+                                    <span
+                                        className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
+                                        style={{ transitionDelay: delay }}
+                                    >
+                                        {segment}
+                                    </span>
+
+                                    {/* -------------------- CAPA INFERIOR (Oculta, se desliza hacia arriba) -------------------- */}
+                                    <span
+                                        aria-hidden="true"
+                                        className={`${layerClasses} ${revealClasses} group-hover:-translate-y-full`}
+                                        style={{ transitionDelay: delay }}
+                                    >
+                                        {segment}
+                                    </span>
+                                </span>
+                            )
+                        })}
                     </span>
                 )
             })}
-        </h1>
+        </Heading>
     )
 }
