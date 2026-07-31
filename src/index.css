@@ -76,3 +76,34 @@
   }
 }
 
+@keyframes astra-cursor-blob-morph {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 47% 38% 62% 53%;
+  }
+
+  25% {
+    border-radius: 63% 37% 42% 58% / 36% 57% 43% 64%;
+  }
+
+  50% {
+    border-radius: 36% 64% 55% 45% / 61% 43% 57% 39%;
+  }
+
+  75% {
+    border-radius: 58% 42% 34% 66% / 45% 65% 35% 55%;
+  }
+}
+
+.cursor-blob-morph {
+  animation: astra-cursor-blob-morph 13s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  will-change: border-radius;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blob-morph {
+    animation: none;
+    border-radius: 50%;
+  }
+}
+
