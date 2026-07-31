@@ -20,8 +20,8 @@ export const BASE_ROTATION = {
 };
 
 export const INTERACTION = {
-  strengthX: 0.08,
-  strengthY: 0.12,
+  strengthX: 0.3,
+  strengthY: 0.2,
   smoothing: 4,
 };
 

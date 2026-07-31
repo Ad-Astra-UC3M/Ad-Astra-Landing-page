@@ -15,14 +15,25 @@ import {
 } from "./earth/earthConfig";
 import useReducedMotion from "./earth/useReducedMotion";
 
+const INTRO_DURATION_SECONDS = 0.78;
+const INTRO_SCALE_RATIO = 0.015;
+
+function easeOutQuart(progress) {
+  return 1 - (1 - progress) ** 4;
+}
+
 export { default as SpaceBackground } from "./earth/SpaceBackground";
 export {
   DEFAULT_EARTH_APPEARANCE,
   DEFAULT_SPACE_APPEARANCE,
 } from "./earth/earthConfig";
 
-export default function InteractiveModel({ appearance: appearanceOverrides }) {
+export default function InteractiveModel({
+  appearance: appearanceOverrides,
+  introStarted = false,
+}) {
   const groupRef = useRef(null);
+  const introProgressRef = useRef(0);
   const reducedMotion = useReducedMotion();
   const appearance = useMemo(
     () => resolveAppearance(DEFAULT_EARTH_APPEARANCE, appearanceOverrides),
@@ -30,7 +41,24 @@ export default function InteractiveModel({ appearance: appearanceOverrides }) {
   );
 
   useFrame(({ pointer }, delta) => {
-    if (!groupRef.current || reducedMotion) return;
+    if (!groupRef.current) return;
+
+    if (reducedMotion) {
+      groupRef.current.scale.setScalar(appearance.scale);
+    } else if (introStarted && introProgressRef.current < 1) {
+      introProgressRef.current = Math.min(
+        1,
+        introProgressRef.current + delta / INTRO_DURATION_SECONDS,
+      );
+
+      const easedProgress = easeOutQuart(introProgressRef.current);
+      const introScale = appearance.scale * INTRO_SCALE_RATIO;
+      groupRef.current.scale.setScalar(
+        THREE.MathUtils.lerp(introScale, appearance.scale, easedProgress),
+      );
+    }
+
+    if (reducedMotion) return;
 
     const targetX = BASE_ROTATION.x - pointer.y * INTERACTION.strengthX;
     const targetY = BASE_ROTATION.y + pointer.x * INTERACTION.strengthY;
@@ -53,7 +81,9 @@ export default function InteractiveModel({ appearance: appearanceOverrides }) {
     <group
       ref={groupRef}
       rotation={Object.values(BASE_ROTATION)}
-      scale={appearance.scale}
+      scale={
+        reducedMotion ? appearance.scale : appearance.scale * INTRO_SCALE_RATIO
+      }
     >
       <EarthSurface appearance={appearance} />
       <CloudLayer appearance={appearance} />
