@@ -3,6 +3,7 @@ import { Heart } from 'pixelarticons/react'
 
 
 import circleLogo from "../../assets/circle_logo.png";
+import recliningDoodle from "../../assets/footer/reclining-doodle.png";
 import AnimatedWordmark from "../brand/AnimatedWordmark";
 
 const footerSections = [
@@ -74,7 +75,7 @@ export default function Footer() {
 				</div>
 			</div>
 
-			<div className="relative mx-auto z-10 grid max-w-7xl gap-14 px-6 py-16 sm:px-8 ">
+			<div className="relative z-10 mx-auto grid max-w-7xl gap-14 px-6 py-16 sm:px-8">
 				<section className="max-w-md" aria-label="AD ASTRA UC3M">
 					<AnimatedWordmark as="h2" className="h-8 sm:h-10" />
 					<p className="mt-4 max-w-sm text-xl leading-8 text-brand-surface/85">
@@ -101,10 +102,32 @@ export default function Footer() {
 			</div>
 
 			<div className="relative z-10 border-t border-brand-soft/20">
-				<div className="mx-auto flex space-between max-w-7xl flex-col gap-2 px-6 py-5 text-sm text-brand-surface/70 sm:flex-row sm:items-center sm:justify-between sm:px-8 ">
-					<p>Hecho con <Heart className="inline-block h-4 w-4 text-brand-accent" /> por el equipo de IT de Ad Astra</p>
-                    <p>&copy; 2026 Ad Astra UC3M</p>
-					<span className="h-px w-20 bg-brand-accent sm:h-0.5" aria-hidden="true" />
+				<img
+					alt=""
+					aria-hidden="true"
+					className="pointer-events-none absolute bottom-full right-px z-10 h-auto w-24 max-w-none select-none object-contain object-bottom-right sm:w-32 lg:w-40 xl:w-44"
+					decoding="async"
+					draggable={false}
+					loading="lazy"
+					src={recliningDoodle}
+				/>
+				<div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 text-sm text-brand-surface/70 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:gap-6">
+					<p className="lg:justify-self-start">
+						Hecho con{" "}
+						<Heart className="inline-block h-4 w-4 text-brand-accent" /> por
+						el equipo de IT de Ad Astra
+					</p>
+					<p className="lg:justify-self-center lg:whitespace-nowrap">
+						&copy; 2026 Ad Astra UC3M
+					</p>
+					<span
+						className="h-px w-20 bg-brand-accent sm:h-0.5 lg:hidden"
+						aria-hidden="true"
+					/>
+					<span
+						aria-hidden="true"
+						className="hidden h-0.5 w-52 bg-brand-accent lg:block lg:justify-self-end xl:w-64"
+					/>
 				</div>
 			</div>
 		</footer>
