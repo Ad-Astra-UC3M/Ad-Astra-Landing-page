@@ -10,6 +10,14 @@ const sizeClasses = {
 };
 
 const colorClasses = {
+	accent: {
+		solid:
+			"bg-brand-accent text-brand-ink hover:bg-brand-primary hover:text-brand-surface",
+		soft: "bg-brand-accent/35 text-brand-ink hover:bg-brand-accent/55",
+		outline:
+			"border border-brand-accent text-brand-ink hover:bg-brand-accent",
+		ghost: "text-brand-ink hover:bg-brand-accent/30 hover:underline",
+	},
 	brand: {
 		solid:
 			"bg-brand-ink text-brand-surface hover:text-brand-accent hover:underline",

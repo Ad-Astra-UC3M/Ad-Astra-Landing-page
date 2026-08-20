@@ -70,12 +70,17 @@ Por tanto, normalmente basta con escribir:
 
 ### Colores
 
+- `accent`: amarillo de marca para la acción prioritaria de la vista.
 - `brand`: paleta principal de Ad Astra.
 - `surface`: texto y superficies claras para fondos oscuros.
 - `indigo`, `sky`, `emerald`, `rose`, `amber` y `slate`: paletas de Tailwind.
 
 ```jsx
 <Button color="emerald">Confirmar</Button>
+```
+
+```jsx
+<Button color="accent">Enviar formulario</Button>
 ```
 
 ### Tamaños

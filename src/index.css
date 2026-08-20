@@ -37,7 +37,7 @@
   }
 
   html {
-    min-width: 320px;
+    min-width: 0;
     background: var(--color-brand-surface);
   }
 

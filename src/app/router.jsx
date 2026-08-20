@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 
 import ErrorPage from "../components/ErrorPage.jsx";
 import RootLayout from "../components/layout/RootLayout.jsx";
+import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
 import JoinPage from "../routes/join/JoinPage.jsx";
 import JetEnginePage from "../routes/projects/JetEnginePage.jsx";
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
             { path: "projects/jet-engine", element: <JetEnginePage /> },
             { path: "team", element: <TeamPage /> },
             { path: "join", element: <JoinPage /> },
-            { path: "sponsors", element: <SponsorsPage /> }
+            { path: "sponsors", element: <SponsorsPage /> },
+            { path: "bootcamp", element: <BootcampPage /> }
         ]
     }
 ]);
