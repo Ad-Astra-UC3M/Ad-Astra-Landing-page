@@ -63,6 +63,8 @@ export default function TextSpanWrapper({
         })
 
     // La altura en em sigue siempre el tamaño de la tipografía heredada.
+    // El interlineado se aplica en el heading para separar las cajas cuando
+    // el texto salta de línea, sin alterar el recorrido vertical de la animación.
     const letterContainerClasses = `
         inline-block relative h-[1em] align-top leading-none overflow-hidden
         transition-colors duration-300
@@ -83,7 +85,7 @@ export default function TextSpanWrapper({
 
     const headingClasses = `
         ${resolvedClassName}
-        font-extrabold uppercase group leading-none text-xl sm:text-2xl
+        font-extrabold uppercase group text-xl leading-[1.15] sm:text-2xl sm:leading-[1.08] md:leading-[1.05]
         ${!makeSmall ? ' md:text-5xl lg:text-6xl' : ''}
     `
 
