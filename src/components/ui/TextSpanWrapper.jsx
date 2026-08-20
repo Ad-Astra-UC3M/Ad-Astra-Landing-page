@@ -62,11 +62,10 @@ export default function TextSpanWrapper({
             }
         })
 
-    // La altura en em sigue siempre el tamaño de la tipografía heredada.
-    // El interlineado se aplica en el heading para separar las cajas cuando
-    // el texto salta de línea, sin alterar el recorrido vertical de la animación.
+    // `1lh` equivale al line-height calculado: sincroniza el recorte y el recorrido animado.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length#lh
     const letterContainerClasses = `
-        inline-block relative h-[1em] align-top leading-none overflow-hidden
+        inline-block relative h-[1lh] align-top overflow-hidden
         transition-colors duration-300
     `
 

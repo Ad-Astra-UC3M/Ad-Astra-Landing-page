@@ -70,7 +70,7 @@ export default function SVGAnimationWrapper({
 
                         <span
                             aria-hidden="true"
-                            className={`${layerClasses} absolute inset-0 translate-y-full group-hover:translate-y-0 motion-reduce:group-hover:translate-y-full`}
+                            className={`${layerClasses} absolute inset-0 translate-y-full group-hover:translate-y-0 motion-reduce:group-hover:translate-y-full py-0.5`}
                             style={transitionStyle}
                         >
                             {svg}

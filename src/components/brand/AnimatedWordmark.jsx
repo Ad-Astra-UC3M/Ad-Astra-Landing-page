@@ -9,12 +9,12 @@ import SVGAnimationWrapper from '../ui/SVGAnimationWrapper'
 
 const WORDMARK_LETTERS = [
     { key: 'a-1', src: A1 },
-    { key: 'd-1', src: D1, spacingClass: '-ml-1' },
-    { key: 'a-2', src: A2, spacingClass: 'ml-2 sm:ml-3' },
-    { key: 's-1', src: S1, spacingClass: 'ml-1' },
-    { key: 't-1', src: T1, spacingClass: 'ml-[-16%]' },
-    { key: 'r-1', src: R1, spacingClass: 'ml-[-16%]' },
-    { key: 'a-3', src: A3, spacingClass: '-ml-[15%] ' },
+    { key: 'd-1', src: D1, spacingClass: '-ml-[22%]' },
+    { key: 'a-2', src: A2, spacingClass: '-ml-1' },
+    { key: 's-1', src: S1, spacingClass: 'ml-[6.5%]' },
+    { key: 't-1', src: T1, spacingClass: 'ml-[-9%]' },
+    { key: 'r-1', src: R1, spacingClass: 'ml-[-12%]' },
+    { key: 'a-3', src: A3, spacingClass: '-ml-[8%] ' },
 ]
 
 export default function AnimatedWordmark({
@@ -33,7 +33,7 @@ export default function AnimatedWordmark({
                     key={key}
                     alt=""
                     aria-hidden="true"
-                    className={`block h-full w-auto max-w-none  ${spacingClass}`}
+                    className={`block h-full w-auto max-w-none ${spacingClass}`}
                     src={src}
                 />
             ))}
