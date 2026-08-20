@@ -30,7 +30,7 @@ export default function SponsorsPreviewSection() {
 						<TextSpanWrapper
 							as="h2"
 							id="sponsors-preview-title"
-							className="max-w-xl text-4xl leading-[1.05] text-brand-ink md:text-5xl"
+							className="max-w-xl text-4xl text-brand-ink md:text-5xl"
 						>
 							Haz posible el siguiente hito.
 						</TextSpanWrapper>

@@ -1,7 +1,6 @@
 import AnimatedGradientBackground from "../../../components/ui/AnimatedGradientBackgorund";
 import Button from "../../../components/ui/Button";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
-import { motion } from "motion/react";
 
 export default function JoinCTASection() {
 
@@ -20,7 +19,7 @@ export default function JoinCTASection() {
 				<TextSpanWrapper
 					as="h2"
 					id="join-cta-title"
-					className="mt-7 max-w-4xl text-[1.75rem] leading-[1.05] text-brand-ink min-[390px]:text-3xl sm:text-5xl lg:text-6xl"
+					className="mt-7 max-w-4xl text-[1.75rem] text-brand-ink min-[390px]:text-3xl sm:text-5xl lg:text-6xl"
 				>
 					Construye tecnología aeroespacial desde la UC3M
 				</TextSpanWrapper>
