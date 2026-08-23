@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adastrauc3m.es/sitemap.xml

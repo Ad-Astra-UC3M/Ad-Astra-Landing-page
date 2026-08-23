@@ -1,0 +1,17 @@
+/projects
+  X-Robots-Tag: noindex, follow
+
+/projects/*
+  X-Robots-Tag: noindex, follow
+
+/team
+  X-Robots-Tag: noindex, follow
+
+/join
+  X-Robots-Tag: noindex, follow
+
+/sponsors
+  X-Robots-Tag: noindex, follow
+
+/bootcamp
+  X-Robots-Tag: noindex, follow
