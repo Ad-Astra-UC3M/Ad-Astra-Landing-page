@@ -6,6 +6,7 @@ import AnimatedWordmark from "../../../components/brand/AnimatedWordmark";
 import Button from "../../../components/ui/Button";
 import EarthLoadingFallback from "../components/EarthLoadingFallback";
 import InteractiveModel, { SpaceBackground } from "../components/InteractiveModel";
+import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
 // Controles visuales del hero. Estos valores sobreescriben los defaults de
 // earthConfig.js sin necesidad de tocar los shaders GLSL.
@@ -76,7 +77,10 @@ export default function HeroSection() {
   );
 
   return (
-    <section className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-black">
+    <section
+			id="home"
+			className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-black"
+		>
       <div className="absolute inset-0" aria-hidden="true">
         <HeroCanvasErrorBoundary onError={handleSceneUnavailable}>
           <Canvas
@@ -127,14 +131,14 @@ export default function HeroSection() {
 
           <div className="pointer-events-auto flex w-full max-w-72 flex-col items-stretch gap-3 md:w-auto md:max-w-none md:justify-self-end xl:flex-row xl:items-center xl:justify-end xl:gap-4">
             <Button
-              to="/join"
+              to={sectionLinks.join}
               size="md"
               className="w-full md:w-auto md:min-w-60"
             >
               Únete a nosotros
             </Button>
             <Button
-              href="mailto:sponsors@adastra.com"
+              href={getSponsorEmailLink()}
               variant="outline"
               color="surface"
               size="md"
@@ -143,7 +147,7 @@ export default function HeroSection() {
               Colabora como sponsor
             </Button>
             <Button
-              to="/#projects"
+              to={sectionLinks.projects}
               variant="ghost"
               color="surface"
               size="md"
@@ -155,7 +159,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <p className="absolute bottom-3 right-4 z-10 text-[10px] text-white/45">
+      <p className="absolute bottom-3 right-4 z-10 text-xs text-white/45">
         Earth imagery: NASA · Space textures:{" "}
         <a
           className="pointer-events-auto underline hover:text-white/80"

@@ -1,12 +1,13 @@
-import { NavLink } from "react-router";
+import { Link, useLocation } from "react-router";
 
 import HamburgerMenu from "../ui/HamburgerMenu";
 import navItems from "../../data/navItems";
 import FullLogo from "../../assets/full_logo.png";
 import NavDropdown from "../navbar_components/NavDropdown";
 import { useEffect, useState, useRef } from "react";
+import { isNavigationTargetActive, sectionLinks } from "../../data/siteLinks";
 
-const navLinkClassName = ({ isActive }) =>
+const navLinkClassName = (isActive) =>
 	[
 		"inline-flex items-center px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent",
 		isActive ? "text-brand-ink underline" : "",
@@ -43,13 +44,13 @@ export default function Navbar() {
 			transition-transform duration-300 ${hidden ? "-translate-y-2/1" : "translate-y-0"}`}
 		>
 			<div className="flex h-full flex-1 items-center justify-start">
-				<NavLink to="/" className="flex h-full items-center justify-start">
+				<Link to={sectionLinks.home} className="flex h-full items-center justify-start">
 					<img
 						src={FullLogo}
 						alt="Ad Astra UC3M Logo"
 						className="h-full w-auto"
 					/>
-				</NavLink>
+				</Link>
 			</div>
 			<div className="hidden flex-1 justify-center md:flex">
 				<DesktopNavbar />
@@ -67,6 +68,8 @@ export default function Navbar() {
 }
 
 export function DesktopNavbar() {
+	const location = useLocation();
+
 	return (
 		<nav>
 			<ul className="flex flex-row items-center gap-4">
@@ -77,9 +80,14 @@ export function DesktopNavbar() {
 
 					return (
 						<li key={item.to}>
-							<NavLink className={navLinkClassName} to={item.to}>
+							<Link
+								className={navLinkClassName(
+									isNavigationTargetActive(location, item),
+								)}
+								to={item.to}
+							>
 								{item.label}
-							</NavLink>
+							</Link>
 						</li>
 					);
 				})}
@@ -98,17 +106,18 @@ export function MobileNavbar() {
 }
 
 function JoinButton() {
+	const location = useLocation();
+	const isActive = isNavigationTargetActive(location, { sectionId: "join" });
+
 	return (
-		<NavLink
-			to="/join"
-			className={({ isActive }) =>
-				[
-					navLinkClassName({ isActive }),
-					"bg-brand-ink px-4 py-2 text-brand-surface rounded-lg",
-				].join(" ")
-			}
+		<Link
+			to={sectionLinks.join}
+			className={[
+				navLinkClassName(isActive),
+				"bg-brand-ink px-4 py-2 text-brand-surface rounded-lg",
+			].join(" ")}
 		>
-			Join
-		</NavLink>
+			Únete
+		</Link>
 	);
 }

@@ -4,6 +4,7 @@ import sigmaImage from "../../../assets/projects/sigma-concept-blueprint.png";
 
 export const projectsPreviewData = [
 	{
+		slug: "sigma",
 		image: { route: sigmaImage, alt: "Concepto visual de SIGMA" },
 		topHeading: "01 · SISTEMAS DE VUELO",
 		projectName: "SAT SIGMA",
@@ -49,9 +50,9 @@ export const projectsPreviewData = [
 					"El acceso a herramientas de simulación y medios de ensayo puede convertir la documentación preliminar en modelos contrastables.",
 			},
 		],
-		route: "/projects/sigma",
 	},
 	{
+		slug: "rocket-a4",
 		image: { route: rocketA4Image, alt: "Concepto visual de Rocket A4" },
 		topHeading: "02 · COHETERÍA",
 		projectName: "ROCKET A4",
@@ -97,9 +98,9 @@ export const projectsPreviewData = [
 					"Una alianza en herramientas de simulación y análisis puede convertir el CAD, los cálculos y el código preliminares en decisiones verificadas antes de fabricar y ensayar.",
 			},
 		],
-		route: "/projects/rocket-a4",
 	},
 	{
+		slug: "jet-engine",
 		image: { route: jetEngineImage, alt: "Concepto visual de Jet Engine" },
 		topHeading: "03 · PROPULSIÓN",
 		projectName: "JET ENGINE",
@@ -145,6 +146,5 @@ export const projectsPreviewData = [
 					"Una colaboración en licencias CAE y capacidad de cómputo puede permitir mallas, barridos y estudios más exigentes, elevando el rigor del trabajo que el equipo puede abordar.",
 			},
 		],
-		route: "/projects/jet-engine",
 	},
 ];

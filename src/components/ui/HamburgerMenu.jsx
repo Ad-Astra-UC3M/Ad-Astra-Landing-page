@@ -8,29 +8,31 @@ import {
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
-import { NavLink } from "react-router";
+import { Link, useLocation } from "react-router";
+import { isNavigationTargetActive } from "../../data/siteLinks";
 
-const navLinkClassName = ({ isActive }) =>
+const navLinkClassName = (isActive) =>
 	[
 		"block rounded-sm px-3 py-2 font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent",
 		isActive ? "text-brand-ink underline" : "",
 	].join(" ");
 
-function MobileNavLink({ item, onNavigate, nested = false }) {
+function MobileNavLink({ item, location, onNavigate, nested = false }) {
 	return (
-		<NavLink
+		<Link
 			to={item.to}
 			onClick={onNavigate}
-			className={({ isActive }) =>
-				[navLinkClassName({ isActive }), nested ? "pl-6" : ""].join(" ")
-			}
+			className={[
+				navLinkClassName(isNavigationTargetActive(location, item)),
+				nested ? "pl-6" : "",
+			].join(" ")}
 		>
 			{item.label}
-		</NavLink>
+		</Link>
 	);
 }
 
-function NavAccordion({ item, onNavigate }) {
+function NavAccordion({ item, location, onNavigate }) {
 	return (
 		<Disclosure as="li">
 			<DisclosureButton className="group flex w-full items-center justify-between rounded-sm px-3 py-2 text-left font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-open:text-brand-accent data-open:underline">
@@ -48,7 +50,7 @@ function NavAccordion({ item, onNavigate }) {
 				<ul>
 					{item.children.map((child) => (
 						<Fragment key={child.to}>
-							{child.individual && (
+							{child.hasDividerBefore && (
 								<li
 									role="separator"
 									className="mx-3 my-2 border-t border-brand-soft"
@@ -56,7 +58,12 @@ function NavAccordion({ item, onNavigate }) {
 							)}
 
 							<li>
-								<MobileNavLink item={child} onNavigate={onNavigate} nested />
+								<MobileNavLink
+									item={child}
+									location={location}
+									onNavigate={onNavigate}
+									nested
+								/>
 							</li>
 						</Fragment>
 					))}
@@ -67,6 +74,8 @@ function NavAccordion({ item, onNavigate }) {
 }
 
 export default function HamburgerMenu({ links }) {
+	const location = useLocation();
+
 	return (
 		<Popover as="div">
 			{({ close }) => (
@@ -108,11 +117,16 @@ export default function HamburgerMenu({ links }) {
 									<NavAccordion
 										key={item.label}
 										item={item}
+										location={location}
 										onNavigate={close}
 									/>
 								) : (
 									<li key={item.to}>
-										<MobileNavLink item={item} onNavigate={close} />
+										<MobileNavLink
+											item={item}
+											location={location}
+											onNavigate={close}
+										/>
 									</li>
 								),
 							)}

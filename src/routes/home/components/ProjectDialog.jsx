@@ -9,6 +9,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import Button from "../../../components/ui/Button";
+import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
 const easing = [0.22, 1, 0.36, 1];
 const detailSections = [
@@ -84,7 +85,7 @@ export default function ProjectDialog({ project, onClose }) {
 											alt={project.image.alt}
 											className="h-64 w-full object-cover md:h-full md:min-h-112"
 										/>
-										<figcaption className="absolute bottom-3 left-3 font-mono text-[9px] tracking-wide text-brand-surface/70">
+										<figcaption className="absolute bottom-3 left-3 font-mono text-xs tracking-wide text-brand-surface/70">
 											VISUAL CONCEPTUAL
 										</figcaption>
 									</figure>
@@ -162,10 +163,17 @@ export default function ProjectDialog({ project, onClose }) {
 								</div>
 
 								<div className="mt-3 grid gap-3 sm:grid-cols-2">
-									<Button to="/sponsors" color="accent">
+									<Button
+										href={getSponsorEmailLink(project.projectName)}
+										color="accent"
+									>
 										Impulsa {project.projectName}
 									</Button>
-									<Button to="/join" variant="outline">
+									<Button
+										to={sectionLinks.join}
+										onClick={onClose}
+										variant="outline"
+									>
 										Únete al equipo
 									</Button>
 								</div>
