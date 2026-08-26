@@ -12,24 +12,7 @@ export const projectLinks = {
 	"jet-engine": "/?project=jet-engine#projects",
 };
 
-export function isNavigationTargetActive(location, item) {
-	if (location.pathname !== "/") return false;
-
-	if (item.projectSlug) {
-		return (
-			location.hash === "#projects" &&
-			new URLSearchParams(location.search).get("project") === item.projectSlug
-		);
-	}
-
-	if (item.sectionId === "home") {
-		return location.hash === "" || location.hash === "#home";
-	}
-
-	return location.hash === `#${item.sectionId}`;
-}
-
-const SPONSOR_EMAIL = "sponsors@adastra.com";
+const SPONSOR_EMAIL = "sponsors@adastrauc3m.es";
 
 export function getSponsorEmailLink(projectName) {
 	const subject = projectName
