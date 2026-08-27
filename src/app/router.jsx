@@ -1,16 +1,9 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 
 import ErrorPage from "../components/ErrorPage.jsx";
 import RootLayout from "../components/layout/RootLayout.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
-import JoinPage from "../routes/join/JoinPage.jsx";
-import JetEnginePage from "../routes/projects/JetEnginePage.jsx";
-import ProjectsPage from "../routes/projects/ProjectsPage.jsx";
-import RocketA4Page from "../routes/projects/RocketA4Page.jsx";
-import SigmaPage from "../routes/projects/SigmaPage.jsx";
-import SponsorsPage from "../routes/sponsors/SponsorsPage.jsx";
-import TeamPage from "../routes/team/TeamPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -20,13 +13,22 @@ const router = createBrowserRouter([
         
         children: [
             { index: true, element: <HomePage /> },
-            { path: "projects", element: <ProjectsPage /> },
-            { path: "projects/sigma", element: <SigmaPage /> },
-            { path: "projects/rocket-a4", element: <RocketA4Page /> },
-            { path: "projects/jet-engine", element: <JetEnginePage /> },
-            { path: "team", element: <TeamPage /> },
-            { path: "join", element: <JoinPage /> },
-            { path: "sponsors", element: <SponsorsPage /> },
+            { path: "projects", element: <Navigate to="/#projects" replace /> },
+			{
+				path: "projects/sigma",
+				element: <Navigate to="/?project=sigma#projects" replace />,
+			},
+			{
+				path: "projects/rocket-a4",
+				element: <Navigate to="/?project=rocket-a4#projects" replace />,
+			},
+			{
+				path: "projects/jet-engine",
+				element: <Navigate to="/?project=jet-engine#projects" replace />,
+			},
+            { path: "team", element: <Navigate to="/#about" replace /> },
+            { path: "join", element: <Navigate to="/#join" replace /> },
+            { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
             { path: "bootcamp", element: <BootcampPage /> }
         ]
     }

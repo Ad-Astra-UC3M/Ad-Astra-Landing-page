@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useLocation, useNavigate } from "react-router";
 import Button from "../../../components/ui/Button";
 import { DynamicIcon } from "lucide-react/dynamic";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
 import ProjectDialog from "../components/ProjectDialog";
 import { projectsPreviewData } from "./projectsPreviewData";
 import { motion, stagger } from "motion/react";
+import { projectLinks, sectionLinks } from "../../../data/siteLinks";
 
 const containerVariants = {
 	hidden: {},
@@ -31,7 +32,15 @@ const cardVariants = {
 };
 
 export default function ProjectsPreviewSection() {
-	const [selectedProject, setSelectedProject] = useState(null);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const selectedSlug = new URLSearchParams(location.search).get("project");
+	const selectedProject = projectsPreviewData.find(
+		(project) => project.slug === selectedSlug,
+	);
+
+	const openProject = (project) => navigate(projectLinks[project.slug]);
+	const closeProject = () => navigate(sectionLinks.projects, { replace: true });
 
 	return (
 		<>
@@ -68,7 +77,7 @@ export default function ProjectsPreviewSection() {
 							<ProjectCard
 								key={project.projectName}
 								projectData={project}
-								onOpen={setSelectedProject}
+								onOpen={openProject}
 							/>
 						))}
 					</motion.div>
@@ -77,7 +86,7 @@ export default function ProjectsPreviewSection() {
 
 			<ProjectDialog
 				project={selectedProject}
-				onClose={() => setSelectedProject(null)}
+				onClose={closeProject}
 			/>
 		</>
 	);
@@ -96,7 +105,7 @@ function ProjectCard({ projectData, onOpen }) {
 					className="aspect-16/10 w-full object-cover"
 					loading="lazy"
 				/>
-				<figcaption className="absolute bottom-3 left-3 font-mono text-[9px] tracking-wide text-brand-surface/70">
+				<figcaption className="absolute bottom-3 left-3 font-mono text-xs tracking-wide text-brand-surface/70">
 					VISUAL CONCEPTUAL
 				</figcaption>
 			</figure>

@@ -39,6 +39,8 @@
   html {
     min-width: 0;
     background: var(--color-brand-surface);
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -101,6 +103,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .cursor-blob-morph {
     animation: none;
     border-radius: 50%;

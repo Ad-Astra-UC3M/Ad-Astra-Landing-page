@@ -7,18 +7,15 @@ import {
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
-const navLinkClassName = ({ isActive }) =>
-    [
-		"block px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-focus:text-brand-accent data-focus:underline data-focus:outline-none",
-		isActive ? "text-brand-ink underline" : "",
-	].join(" ");
-
+const navLinkClassName = "block px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-focus:text-brand-accent data-focus:underline data-focus:outline-none"
 export default function NavDropdown({ item }) {
 	return (
 		<Menu as="li" className="relative">
-			<MenuButton className="group flex items-center gap-1 px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-open:text-brand-accent data-open:underline">
+			<MenuButton
+				className={`group flex items-center gap-1 px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-open:text-brand-accent data-open:underline `}
+			>
 				{item.label}
 				<ChevronDown
 					aria-hidden="true"
@@ -32,17 +29,14 @@ export default function NavDropdown({ item }) {
 			>
 				{item.children.map((child) => (
 					<Fragment key={child.to}>
-						{child.individual && (
+						{child.hasDividerBefore && (
 							<MenuSeparator className="my-2 border-t border-brand-soft" />
 						)}
 
 						<MenuItem>
-							<NavLink
-								to={child.to}
-								className={navLinkClassName}
-							>
+							<Link to={child.to} className={navLinkClassName}>
 								{child.label}
-							</NavLink>
+							</Link>
 						</MenuItem>
 					</Fragment>
 				))}

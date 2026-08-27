@@ -1,12 +1,14 @@
 import AnimatedGradientBackground from "../../../components/ui/AnimatedGradientBackgorund";
 import Button from "../../../components/ui/Button";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
+import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
 export default function JoinCTASection() {
 
 
 	return (
 		<section
+			id="join"
 			className="relative isolate overflow-hidden px-6 py-24 sm:px-8 md:py-32"
 			aria-labelledby="join-cta-title"
 		>			
@@ -26,7 +28,7 @@ export default function JoinCTASection() {
 
 				<div className="mt-10 flex w-full max-w-2xl flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
 					<Button
-						to="/join"
+						to={sectionLinks.join}
 						size="lg"
 						className="w-full active:scale-[0.98] sm:min-w-52 sm:w-auto"
 					>
@@ -34,7 +36,7 @@ export default function JoinCTASection() {
 					</Button>
 
 					<Button
-						to="/sponsors"
+						href={getSponsorEmailLink()}
 						variant="outline"
 						color="brand"
 						size="lg"

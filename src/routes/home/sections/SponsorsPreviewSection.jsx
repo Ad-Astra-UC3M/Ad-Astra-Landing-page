@@ -4,10 +4,12 @@ import Button from "../../../components/ui/Button";
 import CursorBlob from "../../../components/ui/CursorBlob";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
 import ViewportVideo from "../../../components/ui/ViewportVideo";
+import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
 export default function SponsorsPreviewSection() {
 	return (
 		<section
+			id="sponsors"
 			className="relative bg-brand-soft px-6 py-20 md:px-8 md:py-24 overflow-hidden"
 			aria-labelledby="sponsors-preview-title"
 		>
@@ -42,7 +44,7 @@ export default function SponsorsPreviewSection() {
 
 						<div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
 							<Button
-								to="/sponsors"
+								href={getSponsorEmailLink()}
 								color="amber"
 								size="lg"
 								className="w-full sm:w-auto"
@@ -51,7 +53,7 @@ export default function SponsorsPreviewSection() {
 							</Button>
 
 							<Button
-								to="/projects"
+								to={sectionLinks.projects}
 								variant="outline"
 								color="brand"
 								size="lg"

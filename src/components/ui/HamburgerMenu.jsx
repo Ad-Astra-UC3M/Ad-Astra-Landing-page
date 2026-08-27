@@ -8,25 +8,22 @@ import {
 } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
-const navLinkClassName = ({ isActive }) =>
-	[
-		"block rounded-sm px-3 py-2 font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent",
-		isActive ? "text-brand-ink underline" : "",
-	].join(" ");
+const navLinkClassName ="block rounded-sm px-3 py-2 font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
 
 function MobileNavLink({ item, onNavigate, nested = false }) {
 	return (
-		<NavLink
+		<Link
 			to={item.to}
 			onClick={onNavigate}
-			className={({ isActive }) =>
-				[navLinkClassName({ isActive }), nested ? "pl-6" : ""].join(" ")
-			}
+			className={[
+				navLinkClassName,
+				nested ? "pl-6" : "",
+			].join(" ")}
 		>
 			{item.label}
-		</NavLink>
+		</Link>
 	);
 }
 
@@ -48,7 +45,7 @@ function NavAccordion({ item, onNavigate }) {
 				<ul>
 					{item.children.map((child) => (
 						<Fragment key={child.to}>
-							{child.individual && (
+							{child.hasDividerBefore && (
 								<li
 									role="separator"
 									className="mx-3 my-2 border-t border-brand-soft"
@@ -56,7 +53,11 @@ function NavAccordion({ item, onNavigate }) {
 							)}
 
 							<li>
-								<MobileNavLink item={child} onNavigate={onNavigate} nested />
+								<MobileNavLink
+									item={child}
+									onNavigate={onNavigate}
+									nested
+								/>
 							</li>
 						</Fragment>
 					))}
@@ -67,6 +68,7 @@ function NavAccordion({ item, onNavigate }) {
 }
 
 export default function HamburgerMenu({ links }) {
+
 	return (
 		<Popover as="div">
 			{({ close }) => (
@@ -112,7 +114,10 @@ export default function HamburgerMenu({ links }) {
 									/>
 								) : (
 									<li key={item.to}>
-										<MobileNavLink item={item} onNavigate={close} />
+										<MobileNavLink
+											item={item}
+											onNavigate={close}
+										/>
 									</li>
 								),
 							)}

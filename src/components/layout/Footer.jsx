@@ -5,27 +5,28 @@ import { Heart } from 'pixelarticons/react'
 import circleLogo from "../../assets/circle_logo.png";
 import recliningDoodle from "../../assets/footer/reclining-doodle.png";
 import AnimatedWordmark from "../brand/AnimatedWordmark";
+import { projectLinks, sectionLinks } from "../../data/siteLinks";
 
 const footerSections = [
 	{
 		title: "Proyectos",
 		links: [
-			{ label: "SiGMA", to: "/projects/sigma" },
-			{ label: "Cohete A4", to: "/projects/cohete-a4" },
-			{ label: "Jet Engine", to: "/projects/jet-engine" },
+			{ label: "SIGMA", to: projectLinks["sigma"] },
+			{ label: "Cohete A4", to: projectLinks["rocket-a4"] },
+			{ label: "Jet Engine", to: projectLinks["jet-engine"] },
 		],
 	},
 	{
 		title: "Asociacion",
 		links: [
-			{ label: "Equipo", to: "/team" },
-			{ label: "Únete", to: "/join" },
+			{ label: "Equipo", to: sectionLinks.about },
+			{ label: "Únete", to: sectionLinks.join },
 		],
 	},
 	{
 		title: "Mas",
 		links: [
-			{ label: "Sponsors", to: "/sponsors" },
+			{ label: "Sponsors", to: sectionLinks.sponsors },
 			{ label: "Redes sociales", href: "RRSS" },
 		],
 	},
