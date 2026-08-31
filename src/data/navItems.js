@@ -1,4 +1,4 @@
-import { projectLinks, sectionLinks } from "./siteLinks";
+import { projectLinks, sectionLinks, socialLinks } from "./siteLinks";
 
 const navItems = [
 	{ label: "Inicio", to: sectionLinks.home },
@@ -26,6 +26,7 @@ const navItems = [
 	},
 	{ label: "Sponsors", to: sectionLinks.sponsors },
 	{ label: "Equipo", to: sectionLinks.about },
+	{ label: "Redes sociales", children: socialLinks },
 ];
 
 export default navItems;
