@@ -18,14 +18,14 @@ const footerSections = [
 		],
 	},
 	{
-		title: "Asociacion",
+		title: "Asociación",
 		links: [
 			{ label: "Equipo", to: sectionLinks.about },
 			{ label: "Únete", to: sectionLinks.join },
 		],
 	},
 	{
-		title: "Mas",
+		title: "Más",
 		links: [
 			{ label: "Sponsors", to: sectionLinks.sponsors },
 			...socialLinks,

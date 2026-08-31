@@ -2,7 +2,12 @@
 
 @font-face {
   font-family: "Wild World";
-  src: url("./assets/fonts/wild-world.otf") format("opentype");
+  src:
+    url("./assets/fonts/wild-world-es.woff2") format("woff2"),
+    url("./assets/fonts/wild-world-es.otf") format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
 }
 
 @theme {

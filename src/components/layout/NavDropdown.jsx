@@ -15,7 +15,7 @@ export default function NavDropdown({ item }) {
 	return (
 		<Menu as="li" className="relative">
 			<MenuButton
-				className="group flex items-center gap-1 px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-open:text-brand-accent data-open:underline"
+				className="group flex items-center text-nowrap gap-1 px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent data-open:text-brand-accent data-open:underline"
 			>
 				{item.label}
 				<ChevronDown
