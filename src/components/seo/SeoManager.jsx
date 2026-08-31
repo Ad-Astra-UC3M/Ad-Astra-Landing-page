@@ -11,12 +11,13 @@ const ROUTE_TITLES = {
   "/": HOME_TITLE,
   "/projects": `Proyectos | ${SITE_NAME}`,
   "/projects/sigma": `Proyecto SIGMA | ${SITE_NAME}`,
-  "/projects/rocket-a4": `Cohete A4 | ${SITE_NAME}`,
+  "/projects/rocket-a4": `Rocket A4 | ${SITE_NAME}`,
   "/projects/jet-engine": `Jet Engine | ${SITE_NAME}`,
   "/team": `Equipo | ${SITE_NAME}`,
   "/join": `Únete | ${SITE_NAME}`,
   "/sponsors": `Colabora con Ad Astra | ${SITE_NAME}`,
   "/bootcamp": `Bootcamp | ${SITE_NAME}`,
+  "/bootcamp/politica-de-privacidad": `Política de privacidad del Bootcamp Ad Astra | ${SITE_NAME}`,
 };
 
 const INDEXABLE_ROUTES = new Set(["/"]);

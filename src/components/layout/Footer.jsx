@@ -12,7 +12,7 @@ const footerSections = [
 		title: "Proyectos",
 		links: [
 			{ label: "SIGMA", to: projectLinks["sigma"] },
-			{ label: "Cohete A4", to: projectLinks["rocket-a4"] },
+			{ label: "Rocket A4", to: projectLinks["rocket-a4"] },
 			{ label: "Jet Engine", to: projectLinks["jet-engine"] },
 		],
 	},
