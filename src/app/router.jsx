@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 import ErrorPage from "../components/ErrorPage.jsx";
 import RootLayout from "../components/layout/RootLayout.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
+import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
 
 const router = createBrowserRouter([
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
             { path: "team", element: <Navigate to="/#about" replace /> },
             { path: "join", element: <Navigate to="/#join" replace /> },
             { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
-            { path: "bootcamp", element: <BootcampPage /> }
+            { path: "bootcamp", element: <BootcampPage /> },
+            { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },
         ]
     }
 ]);

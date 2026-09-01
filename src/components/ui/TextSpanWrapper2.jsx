@@ -65,13 +65,13 @@ export default function TextSpanWrapper({
     // `1lh` equivale al line-height calculado: sincroniza el recorte y el recorrido animado.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/length#lh
     const letterContainerClasses = `
-        inline-block relative h-[1lh] align-top overflow-hidden
+        inline-block relative h-[1lh] align-top overflow-hidden overflow-x-clip
         transition-colors duration-300
     `
 
     // Clase para las capas animadas (movimiento vertical)
     const layerClasses = `
-        block h-full
+        block h-full overflow-clip
         transition-transform duration-300 timing-custom-ease
         motion-reduce:transition-none 
     `

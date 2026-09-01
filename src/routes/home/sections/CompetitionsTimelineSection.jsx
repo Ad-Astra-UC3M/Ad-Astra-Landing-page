@@ -27,7 +27,7 @@ const competitions = [
     title: "2027",
     content: (
       <CompetitionEntry
-        project="Cohete A4"
+        project="Rocket A4"
         status="Objetivo de competición"
         competition="TEKNOFEST Rocket Competition"
         detail="Categoría internacional A4"

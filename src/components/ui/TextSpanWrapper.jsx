@@ -71,7 +71,7 @@ export default function TextSpanWrapper({
 
     // Clase para las capas animadas (movimiento vertical)
     const layerClasses = `
-        block h-full
+        block h-full overflow-clip
         transition-transform duration-300 timing-custom-ease
         motion-reduce:transition-none 
     `

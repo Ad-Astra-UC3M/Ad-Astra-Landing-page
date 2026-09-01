@@ -12,6 +12,19 @@ export const projectLinks = {
 	"jet-engine": "/?project=jet-engine#projects",
 };
 
+export const socialLinks = [
+	{
+		platform: "linkedin",
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/company/ad-astra-uc3m/",
+	},
+	{
+		platform: "instagram",
+		label: "Instagram",
+		href: "https://www.instagram.com/adastrauc3m/",
+	},
+];
+
 const SPONSOR_EMAIL = "sponsors@adastrauc3m.es";
 
 export function getSponsorEmailLink(projectName) {

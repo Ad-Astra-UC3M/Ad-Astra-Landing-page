@@ -5,29 +5,30 @@ import { Heart } from 'pixelarticons/react'
 import circleLogo from "../../assets/circle_logo.png";
 import recliningDoodle from "../../assets/footer/reclining-doodle.png";
 import AnimatedWordmark from "../brand/AnimatedWordmark";
-import { projectLinks, sectionLinks } from "../../data/siteLinks";
+import SocialIcon from "../ui/SocialIcon";
+import { projectLinks, sectionLinks, socialLinks } from "../../data/siteLinks";
 
 const footerSections = [
 	{
 		title: "Proyectos",
 		links: [
 			{ label: "SIGMA", to: projectLinks["sigma"] },
-			{ label: "Cohete A4", to: projectLinks["rocket-a4"] },
+			{ label: "Rocket A4", to: projectLinks["rocket-a4"] },
 			{ label: "Jet Engine", to: projectLinks["jet-engine"] },
 		],
 	},
 	{
-		title: "Asociacion",
+		title: "Asociación",
 		links: [
 			{ label: "Equipo", to: sectionLinks.about },
 			{ label: "Únete", to: sectionLinks.join },
 		],
 	},
 	{
-		title: "Mas",
+		title: "Más",
 		links: [
 			{ label: "Sponsors", to: sectionLinks.sponsors },
-			{ label: "Redes sociales", href: "RRSS" },
+			...socialLinks,
 		],
 	},
 ];
@@ -35,18 +36,25 @@ const footerSections = [
 const footerLinkClass =
     "text-brand-surface/85 underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent";
 
-function FooterLink({ href, label, to }) {
+function FooterLink({ href, label, platform, to }) {
+	const content = (
+		<>
+			<SocialIcon className="size-4 shrink-0" platform={platform} />
+			<span>{label}</span>
+		</>
+	);
+
 	if (href) {
 		return (
-			<a className={footerLinkClass} href={href}>
-				{label}
+			<a className={`${footerLinkClass} inline-flex items-center gap-2`} href={href}>
+				{content}
 			</a>
 		);
 	}
 
 	return (
 		<Link className={footerLinkClass} to={to}>
-			{label}
+			{content}
 		</Link>
 	);
 }

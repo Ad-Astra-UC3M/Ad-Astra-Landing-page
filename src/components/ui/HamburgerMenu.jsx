@@ -9,10 +9,24 @@ import {
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
 import { Link } from "react-router";
+import SocialIcon from "./SocialIcon";
 
-const navLinkClassName ="block rounded-sm px-3 py-2 font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
+const navLinkClassName ="flex items-center gap-2 rounded-sm px-3 py-2 font-normal underline-offset-6 transition-colors duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent"
 
 function MobileNavLink({ item, onNavigate, nested = false }) {
+	if (item.href) {
+		return (
+			<a
+				href={item.href}
+				onClick={onNavigate}
+				className={[navLinkClassName, nested ? "pl-6" : ""].join(" ")}
+			>
+				<SocialIcon className="size-4 shrink-0" platform={item.platform} />
+				<span>{item.label}</span>
+			</a>
+		);
+	}
+
 	return (
 		<Link
 			to={item.to}
@@ -44,7 +58,7 @@ function NavAccordion({ item, onNavigate }) {
 			>
 				<ul>
 					{item.children.map((child) => (
-						<Fragment key={child.to}>
+						<Fragment key={child.to ?? child.href}>
 							{child.hasDividerBefore && (
 								<li
 									role="separator"
