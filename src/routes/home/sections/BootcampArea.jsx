@@ -22,7 +22,7 @@ export default function BootcampArea() {
             <img
                 src={brandPoster}
                 alt="Bootcamp Poster"
-                className="mx-auto -mt-4 mb-4 max-w-md h-auto"
+                className="mx-auto -mt-4 mb-4 md:max-w-md h-auto"
             />
             <TextSpanWrapper2
                             as="h1"
@@ -31,7 +31,7 @@ export default function BootcampArea() {
                         >
                             ¡Únete a nuestro Bootcamp y lleva tus habilidades al siguiente nivel!
                         </TextSpanWrapper2>
-            <a href="https://forms.google.com/tu-formulario" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
+            <a href="https://tally.so/r/pbY8py" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
             <Button2
             label="¡PARTICIPA AQUÍ!"
             className="w-full sm:w-auto text-white text-xs font-astra-display"
