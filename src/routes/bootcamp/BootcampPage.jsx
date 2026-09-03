@@ -1,6 +1,7 @@
 import jet from "../../assets/bootcamp/jet.png";
 import satsigma from "../../assets/bootcamp/sat.png";
 import rocket from "../../assets/bootcamp/rocket.png";
+import bootcampVideo from "../../assets/bootcamp/background.mp4";
 import { RocketIcon } from "lucide-react";
 
 
@@ -29,12 +30,11 @@ export default function BootcampPage() {
         { title: "Model Satellite", image:satsigma, start: "20261015T190000Z", end: "20261015T200000Z", location: "UC3M, Madrid" },
       ];
 
-  
 
 	return (
 		<section
 			id="about"
-			className="relative overflow-hidden bg-brand-surface px-6 py-40 sm:px-8 md:py-40 lg:py-40"
+			className="relative z-0 overflow-hidden bg-brand-surface px-6 py-40 sm:px-8 md:py-40 lg:py-40"
 			aria-labelledby="about-us-title"
 		>
 {/*		<div
@@ -47,7 +47,19 @@ export default function BootcampPage() {
 				/>
 			</div>
 */}
-			<p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-brand-ink/95">
+    <video
+        src={bootcampVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 object-cover h-full w-full -z-10"
+    />
+      <p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white">
+				¡Muchas gracias por participar en nuestro bootcamp!
+			</p>
+
+			<p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white">
 				Unéte a nuestra comunidad de Whatsapp para no perderte nada
 			</p>
 
@@ -66,10 +78,10 @@ export default function BootcampPage() {
 						Grupo de Whatsapp
 					</span>
 				</a>
-      <p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-brand-ink/95">
+      <p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white">
 				Añade tus eventos a tu calendario
 			</p>
-        <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-brand-ink/95">
+        <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white">
 				Turno de mañana
 			  </p>
         </div>
@@ -90,7 +102,7 @@ export default function BootcampPage() {
             </div>
         
       
-  <p className="text-md mt-8 z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-brand-ink/95">
+  <p className="text-md mt-8 z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white">
   Turno de tarde
   </p>
         <div className="flex flex-row items-center justify-center gap-6 mt-8">
