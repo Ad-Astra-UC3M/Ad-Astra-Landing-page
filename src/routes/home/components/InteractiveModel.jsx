@@ -17,6 +17,15 @@ import useReducedMotion from "./earth/useReducedMotion";
 
 const INTRO_DURATION_SECONDS = 0.78;
 const INTRO_SCALE_RATIO = 0.015;
+const MAX_TOUCH_TAP_DISTANCE = 12;
+
+function getPointerType(event) {
+  return (
+    event.sourceEvent?.pointerType ??
+    event.nativeEvent?.pointerType ??
+    event.pointerType
+  );
+}
 
 function easeOutQuart(progress) {
   return 1 - (1 - progress) ** 4;
@@ -31,6 +40,7 @@ export {
 export default function InteractiveModel({
   appearance: appearanceOverrides,
   introStarted = false,
+  motionControl,
 }) {
   const groupRef = useRef(null);
   const introProgressRef = useRef(0);
@@ -39,6 +49,18 @@ export default function InteractiveModel({
     () => resolveAppearance(DEFAULT_EARTH_APPEARANCE, appearanceOverrides),
     [appearanceOverrides],
   );
+
+  const handleClick = (event) => {
+    const pointerType = getPointerType(event);
+    const isTouch =
+      pointerType === "touch" ||
+      (!pointerType && window.matchMedia?.("(pointer: coarse)").matches);
+
+    if (!isTouch || !(event.delta <= MAX_TOUCH_TAP_DISTANCE)) return;
+
+    event.stopPropagation();
+    motionControl?.activateFromGesture();
+  };
 
   useFrame(({ pointer }, delta) => {
     if (!groupRef.current) return;
@@ -60,8 +82,10 @@ export default function InteractiveModel({
 
     if (reducedMotion) return;
 
-    const targetX = BASE_ROTATION.x - pointer.y * INTERACTION.strengthX;
-    const targetY = BASE_ROTATION.y + pointer.x * INTERACTION.strengthY;
+    const input =
+      motionControl?.resolveInput(pointer, performance.now()) ?? pointer;
+    const targetX = BASE_ROTATION.x - input.y * INTERACTION.strengthX;
+    const targetY = BASE_ROTATION.y + input.x * INTERACTION.strengthY;
 
     groupRef.current.rotation.x = THREE.MathUtils.damp(
       groupRef.current.rotation.x,
@@ -81,6 +105,7 @@ export default function InteractiveModel({
     <group
       ref={groupRef}
       rotation={Object.values(BASE_ROTATION)}
+      onClick={handleClick}
       scale={
         reducedMotion ? appearance.scale : appearance.scale * INTRO_SCALE_RATIO
       }
