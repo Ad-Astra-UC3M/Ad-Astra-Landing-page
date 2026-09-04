@@ -1,17 +1,15 @@
 export default function JoinPage() {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="fixed inset-0 h-dvh w-full overflow-hidden">
       <script async src="https://tally.so/widgets/embed.js" />
       <iframe
+        className="absolute inset-0 size-full border-0"
         data-tally-src="https://tally.so/r/ZjBQZe"
-        title="Formulario de inscripción al Bootcamp Ad Astra UC3M"
-        width="100%"
-        height="100%"
         frameBorder="0"
+        loading="eager"
         marginHeight="0"
         marginWidth="0"
-        loading="eager"
-        className="absolute inset-0 h-full w-full border-0"
+        title="Formulario de inscripción al Bootcamp Ad Astra UC3M"
       />
     </div>
   );
