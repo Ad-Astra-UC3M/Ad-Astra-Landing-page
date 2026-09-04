@@ -4,16 +4,23 @@ import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import SeoManager from "../seo/SeoManager.jsx";
 
+import { useLocation } from "react-router";
+
 
 export default function RootLayout() {
+
+  const location = useLocation();
+
+  const isJoinPage = location.pathname === "/join";
+
   return (
     <>
       <SeoManager />
-      <Navbar />
+      {!isJoinPage && <Navbar />}
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {!isJoinPage && <Footer />}
       <ScrollRestoration />
     </>
   );
