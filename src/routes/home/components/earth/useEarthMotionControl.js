@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Euler, MathUtils, Quaternion } from "three";
 
 const RANGE_DEGREES = 25;
 const MAX_INPUT = 0.7;
@@ -20,9 +21,11 @@ function createRuntime() {
     source: "pointer",
     sourceVersion: 0,
     input: { x: 0, y: 0 },
+    hasInput: false,
     originSet: false,
-    originX: 0,
-    originY: 0,
+    originInverse: new Quaternion(),
+    orientation: new Quaternion(),
+    angles: new Euler(),
     sampleCount: 0,
     streamLive: false,
     lastSampleAt: 0,
@@ -35,10 +38,6 @@ function createRuntime() {
 function getScreenAngle() {
   const angle = window.screen?.orientation?.angle ?? window.orientation ?? 0;
   return ((Number(angle) || 0) % 360 + 360) % 360;
-}
-
-function angularDelta(value, origin) {
-  return ((value - origin + 540) % 360) - 180;
 }
 
 function normalize(value) {
@@ -56,10 +55,13 @@ function clearWatchdog(runtime) {
   runtime.watchdog = null;
 }
 
-function resetSignal(runtime) {
+function resetSignal(runtime, preserveInput = true) {
   clearWatchdog(runtime);
-  runtime.input.x = 0;
-  runtime.input.y = 0;
+  if (!preserveInput) {
+    runtime.input.x = 0;
+    runtime.input.y = 0;
+    runtime.hasInput = false;
+  }
   runtime.originSet = false;
   runtime.sampleCount = 0;
   runtime.streamLive = false;
@@ -229,12 +231,12 @@ export default function useEarthMotionControl({ reducedMotion }) {
     );
   }, [publishStatus]);
 
-  const resolveInput = useCallback((pointer, now) => {
+  const resolveInput = useCallback((pointer) => {
     const runtime = runtimeRef.current;
+    // Durante una interrupción o recalibración, conservar el último objetivo.
     return runtime.source === "orientation" &&
-      runtime.streamLive &&
-      runtime.visible &&
-      now - runtime.lastSampleAt < SENSOR_TIMEOUT_MS
+      runtime.eligible &&
+      runtime.hasInput
       ? runtime.input
       : pointer;
   }, []);
@@ -286,7 +288,7 @@ export default function useEarthMotionControl({ reducedMotion }) {
         runtime.permissionPending = false;
         runtime.permissionToken += 1;
         selectSource(runtime, "pointer");
-        resetSignal(runtime);
+        resetSignal(runtime, false);
         publishStatus("unavailable");
         return;
       }
@@ -297,7 +299,7 @@ export default function useEarthMotionControl({ reducedMotion }) {
         runtime,
         primaryCoarsePointer.matches ? "orientation" : "pointer",
       );
-      resetSignal(runtime);
+      resetSignal(runtime, false);
 
       if (runtime.permissionRequired && !runtime.permissionGranted) {
         publishStatus("prompt");
@@ -306,11 +308,12 @@ export default function useEarthMotionControl({ reducedMotion }) {
       }
     };
 
-    const handleOrientation = ({ beta, gamma }) => {
+    const handleOrientation = ({ alpha, beta, gamma }) => {
       if (
         !runtime.eligible ||
         !runtime.visible ||
         (runtime.permissionRequired && !runtime.permissionGranted) ||
+        !Number.isFinite(alpha) ||
         !Number.isFinite(beta) ||
         !Number.isFinite(gamma)
       ) {
@@ -328,33 +331,42 @@ export default function useEarthMotionControl({ reducedMotion }) {
         }
       }
 
-      let horizontal = gamma;
-      let vertical = beta;
-      if (screenAngle === 90) {
-        horizontal = beta;
-        vertical = -gamma;
-      } else if (screenAngle === 180) {
-        horizontal = -gamma;
-        vertical = -beta;
-      } else if (screenAngle === 270) {
-        horizontal = -beta;
-        vertical = gamma;
-      }
+      // ZXY es el orden de DeviceOrientation. La diferencia se calcula en 3D
+      // antes de extraer inclinaciones, evitando los saltos del móvil vertical.
+      const { angles, orientation, originInverse } = runtime;
+      angles.set(
+        MathUtils.degToRad(beta),
+        MathUtils.degToRad(gamma),
+        MathUtils.degToRad(alpha),
+        "ZXY",
+      );
+      orientation.setFromEuler(angles);
 
       if (!runtime.originSet) {
         runtime.originSet = true;
-        runtime.originX = horizontal;
-        runtime.originY = vertical;
+        originInverse.copy(orientation).invert();
       }
 
-      runtime.input.x = normalize(angularDelta(horizontal, runtime.originX));
-      runtime.input.y = normalize(angularDelta(vertical, runtime.originY));
       runtime.lastSampleAt = performance.now();
       runtime.sampleCount = Math.min(2, runtime.sampleCount + 1);
 
-      if (runtime.sampleCount === 2 && !runtime.streamLive) {
-        runtime.streamLive = true;
-        publishStatus("active");
+      if (runtime.sampleCount === 2) {
+        orientation.premultiply(originInverse);
+        angles.setFromQuaternion(orientation, "YXZ");
+        const screenRadians = MathUtils.degToRad(screenAngle);
+        const cos = Math.cos(screenRadians);
+        const sin = Math.sin(screenRadians);
+        const horizontal = angles.y * cos + angles.x * sin;
+        const vertical = angles.x * cos - angles.y * sin;
+
+        runtime.input.x = normalize(MathUtils.radToDeg(horizontal));
+        runtime.input.y = normalize(MathUtils.radToDeg(vertical));
+        runtime.hasInput = true;
+
+        if (!runtime.streamLive) {
+          runtime.streamLive = true;
+          publishStatus("active");
+        }
       }
 
       if (runtime.source === "orientation" && runtime.watchdog === null) {
@@ -411,7 +423,7 @@ export default function useEarthMotionControl({ reducedMotion }) {
       window.removeEventListener("pointerdown", handlePointerInput);
       window.removeEventListener("pointermove", handlePointerInput);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      resetSignal(runtime);
+      resetSignal(runtime, false);
       selectSource(runtime, "pointer");
       if (runtime.generation === generation) runtime.generation += 1;
     };

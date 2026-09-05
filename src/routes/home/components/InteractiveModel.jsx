@@ -72,7 +72,7 @@ export default function InteractiveModel({
     if (reducedMotion) return;
 
     const input =
-      motionControl?.resolveInput(pointer, performance.now()) ?? pointer;
+      motionControl?.resolveInput(pointer) ?? pointer;
     const targetX = BASE_ROTATION.x - input.y * INTERACTION.strengthX;
     const targetY = BASE_ROTATION.y + input.x * INTERACTION.strengthY;
 
