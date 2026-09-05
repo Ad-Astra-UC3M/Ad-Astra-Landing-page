@@ -238,6 +238,12 @@ export default function BootcampPrivacyPolicyPage() {
               en la página de <ExternalLink href={policy.linkedinUrl}>LinkedIn de Ad Astra UC3M</ExternalLink>.
             </li>
             <li>
+              <strong>TikTok Technology Limited y TikTok Information Technologies UK Limited</strong>, que TikTok
+              identifica como corresponsables del tratamiento de la plataforma, cuando publiquemos una fotografía
+              autorizada en la cuenta de TikTok de Ad Astra UC3M{" "}
+              <ExternalLink href={policy.tiktokUrl}>{policy.tiktokHandle}</ExternalLink>.
+            </li>
+            <li>
               <strong>WhatsApp Ireland Limited</strong>, si decides entrar voluntariamente en el grupo de
               WhatsApp.
             </li>
@@ -249,8 +255,8 @@ export default function BootcampPrivacyPolicyPage() {
             administración conforme a las políticas de la Universidad.
           </p>
           <p className={paragraphClassName}>
-            Las fotografías publicadas en la web, Instagram o LinkedIn serán visibles públicamente. Otras personas
-            podrán verlas, compartirlas o conservar copias fuera del control de Ad Astra.
+            Las fotografías publicadas en la web, Instagram, LinkedIn o TikTok serán visibles públicamente. Otras
+            personas podrán verlas, compartirlas o conservar copias fuera del control de Ad Astra.
           </p>
           <p className={paragraphClassName}>
             Las empresas colaboradoras no recibirán perfiles ni datos identificables basándose en la autorización
@@ -266,8 +272,9 @@ export default function BootcampPrivacyPolicyPage() {
 
         <PolicySection number="6" title="Transferencias internacionales">
           <p className={paragraphClassName}>
-            Algunos de nuestros proveedores, como Google, Vercel, Meta, WhatsApp y LinkedIn, utilizan infraestructura
-            internacional que puede implicar el tratamiento de datos fuera del Espacio Económico Europeo.
+            Algunos de nuestros proveedores, como Google, Vercel, Meta, WhatsApp, LinkedIn y TikTok, utilizan
+            infraestructura internacional que puede implicar el tratamiento de datos fuera del Espacio Económico
+            Europeo.
           </p>
           <p className={paragraphClassName}>
             Cuando esto ocurra, las transferencias se realizarán utilizando las garantías reconocidas por el RGPD
@@ -350,6 +357,10 @@ export default function BootcampPrivacyPolicyPage() {
             <li>
               Página de LinkedIn de Ad Astra UC3M:{" "}
               <ExternalLink href={policy.linkedinUrl}>{policy.linkedinLabel}</ExternalLink>.
+            </li>
+            <li>
+              Cuenta de TikTok de Ad Astra UC3M:{" "}
+              <ExternalLink href={policy.tiktokUrl}>{policy.tiktokLabel}</ExternalLink>.
             </li>
           </ul>
           <p className={paragraphClassName}>
