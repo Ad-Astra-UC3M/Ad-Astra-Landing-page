@@ -19,14 +19,6 @@ const INTRO_DURATION_SECONDS = 0.78;
 const INTRO_SCALE_RATIO = 0.015;
 const MAX_TOUCH_TAP_DISTANCE = 12;
 
-function getPointerType(event) {
-  return (
-    event.sourceEvent?.pointerType ??
-    event.nativeEvent?.pointerType ??
-    event.pointerType
-  );
-}
-
 function easeOutQuart(progress) {
   return 1 - (1 - progress) ** 4;
 }
@@ -44,6 +36,8 @@ export default function InteractiveModel({
 }) {
   const groupRef = useRef(null);
   const introProgressRef = useRef(0);
+  // Safari puede etiquetar un click táctil como mouse; pointerdown conserva el tipo real.
+  const touchGestureRef = useRef(false);
   const reducedMotion = useReducedMotion();
   const appearance = useMemo(
     () => resolveAppearance(DEFAULT_EARTH_APPEARANCE, appearanceOverrides),
@@ -51,12 +45,7 @@ export default function InteractiveModel({
   );
 
   const handleClick = (event) => {
-    const pointerType = getPointerType(event);
-    const isTouch =
-      pointerType === "touch" ||
-      (!pointerType && window.matchMedia?.("(pointer: coarse)").matches);
-
-    if (!isTouch || !(event.delta <= MAX_TOUCH_TAP_DISTANCE)) return;
+    if (!touchGestureRef.current || !(event.delta <= MAX_TOUCH_TAP_DISTANCE)) return;
 
     event.stopPropagation();
     motionControl?.activateFromGesture();
@@ -105,6 +94,9 @@ export default function InteractiveModel({
     <group
       ref={groupRef}
       rotation={Object.values(BASE_ROTATION)}
+      onPointerDown={(event) => {
+        touchGestureRef.current = event.pointerType === "touch";
+      }}
       onClick={handleClick}
       scale={
         reducedMotion ? appearance.scale : appearance.scale * INTRO_SCALE_RATIO
