@@ -14,7 +14,7 @@ const ROUTE_TITLES = {
   "/projects/rocket-a4": `Rocket A4 | ${SITE_NAME}`,
   "/projects/jet-engine": `Jet Engine | ${SITE_NAME}`,
   "/team": `Equipo | ${SITE_NAME}`,
-  "/join": `Únete | ${SITE_NAME}`,
+  "/join": "Formulario de inscripción al Bootcamp Ad Astra UC3M",
   "/sponsors": `Colabora con Ad Astra | ${SITE_NAME}`,
   "/bootcamp": `Bootcamp | ${SITE_NAME}`,
   "/bootcamp/politica-de-privacidad": `Política de privacidad del Bootcamp Ad Astra | ${SITE_NAME}`,

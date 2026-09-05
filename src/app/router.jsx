@@ -5,6 +5,7 @@ import RootLayout from "../components/layout/RootLayout.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
+import JoinPage from "../routes/join/JoinPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
 				element: <Navigate to="/?project=jet-engine#projects" replace />,
 			},
             { path: "team", element: <Navigate to="/#about" replace /> },
-            { path: "join", element: <Navigate to="/#join" replace /> },
+            { path: "join", element: <JoinPage /> },
             { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },

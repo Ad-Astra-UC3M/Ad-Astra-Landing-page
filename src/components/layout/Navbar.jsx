@@ -66,7 +66,7 @@ export default function Navbar() {
 			<div className="flex h-full flex-1 items-center justify-start">
 				<Link
 					to={sectionLinks.home}
-					className="flex h-full items-center justify-start"
+					className="flex h-full flex-1 items-center justify-start"
 				>
 					<img
 						src={FullLogo}
@@ -75,14 +75,14 @@ export default function Navbar() {
 					/>
 				</Link>
 			</div>
-			<div className="hidden flex-1 justify-center md:flex">
+			<div className="hidden flex-1 justify-center min-[890px]:flex">
 				<DesktopNavbar />
 			</div>
 			<div className="flex flex-1 justify-end">
-				<div className="hidden md:block">
+				<div className="hidden min-[890px]:block">
 					<JoinButton />
 				</div>
-				<div className="md:hidden">
+				<div className="min-[890px]:hidden">
 					<MobileNavbar />
 				</div>
 			</div>
