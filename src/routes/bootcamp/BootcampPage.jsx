@@ -1,6 +1,7 @@
 import jet from "../../assets/bootcamp/jet.png";
 import satsigma from "../../assets/bootcamp/sat.png";
 import rocket from "../../assets/bootcamp/rocket.png";
+import calendar from "../../assets/bootcamp/calendar.png";
 import bootcampVideo from "../../assets/bootcamp/background.mp4";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { CalendarDays, X } from "lucide-react";
@@ -15,6 +16,7 @@ export default function BootcampPage() {
       url.searchParams.set("action", "TEMPLATE");
       url.searchParams.set("text", title);
       url.searchParams.set("dates", `${start}/${end}`);
+      url.searchParams.set("ctz", "Europe/Madrid");
       if (location) url.searchParams.set("location", location);
       if (details) url.searchParams.set("details", details);
 
@@ -55,16 +57,19 @@ export default function BootcampPage() {
   }
 
 
+    const diffusionEvent = { title: "Evento de difusión · Ad Astra UC3M", image: calendar, ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260914", end: "20260915", schedule: "Lunes 14 de septiembre", summary: "Presentación, actividades variadas, regalos y sorpresas. Conoce al equipo y la iniciativa.", details: "Evento principal de presentación de Ad Astra UC3M: actividades variadas, regalos y sorpresas. Ven a conocer al equipo y descubre el objetivo de la iniciativa." };
+
     const morningEvents = [
-        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20261015T090000Z", end: "20261015T110000Z", location: "UC3M, Madrid" },
-        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20261015T110000Z", end: "20261015T130000Z", location: "UC3M, Madrid" },
-        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20261015T130000Z", end: "20261015T140000Z", location: "UC3M, Madrid" },
+        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },
+        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20260916T110000", end: "20260916T140000", schedule: "Miércoles 16 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de mañana." },
+        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20260917T110000", end: "20260917T140000", schedule: "Jueves 17 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de mañana." },
     ];
 
     const afternoonEvents = [
-        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20261015T150000Z", end: "20261015T170000Z", location: "UC3M, Madrid" },
-        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20261015T170000Z", end: "20261015T190000Z", location: "UC3M, Madrid" },
-        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20261015T190000Z", end: "20261015T200000Z", location: "UC3M, Madrid" },
+        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4_tarde.ics", start: "20260915T150000", end: "20260915T170000", schedule: "Martes 15 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de tarde." },
+        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine_tarde.ics", start: "20260916T150000", end: "20260916T170000", schedule: "Miércoles 16 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de tarde." },
+        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite_tarde.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de tarde." },
+        { title: "Eventos, Media, Partners e IT", ics: "/bootcamp/calendar/eventos_media_partners_it.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT." },
       ];
 
 
@@ -83,67 +88,94 @@ export default function BootcampPage() {
         playsInline
         className="absolute inset-0 object-cover h-full w-full -z-10"
     />
-    <div className="flex bg-brand-surface w-[120%] xl:w-[110%] px-8">
-      <h1 className=" z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-astra-blue text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-balance py-8">
-				¡Muchas gracias por participar en nuestro bootcamp!
+    <div className="flex flex-col bg-brand-surface w-[120%] xl:w-[110%] px-8 text-center">
+      <h1 className="z-20 mx-auto font-astra-display uppercase tracking-[0.16em] text-astra-blue text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-balance pt-8">
+				¡Gracias por apuntarte a las actividades de Ad Astra!
 			</h1>
+      <p className="mx-auto max-w-2xl py-8 text-lg leading-relaxed text-brand-ink/80">
+        Hemos recibido tu respuesta. Guarda las fechas que hayas elegido y únete a la comunidad para no perderte ninguna novedad.
+      </p>
       </div>
 
 			<p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white mt-8">
-				Unéte a nuestra comunidad de Whatsapp para no perderte nada
+				Únete a nuestra comunidad de WhatsApp para no perderte nada
 			</p>
 
 			<div className="flex flex-col items-center justify-center gap-6">
 				<a
-					href="https://chat.whatsapp.com/tu-enlace-de-invitacion"
+					href="https://chat.whatsapp.com/H8XD9u1zcAfFj1RWlT6kIk?s=sh&p=a&mlu=4&ilr=4"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="flex items-center gap-3 rounded-2xl bg-[#25D366] px-8 py-4 transition hover:brightness-105"
+					className="flex items-center gap-3 rounded-2xl bg-[#128c4a] px-8 py-4 transition hover:brightness-105"
 				>
-					<svg viewBox="0 0 24 24" className="w-10 h-10 fill-white">
+					<svg viewBox="0 0 24 24" aria-hidden="true" className="w-10 h-10 fill-white">
 						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
 						<path d="M12.004 2C6.486 2 2.01 6.476 2.01 11.994c0 2.114.68 4.070 1.836 5.664L2.5 22l4.462-1.316a9.94 9.94 0 0 0 5.042 1.36c5.518 0 9.994-4.476 9.994-9.994C21.998 6.476 17.522 2 12.004 2zm0 18.14a8.13 8.13 0 0 1-4.146-1.135l-.297-.176-3.09.911.925-3.008-.193-.31a8.12 8.12 0 0 1-1.246-4.428c0-4.49 3.656-8.146 8.147-8.146 4.49 0 8.147 3.656 8.147 8.146 0 4.49-3.657 8.146-8.147 8.146z" />
 					</svg>
 					<span className="text-xs font-astra-display uppercase text-white">
-						Grupo de Whatsapp
+						Grupo de WhatsApp
 					</span>
 				</a>
       <p className="text-xl z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-white mt-8">
-				Añade tus eventos a tu calendario
+				Guarda tus fechas
 			</p>
-        <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-shadow-astra-blue-medium bg-brand-accent px-4 py-2 rounded-lg sm:px-20">
-				Turno de mañana
-			  </p>
         </div>
 
-        <div className="flex flex-col items-stretch justify-center gap-6 mt-4 mb-8 md:flex-row">
+        <button
+          type="button"
+          onClick={() => setSelectedEvent(diffusionEvent)}
+          className="group flex min-h-24 w-full max-w-2xl min-w-0 items-center gap-4 rounded-lg bg-brand-accent px-5 py-4 text-left text-brand-ink shadow-[0_10px_28px_rgba(20,23,64,0.18)] transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink motion-reduce:transform-none motion-reduce:transition-none"
+        >
+          <img src={diffusionEvent.image} alt="" className="h-16 w-24 shrink-0 rounded-md object-contain" />
+          <span className="min-w-0">
+            <strong className="block font-astra-display text-xs uppercase leading-relaxed sm:text-sm">{diffusionEvent.title}</strong>
+            <small className="mt-1 block text-sm font-bold leading-snug opacity-85">{diffusionEvent.schedule}</small>
+            <small className="mt-2 block max-w-lg text-sm leading-relaxed opacity-80">{diffusionEvent.summary}</small>
+          </span>
+        </button>
+
+        <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-shadow-astra-blue-medium bg-brand-accent px-4 py-2 rounded-lg sm:px-20 mt-8">
+				Mañana · 11:00–14:00
+			  </p>
+
+        <div className="grid w-full max-w-6xl gap-4 mt-4 mb-8 md:grid-cols-3">
                 {morningEvents.map((event) => (
                     <button
                         key={event.title}
+                        type="button"
                         onClick={() => setSelectedEvent(event)}
-                        className="flex items-center gap-3 rounded-2xl bg-[#2c2fa4] px-8 py-4 transition hover:brightness-105 cursor-pointer"
+                        className="group flex min-h-24 w-full min-w-0 items-center gap-4 rounded-lg bg-brand-primary px-5 py-4 text-left text-brand-surface shadow-[0_10px_28px_rgba(20,23,64,0.18)] transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink motion-reduce:transform-none motion-reduce:transition-none"
                     >
-                        <img src={event.image} alt={event.title} className="w-10 h-10" />
-                        <span className="text-xs font-astra-display uppercase text-white">
-                            {event.title}
+                        <img src={event.image} alt="" className="size-14 shrink-0 rounded-md bg-brand-surface/10 object-contain" />
+                        <span className="min-w-0">
+                          <strong className="block font-astra-display text-xs uppercase leading-relaxed sm:text-sm">{event.title}</strong>
+                          <small className="mt-1 block text-sm font-bold leading-snug opacity-85">{event.schedule}</small>
+                          <small className="mt-0.5 block text-sm leading-snug opacity-75">{event.location}</small>
                         </span>
                     </button>
                 ))}
             </div>
-        
+
   <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-shadow-astra-blue-medium bg-brand-accent px-4 py-2 rounded-lg sm:px-20">
-  Turno de tarde
+  Tarde · 15:00–17:00
   </p>
-        <div className="flex flex-col justify-center gap-6 mt-4 md:flex-row items-stretch">
+        <div className="grid w-full max-w-6xl gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-4">
                 {afternoonEvents.map((event) => (
                     <button
                         key={event.title}
+                        type="button"
                         onClick={() => setSelectedEvent(event)}
-                        className="flex items-center gap-3 rounded-2xl bg-[#2c2fa4] px-8 py-4 transition hover:brightness-105 cursor-pointer"
+                        className="group flex min-h-24 w-full min-w-0 items-center gap-4 rounded-lg bg-brand-primary px-5 py-4 text-left text-brand-surface shadow-[0_10px_28px_rgba(20,23,64,0.18)] transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink motion-reduce:transform-none motion-reduce:transition-none"
                     >
-                        <img src={event.image} alt={event.title} className="w-10 h-10" />
-                        <span className="text-xs font-astra-display uppercase text-white">
-                            {event.title}
+                        {event.image ? (
+                          <img src={event.image} alt="" className="size-14 shrink-0 rounded-md bg-brand-surface/10 object-contain" />
+                        ) : (
+                          <span className="grid size-14 shrink-0 place-items-center rounded-md bg-brand-surface/15"><CalendarDays aria-hidden="true" className="size-7" /></span>
+                        )}
+                        <span className="min-w-0">
+                          <strong className="block font-astra-display text-xs uppercase leading-relaxed sm:text-sm">{event.title}</strong>
+                          <small className="mt-1 block text-sm font-bold leading-snug opacity-85">{event.schedule}</small>
+                          <small className="mt-0.5 block text-sm leading-snug opacity-75">{event.location}</small>
                         </span>
                     </button>
                 ))}

@@ -41,7 +41,7 @@ export default function BootcampPrivacyPolicyPage() {
     <div className="min-h-dvh bg-brand-surface text-brand-ink">
       <article className="mx-auto max-w-3xl px-6 pb-24 pt-32 sm:px-8 sm:pt-36">
         <h1 className="max-w-3xl break-words text-4xl leading-[1.08] text-brand-primary">
-          Política de privacidad del Bootcamp Ad Astra
+          Política de privacidad de las actividades de Ad Astra
         </h1>
 
         <div className="mt-7 grid gap-2 text-base font-bold text-brand-ink/80 sm:text-lg">
@@ -64,7 +64,7 @@ export default function BootcampPrivacyPolicyPage() {
             formulario.
           </p>
           <p className={paragraphClassName}>
-            Esta versión del formulario y del Bootcamp está dirigida exclusivamente a personas de{" "}
+            Esta versión del formulario y de las actividades está dirigida exclusivamente a personas de{" "}
             <strong>18 años o más</strong>.
           </p>
         </PolicySection>
@@ -72,11 +72,14 @@ export default function BootcampPrivacyPolicyPage() {
         <PolicySection number="2" title="¿Para qué utilizaremos tus datos?">
           <p className={paragraphClassName}>Los utilizaremos para:</p>
           <ul className={listClassName}>
-            <li>Recibir y tramitar tu solicitud para participar en el Bootcamp.</li>
-            <li>Comprobar los requisitos y organizar el proceso de selección.</li>
+            <li>
+              Recibir y tramitar tu solicitud para participar en el evento de difusión, en uno o varios
+              Bootcamps o en ambas actividades.
+            </li>
+            <li>Comprobar los requisitos y organizar el proceso de selección, cuando corresponda.</li>
             <li>Conocer tus preferencias y asignarte, cuando corresponda, un proyecto o departamento.</li>
-            <li>Enviarte fechas, resultados, cambios e información práctica del Bootcamp.</li>
-            <li>Gestionar tu asistencia, participación y evaluación durante la actividad.</li>
+            <li>Enviarte fechas, resultados, cambios e información práctica de las actividades elegidas.</li>
+            <li>Gestionar tu asistencia, participación y, cuando corresponda, evaluación.</li>
             <li>
               Contactar contigo después del Bootcamp para continuar el proceso de selección y tu posible
               incorporación a Ad Astra.
@@ -118,11 +121,11 @@ export default function BootcampPrivacyPolicyPage() {
 
         <PolicySection number="3" title="¿Por qué podemos utilizar los datos?">
           <p className={paragraphClassName}>
-            El tratamiento de los datos necesarios para tramitar tu solicitud, organizar el Bootcamp y gestionar
-            el proceso de selección se basa en el{" "}
+            El tratamiento de los datos necesarios para tramitar tu solicitud, organizar las actividades y,
+            cuando corresponda, gestionar el proceso de selección se basa en el{" "}
             <strong>artículo 6.1.b del Reglamento General de Protección de Datos (RGPD)</strong>. Al enviar el
-            formulario, solicitas participar en el Bootcamp y en el proceso de selección y posible incorporación
-            asociado a él.
+            formulario, solicitas participar en las actividades que elijas y, si eliges algún Bootcamp, en el
+            proceso de selección y posible incorporación asociado.
           </p>
           <p className={paragraphClassName}>
             Las preguntas que se marquen como opcionales se tratarán con tu consentimiento, conforme al{" "}
@@ -138,7 +141,7 @@ export default function BootcampPrivacyPolicyPage() {
           </ul>
           <p className={paragraphClassName}>
             El consentimiento para la bolsa de talento será independiente, voluntario y no estará premarcado. No
-            darlo o retirarlo no afectará a la participación en el Bootcamp ni al proceso de selección. Las
+            darlo o retirarlo no afectará a la participación en las actividades ni al proceso de selección. Las
             comunicaciones por correo electrónico se enviarán únicamente a quienes las hayan autorizado y
             ofrecerán una forma sencilla de dejar de recibirlas.
           </p>
@@ -178,11 +181,11 @@ export default function BootcampPrivacyPolicyPage() {
               La fecha, hora, identificador de envío y versión de los avisos mostrados, cuando sean necesarios
               para demostrar qué información recibiste o qué opción elegiste.
             </li>
-            <li>Si das permiso, tu imagen en fotografías del Bootcamp.</li>
+            <li>Si das permiso, tu imagen en fotografías de las actividades.</li>
           </ul>
           <p className={paragraphClassName}>
             El NIA se utiliza como identificador único del estudiante, para obtener o verificar el correo
-            institucional y para contactar contigo durante el Bootcamp y el proceso posterior.
+            institucional y para contactar contigo durante las actividades y el proceso posterior.
           </p>
           <p className={paragraphClassName}>
             Si autorizas tu incorporación a la futura bolsa de talento, conservaremos únicamente los datos de
@@ -198,8 +201,8 @@ export default function BootcampPrivacyPolicyPage() {
 
         <PolicySection number="5" title="¿Quién podrá consultar los datos?">
           <p className={paragraphClassName}>
-            Solo accederán las personas de Ad Astra que los necesiten para organizar el Bootcamp y gestionar la
-            selección. Los responsables de cada proyecto o departamento recibirán únicamente la información
+            Solo accederán las personas de Ad Astra que los necesiten para organizar las actividades y gestionar
+            la selección. Los responsables de cada proyecto o departamento recibirán únicamente la información
             necesaria de las personas que tengan asignadas.
           </p>
           <p className={paragraphClassName}>
@@ -295,11 +298,11 @@ export default function BootcampPrivacyPolicyPage() {
           <ul className={listClassName}>
             <li>
               <strong>Si no continúas en el proceso:</strong> eliminaremos tus datos 90 días después de que
-              finalice el Bootcamp.
+              finalice la última actividad a la que te hayas apuntado.
             </li>
             <li>
               <strong>Si continúas en la selección o incorporación:</strong> los conservaremos mientras el proceso
-              siga activo y, como máximo, durante 12 meses desde la finalización del Bootcamp.
+              siga activo y, como máximo, durante 12 meses desde la finalización de la última actividad elegida.
             </li>
             <li>
               <strong>Si te incorporas a Ad Astra:</strong> conservaremos los datos necesarios mientras formes
@@ -344,11 +347,11 @@ export default function BootcampPrivacyPolicyPage() {
           </p>
         </PolicySection>
 
-        <PolicySection number="8" title="Fotografías del Bootcamp">
+        <PolicySection number="8" title="Fotografías de las actividades">
           <p className={paragraphClassName}>
-            Durante el Bootcamp podremos hacer fotografías para documentar la actividad y compartir lo que
-            hacemos como asociación. Solo publicaremos imágenes en las que seas identificable si has marcado una
-            autorización separada, voluntaria y no premarcada.
+            Durante el evento de difusión y los Bootcamps podremos hacer fotografías para documentar las
+            actividades y compartir lo que hacemos como asociación. Solo publicaremos imágenes en las que seas
+            identificable si has marcado una autorización separada, voluntaria y no premarcada.
           </p>
           <p className={paragraphClassName}>Las publicaciones podrán aparecer en:</p>
           <ul className={listClassName}>
@@ -407,7 +410,7 @@ export default function BootcampPrivacyPolicyPage() {
             Los mensajes y archivos también pueden guardarse o reenviarse.
           </p>
           <p className={paragraphClassName}>
-            El grupo podrá mantenerse mientras se utilice para coordinar el Bootcamp, la selección o la
+            El grupo podrá mantenerse mientras se utilice para coordinar las actividades, la selección o la
             incorporación a Ad Astra. Revisaremos periódicamente sus miembros y administradores para limitar el
             acceso a personas vinculadas con estas finalidades. Puedes abandonarlo en cualquier momento. WhatsApp
             informa de que tu número puede continuar apareciendo en la lista de antiguos participantes durante un
@@ -467,7 +470,7 @@ export default function BootcampPrivacyPolicyPage() {
         <PolicySection number="13" title="Cambios en esta política">
           <p className={paragraphClassName}>
             Actualizaremos esta política si cambian el formulario, las finalidades, los proveedores o el
-            funcionamiento del Bootcamp. La versión vigente estará disponible en{" "}
+            funcionamiento de las actividades. La versión vigente estará disponible en{" "}
             <ExternalLink href={policy.privacyPolicyUrl}>{policy.privacyPolicyLabel}</ExternalLink>.
           </p>
         </PolicySection>
