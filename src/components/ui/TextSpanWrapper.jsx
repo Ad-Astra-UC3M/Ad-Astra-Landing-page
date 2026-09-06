@@ -38,14 +38,14 @@ export default function TextSpanWrapper({
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (!entry.isIntersecting) return
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.45) return
 
                 frameId = window.requestAnimationFrame(() => {
                     setHasRevealed(true)
                     observer.unobserve(container)
                 })
             },
-            { threshold: 0.1 },
+            { threshold: 0.45 },
         )
 
         observer.observe(container)
