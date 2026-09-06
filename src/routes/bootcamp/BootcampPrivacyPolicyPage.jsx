@@ -73,7 +73,7 @@ export default function BootcampPrivacyPolicyPage() {
           <p className={paragraphClassName}>Los utilizaremos para:</p>
           <ul className={listClassName}>
             <li>
-              Recibir y tramitar tu solicitud para participar en el evento de difusión, en uno o varios
+              Recibir y tramitar tu solicitud para participar en el evento de presentación, en uno o varios
               Bootcamps o en ambas actividades.
             </li>
             <li>Comprobar los requisitos y organizar el proceso de selección, cuando corresponda.</li>
@@ -349,7 +349,7 @@ export default function BootcampPrivacyPolicyPage() {
 
         <PolicySection number="8" title="Fotografías de las actividades">
           <p className={paragraphClassName}>
-            Durante el evento de difusión y los Bootcamps podremos hacer fotografías para documentar las
+            Durante el evento de presentación y los Bootcamps podremos hacer fotografías para documentar las
             actividades y compartir lo que hacemos como asociación. Solo publicaremos imágenes en las que seas
             identificable si has marcado una autorización separada, voluntaria y no premarcada.
           </p>
