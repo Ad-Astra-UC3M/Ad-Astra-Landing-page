@@ -1,10 +1,22 @@
 import { RocketIcon } from "lucide-react";
-import sponsorCollaborationVideo from "../../../assets/sponsors/sponsor-collaboration.webm";
+import brandPoster from "../../../assets/about/brand-poster.png";
+import buildTogether from "../../../assets/about/build-together.png";
+import carryTheRocket from "../../../assets/about/carry-the-rocket.png";
+import planTheOrbit from "../../../assets/about/plan-the-orbit.png";
+import sharedHorizon from "../../../assets/about/shared-horizon.png";
 import Button from "../../../components/ui/Button";
 import CursorBlob from "../../../components/ui/CursorBlob";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
-import ViewportVideo from "../../../components/ui/ViewportVideo";
+import ImgStack from "../../../components/ui/ImgStack";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
+
+const illustrations = [
+	{ src: brandPoster, surface: "light", alt: "" },
+	{ src: buildTogether, surface: "light", alt: "", padded: true },
+	{ src: carryTheRocket, surface: "night", alt: "", padded: true },
+	{ src: planTheOrbit, surface: "night", alt: "", padded: true },
+	{ src: sharedHorizon, surface: "light", alt: "", padded: true },
+];
 
 export default function SponsorsPreviewSection() {
 	return (
@@ -65,10 +77,9 @@ export default function SponsorsPreviewSection() {
 						</div>
 					</div>
 
-					<ViewportVideo
-						src={sponsorCollaborationVideo}
-						className="aspect-video"
-					/>
+					<div className="flex min-w-0 justify-center">
+						<ImgStack images={illustrations} />
+					</div>
 				</div>
 			</CursorBlob>
 		</section>
