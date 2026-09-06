@@ -29,7 +29,7 @@ export default function BootcampArea() {
                             id="bootcamp-preview-title"
                             className="relative z-10 mx-auto max-w-2xl text-2xl text-white md:text-3xl"
                         >
-                            ¡Únete a nuestro Bootcamp y lleva tus habilidades al siguiente nivel!
+                            ¡Apúntate al evento del 14 y únete a nuestros Bootcamps y lleva tus habilidades al siguiente nivel!
                         </TextSpanWrapper2>
             <a href="https://tally.so/r/pbY8py" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
             <Button2
