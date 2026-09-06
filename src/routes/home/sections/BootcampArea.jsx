@@ -31,7 +31,7 @@ export default function BootcampArea() {
                         >
                             ¡Apúntate al evento del 14 y únete a nuestros Bootcamps y lleva tus habilidades al siguiente nivel!
                         </TextSpanWrapper2>
-            <a href="https://tally.so/r/pbY8py" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
+            <a href="/join" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
             <Button2
             label="¡PARTICIPA AQUÍ!"
             className="w-full sm:w-auto text-white text-xs font-astra-display"
