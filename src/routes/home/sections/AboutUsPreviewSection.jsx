@@ -1,18 +1,7 @@
-import brandPoster from "../../../assets/about/brand-poster.png";
-import buildTogether from "../../../assets/about/build-together.png";
-import carryTheRocket from "../../../assets/about/carry-the-rocket.png";
-import planTheOrbit from "../../../assets/about/plan-the-orbit.png";
-import sharedHorizon from "../../../assets/about/shared-horizon.png";
-import ImgStack from "../../../components/ui/ImgStack";
+import presentationVideo from "../../../assets/sponsors/ad-astra-presentation.mp4";
+import presentationPoster from "../../../assets/sponsors/ad-astra-presentation-poster.webp";
+import ViewportVideo from "../../../components/ui/ViewportVideo";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
-
-const aboutIllustrations = [
-	{ src: brandPoster, surface: "light", alt: "" },
-	{ src: buildTogether, surface: "light", alt: "", padded: true },
-	{ src: carryTheRocket, surface: "night", alt: "", padded: true },
-	{ src: planTheOrbit, surface: "night", alt: "", padded: true },
-	{ src: sharedHorizon, surface: "light", alt: "", padded: true },
-];
 
 export default function AboutUsPreviewSection() {
 	return (
@@ -21,9 +10,9 @@ export default function AboutUsPreviewSection() {
 			className="relative overflow-x-clip bg-brand-surface px-6 py-20 sm:px-8 md:py-24 lg:py-28"
 			aria-labelledby="about-us-title"
 		>
-			<div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.95fr)] lg:gap-16 xl:gap-24">
+			<div className="mx-auto grid max-w-[90rem] items-center gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
 				<div className="order-2 flex min-w-0 justify-center lg:order-1">
-					<ImgStack images={aboutIllustrations} />
+					<ViewportVideo src={presentationVideo} poster={presentationPoster} className="aspect-video w-full" />
 				</div>
 
 				<div className="order-1 max-w-xl lg:order-2">

@@ -1,44 +1,41 @@
-import { Maximize, Minimize, Pause, Play, RotateCcw } from "lucide-react";
-import { useReducedMotion } from "motion/react";
+import { Maximize, Minimize, Pause, Play, RotateCcw, Volume2, VolumeX } from "lucide-react";
+import { useInView, usePageInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-export default function ViewportVideo({ src, className = "" }) {
+const controlClassName = "inline-flex size-11 items-center justify-center rounded-full border border-brand-ink/10 bg-brand-surface/90 text-brand-ink shadow-[0_8px_24px_rgba(47,51,103,0.22)] backdrop-blur-sm transition-transform duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-brand-accent active:scale-95 motion-reduce:transition-none";
+
+export default function ViewportVideo({ src, poster, className = "" }) {
 	const containerRef = useRef(null);
 	const videoRef = useRef(null);
-	const hasUserStartedRef = useRef(false);
+	const userPausedRef = useRef(false);
 	const shouldReduceMotion = useReducedMotion();
+	const isInView = useInView(containerRef, { amount: 0.45 });
+	const isPageVisible = usePageInView();
 	const [hasCompleted, setHasCompleted] = useState(false);
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [isFullscreen, setIsFullscreen] = useState(false);
+	const [isMuted, setIsMuted] = useState(true);
 
 	useEffect(() => {
-		const container = containerRef.current;
 		const video = videoRef.current;
+		if (!video || !isInView || !isPageVisible) return;
+		let timer;
+		const cancelAutoplay = () => clearTimeout(timer);
 
-		if (!container || !video) return undefined;
-
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				if (!entry.isIntersecting) {
-					video.pause();
-					return;
-				}
-
-				const canAutoplay = !shouldReduceMotion || hasUserStartedRef.current;
-				if (!canAutoplay || video.ended) return;
-
+		if (!shouldReduceMotion && !userPausedRef.current && !video.ended) {
+			// Manual playback bypasses and cancels this one-second delay.
+			timer = setTimeout(() => {
 				video.play().catch(() => setIsPlaying(false));
-			},
-			{ threshold: 0.45 },
-		);
-
-		observer.observe(container);
+			}, 1000);
+		}
+		video.addEventListener("play", cancelAutoplay);
 
 		return () => {
-			observer.disconnect();
+			video.removeEventListener("play", cancelAutoplay);
+			cancelAutoplay();
 			video.pause();
 		};
-	}, [shouldReduceMotion]);
+	}, [src, isInView, isPageVisible, shouldReduceMotion]);
 
 	useEffect(() => {
 		const updateFullscreenState = () => {
@@ -53,7 +50,7 @@ export default function ViewportVideo({ src, className = "" }) {
 		const video = videoRef.current;
 		if (!video) return;
 
-		hasUserStartedRef.current = true;
+		userPausedRef.current = !video.paused && !video.ended;
 
 		if (!video.paused && !video.ended) {
 			video.pause();
@@ -66,6 +63,11 @@ export default function ViewportVideo({ src, className = "" }) {
 		}
 
 		video.play().catch(() => setIsPlaying(false));
+	};
+
+	const toggleMute = () => {
+		const video = videoRef.current;
+		if (video) video.muted = !video.muted;
 	};
 
 	const toggleFullscreen = async () => {
@@ -93,14 +95,15 @@ export default function ViewportVideo({ src, className = "" }) {
 	return (
 		<div
 			ref={containerRef}
-			className={`relative overflow-hidden rounded-lg bg-[#F4F4F4] ${className}`}
+			className={`relative overflow-hidden rounded-lg bg-black [&:fullscreen]:h-full [&:fullscreen]:w-full [&:fullscreen]:max-w-none [&:fullscreen]:aspect-auto [&:fullscreen]:rounded-none ${className}`}
 		>
 			<video
 				ref={videoRef}
-				aria-hidden="true"
-				className="pointer-events-none absolute inset-0"
+				aria-label="Vídeo de Ad Astra UC3M"
+				className="pointer-events-none absolute inset-0 h-full w-full object-contain object-center"
 				src={src}
-				muted
+				poster={poster}
+				muted={isMuted}
 				playsInline
 				loading="lazy"
 				preload="metadata"
@@ -110,6 +113,7 @@ export default function ViewportVideo({ src, className = "" }) {
 				controlsList="nodownload noplaybackrate noremoteplayback"
 				onPlay={() => setIsPlaying(true)}
 				onPause={() => setIsPlaying(false)}
+				onVolumeChange={(event) => setIsMuted(event.currentTarget.muted)}
 				onEnded={() => {
 					setHasCompleted(true);
 					setIsPlaying(false);
@@ -131,7 +135,7 @@ export default function ViewportVideo({ src, className = "" }) {
 								? "Volver a reproducir el vídeo"
 								: "Reproducir el vídeo"
 					}
-					className="inline-flex size-11 items-center justify-center rounded-full border border-brand-ink/10 bg-brand-surface/90 text-brand-ink shadow-[0_8px_24px_rgba(47,51,103,0.22)] backdrop-blur-sm transition-transform duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-brand-accent active:scale-95 motion-reduce:transition-none"
+					className={controlClassName}
 				>
 					{isPlaying ? (
 						<Pause className="size-4" aria-hidden="true" />
@@ -144,13 +148,26 @@ export default function ViewportVideo({ src, className = "" }) {
 
 				<button
 					type="button"
+					onClick={toggleMute}
+					aria-label={isMuted ? "Activar el sonido del vídeo" : "Silenciar el vídeo"}
+					className={controlClassName}
+				>
+					{isMuted ? (
+						<VolumeX className="size-4" aria-hidden="true" />
+					) : (
+						<Volume2 className="size-4" aria-hidden="true" />
+					)}
+				</button>
+
+				<button
+					type="button"
 					onClick={toggleFullscreen}
 					aria-label={
 						isFullscreen
 							? "Salir de pantalla completa"
 							: "Ver el vídeo a pantalla completa"
 					}
-					className="inline-flex size-11 items-center justify-center rounded-full border border-brand-ink/10 bg-brand-surface/90 text-brand-ink shadow-[0_8px_24px_rgba(47,51,103,0.22)] backdrop-blur-sm transition-transform duration-150 ease-out focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-brand-accent active:scale-95 motion-reduce:transition-none"
+					className={controlClassName}
 				>
 					{isFullscreen ? (
 						<Minimize className="size-4" aria-hidden="true" />

@@ -12,13 +12,13 @@ export default function HomePage() {
 	return (
 		<>
 			<HeroSection />
+			<AboutUsPreviewSection />
 			<BootcampArea />
 			<ProjectsPreviewSection />
 			<TeamPreviewSection />
 			<TechnicalAreasSection />
 			<CompetitionsTimelineSection />
 			<SponsorsPreviewSection />
-			<AboutUsPreviewSection />
 			<JoinCTASection />
 		</>
 	);
