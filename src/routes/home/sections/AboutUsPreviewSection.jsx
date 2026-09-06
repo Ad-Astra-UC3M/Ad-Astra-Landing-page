@@ -34,6 +34,7 @@ export default function AboutUsPreviewSection() {
 					<TextSpanWrapper
 						as="h2"
 						id="about-us-title"
+						animateOnViewport
 						className="text-3xl text-brand-ink min-[390px]:text-4xl md:text-5xl"
 					>
 						Un equipo que empieza desde cero

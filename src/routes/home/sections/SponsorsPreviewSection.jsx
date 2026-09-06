@@ -32,6 +32,7 @@ export default function SponsorsPreviewSection() {
 						<TextSpanWrapper
 							as="h2"
 							id="sponsors-preview-title"
+							animateOnViewport
 							className="max-w-xl text-4xl text-brand-ink md:text-5xl"
 						>
 							Haz posible el siguiente hito.

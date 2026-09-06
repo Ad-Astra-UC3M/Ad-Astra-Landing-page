@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useReducedMotion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
 
 // El siguiente componente esta basado en el text wrap de la pagina https://landonorris.com/ y lo he replicado en React
 // He usado este video para parte del codigo https://www.youtube.com/watch?v=9H34nxxVEgc
@@ -12,11 +13,48 @@ export default function TextSpanWrapper({
     as: Heading = 'h1',
     makeSmall = false,
     animateOnLoad = false,
+    animateOnViewport = false,
     className = '',
     classname = '',
     ...headingProps
 }) {
-    const [hasRevealed, setHasRevealed] = useState(!animateOnLoad)
+    const shouldReduceMotion = useReducedMotion()
+
+    const [hasRevealed, setHasRevealed] = useState(
+        !animateOnLoad && !animateOnViewport,
+    )
+    const containerRef = useRef(null)
+
+    useEffect(() => {
+        const container = containerRef.current
+
+        if (!container || !animateOnViewport) return undefined
+        if (typeof IntersectionObserver === 'undefined' || shouldReduceMotion) {
+            setHasRevealed(true)
+            return undefined
+        }
+
+        let frameId
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) return
+
+                frameId = window.requestAnimationFrame(() => {
+                    setHasRevealed(true)
+                    observer.unobserve(container)
+                })
+            },
+            { threshold: 0.1 },
+        )
+
+        observer.observe(container)
+
+        return () => {
+            if (frameId) window.cancelAnimationFrame(frameId)
+            observer.disconnect()
+        }
+    }, [animateOnViewport, shouldReduceMotion])
 
     useEffect(() => {
         if (!animateOnLoad) return undefined
@@ -76,7 +114,7 @@ export default function TextSpanWrapper({
         motion-reduce:transition-none 
     `
 
-    const revealClasses = animateOnLoad && !hasRevealed
+    const revealClasses = !hasRevealed && (animateOnLoad || animateOnViewport)
         ? 'motion-safe:translate-y-full'
         : 'translate-y-0'
 
@@ -89,7 +127,12 @@ export default function TextSpanWrapper({
     `
 
     return (
-        <Heading {...headingProps} aria-label={text} className={headingClasses}>
+        <Heading
+            ref={containerRef}
+            {...headingProps}
+            aria-label={text}
+            className={headingClasses}
+        >
             {textGroups.map((group) => {
                 if (group.isWhitespace) {
                     return (

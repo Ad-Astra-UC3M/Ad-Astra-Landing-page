@@ -54,6 +54,7 @@ export default function ProjectsPreviewSection() {
 						<TextSpanWrapper
 							as="h2"
 							id="projects-cards-title"
+							animateOnViewport
 							className="mb-4 max-w-4xl text-3xl text-brand-surface md:text-5xl"
 						>
 							Proyectos que nos elevan al espacio
