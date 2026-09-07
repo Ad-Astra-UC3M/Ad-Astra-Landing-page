@@ -17,18 +17,6 @@ import useEarthMotionControl from "../components/earth/useEarthMotionControl";
 import useReducedMotion from "../components/earth/useReducedMotion";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
-// Controles visuales del hero. Estos valores sobreescriben los defaults de
-// earthConfig.js sin necesidad de tocar los shaders GLSL.
-const EARTH_APPEARANCE = {
-  sunlight: 0.98,
-  terminatorSoftness: 0.4,
-  cityBrightness: 1.32,
-  oceanGlint: 0.13,
-  cloudOpacity: 0.68,
-  atmosphereStrength: 0.24,
-  scale: 1.45,
-};
-
 function getMotionHint(status) {
   if (status === "requesting") {
     return "Confirma el permiso para controlar la Tierra con el movimiento.";
@@ -139,7 +127,6 @@ export default function HeroSection() {
           >
             <Suspense fallback={null}>
               <InteractiveModel
-                appearance={EARTH_APPEARANCE}
                 introStarted={earthIntroStarted}
                 motionControl={motionControl}
               />
