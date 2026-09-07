@@ -18,7 +18,7 @@ import useReducedMotion from "./earth/useReducedMotion";
 const INTRO_DURATION_SECONDS = 0.78;
 const INTRO_SCALE_RATIO = 0.015;
 const MAX_TOUCH_TAP_DISTANCE = 12;
-const CLOUD_ORBIT_SECONDS = 900;
+const CLOUD_ORBIT_SECONDS = 450;
 const CLOUD_DRIFT_RADIANS_PER_SECOND = (Math.PI * 4) / CLOUD_ORBIT_SECONDS;
 
 function easeOutQuart(progress) {
