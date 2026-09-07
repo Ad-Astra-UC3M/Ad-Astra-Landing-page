@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 import HamburgerMenu from "../ui/HamburgerMenu";
 import navItems from "../../data/navItems";
-import FullLogo from "../../assets/full_logo.png";
+import LogoMark from "../../assets/logo_no_text.svg";
 import NavDropdown from "./NavDropdown";
 import { useEffect, useState, useRef } from "react";
 import { sectionLinks } from "../../data/siteLinks";
@@ -69,9 +69,11 @@ export default function Navbar() {
 					className="flex h-full flex-1 items-center justify-start"
 				>
 					<img
-						src={FullLogo}
-						alt="Ad Astra UC3M Logo"
-						className="h-full w-auto"
+						src={LogoMark}
+						alt="Ad Astra UC3M"
+						width="144"
+						height="50"
+						className="h-10 w-auto"
 					/>
 				</Link>
 			</div>
