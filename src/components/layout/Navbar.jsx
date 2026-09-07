@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 import HamburgerMenu from "../ui/HamburgerMenu";
 import navItems from "../../data/navItems";
-import LogoMark from "../../assets/logo_no_text.svg";
+import LogoMark from "../../assets/navbar-logo.svg";
 import NavDropdown from "./NavDropdown";
 import { useEffect, useState, useRef } from "react";
 import { sectionLinks } from "../../data/siteLinks";
@@ -71,7 +71,7 @@ export default function Navbar() {
 					<img
 						src={LogoMark}
 						alt="Ad Astra UC3M"
-						width="144"
+						width="180"
 						height="50"
 						className="h-10 w-auto"
 					/>
