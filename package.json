@@ -15,6 +15,7 @@
     "@react-three/fiber": "^9.6.1",
     "@tailwindcss/vite": "^4.3.1",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.22.0",
     "motion": "^12.42.2",
     "pixelarticons": "^2.1.2",
