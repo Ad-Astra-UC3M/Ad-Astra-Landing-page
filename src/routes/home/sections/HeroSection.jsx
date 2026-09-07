@@ -11,7 +11,8 @@ import * as THREE from "three";
 import AnimatedWordmark from "../../../components/brand/AnimatedWordmark";
 import Button from "../../../components/ui/Button";
 import EarthLoadingFallback from "../components/EarthLoadingFallback";
-import InteractiveModel, { SpaceBackground } from "../components/InteractiveModel";
+import InteractiveModel from "../components/InteractiveModel";
+import StarfieldCanvas from "../components/earth/StarfieldCanvas";
 import useEarthMotionControl from "../components/earth/useEarthMotionControl";
 import useReducedMotion from "../components/earth/useReducedMotion";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
@@ -26,12 +27,6 @@ const EARTH_APPEARANCE = {
   cloudOpacity: 0.68,
   atmosphereStrength: 0.24,
   scale: 1.45,
-};
-
-const SPACE_APPEARANCE = {
-  panoramaIntensity: 0.72,
-  starCount: 5200,
-  starSize: 2.5,
 };
 
 function getMotionHint(status) {
@@ -67,7 +62,7 @@ function CanvasUnavailable({ onUnavailable }) {
     onUnavailable();
   }, [onUnavailable]);
 
-  return <div className="absolute inset-0 bg-black" />;
+  return null;
 }
 
 class HeroCanvasErrorBoundary extends Component {
@@ -83,7 +78,7 @@ class HeroCanvasErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <div className="absolute inset-0 bg-black" />;
+      return null;
     }
 
     return this.props.children;
@@ -106,6 +101,9 @@ export default function HeroSection() {
     () => setSceneUnavailable(true),
     [],
   );
+  const configureCanvas = useCallback(({ gl }) => {
+    gl.setClearColor(0x000000, 0);
+  }, []);
 
   const motionHint = getMotionHint(motionStatus);
   const motionActionLabel =
@@ -119,24 +117,27 @@ export default function HeroSection() {
 			className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-black"
 		>
       <div className="absolute inset-0" aria-hidden="true">
+        <StarfieldCanvas />
         <HeroCanvasErrorBoundary onError={handleSceneUnavailable}>
           <Canvas
             camera={{ position: [0, 0, 5], fov: 50 }}
             dpr={[1, 1.5]}
+            onCreated={configureCanvas}
+            className="absolute inset-0 h-full w-full"
             style={{ touchAction: "pan-y" }}
             fallback={
               <CanvasUnavailable onUnavailable={handleSceneUnavailable} />
             } 
             gl={{
-              alpha: false,
+              alpha: true,
               antialias: true,
+              premultipliedAlpha: false,
               powerPreference: "high-performance",
               toneMapping: THREE.ACESFilmicToneMapping,
               toneMappingExposure: 0.92,
             }}
           >
             <Suspense fallback={null}>
-              <SpaceBackground appearance={SPACE_APPEARANCE} />
               <InteractiveModel
                 appearance={EARTH_APPEARANCE}
                 introStarted={earthIntroStarted}

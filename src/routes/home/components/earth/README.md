@@ -32,15 +32,17 @@ indicar los valores que se quieran cambiar; el resto se toma de
 | `atmosphereThickness` | 0.005–0.05 | Separación del halo respecto al planeta. |
 | `scale` | 0.5–2 | Tamaño del planeta en el hero. |
 
-## Apariencia del espacio
+Las nubes derivan de forma independiente y completan una vuelta cada 15
+minutos. El efecto se desactiva cuando la persona solicita reducir movimiento.
+La textura de nubes conserva una resolución de 2048 × 1024, pero almacena la
+opacidad como una máscara WebP en escala de grises y sin canal alfa. El shader
+lee el canal rojo y evita mantener una capa de transparencia separada.
 
-`SpaceBackground` acepta otra propiedad `appearance` con estos controles:
+## Campo de estrellas
 
-| Propiedad | Rango útil | Efecto |
-| --- | ---: | --- |
-| `panoramaIntensity` | 0–1.5 | Visibilidad de la Vía Láctea. |
-| `panoramaBlurriness` | 0–1 | Suavizado de la panorámica. |
-| `starCount` | 0–10000 | Cantidad de estrellas procedurales. |
-| `starSize` | 0.5–5 | Tamaño aparente de las estrellas. |
-| `starSaturation` | 0–1 | Variación de color de las estrellas. |
-| `starSpeed` | 0–1 | Velocidad ambiental; se anula con movimiento reducido. |
+`StarfieldCanvas` dibuja detrás de la Tierra entre 140 y 320 puntos 2D,
+ligeramente más grandes que los anteriores y con un halo muy leve. Cada estrella
+pulsa a su propio ritmo y mezcla de forma casi imperceptible tonalidades frías,
+violetas y cálidas inspiradas en la Vía Láctea. El canvas se limita a 24 FPS,
+reutiliza halos precalculados y queda estático cuando se solicita reducir
+movimiento; no descarga una textura ni crea geometría WebGL adicional.

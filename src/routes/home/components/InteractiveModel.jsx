@@ -18,16 +18,14 @@ import useReducedMotion from "./earth/useReducedMotion";
 const INTRO_DURATION_SECONDS = 0.78;
 const INTRO_SCALE_RATIO = 0.015;
 const MAX_TOUCH_TAP_DISTANCE = 12;
+const CLOUD_ORBIT_SECONDS = 900;
+const CLOUD_DRIFT_RADIANS_PER_SECOND = (Math.PI * 4) / CLOUD_ORBIT_SECONDS;
 
 function easeOutQuart(progress) {
   return 1 - (1 - progress) ** 4;
 }
 
-export { default as SpaceBackground } from "./earth/SpaceBackground";
-export {
-  DEFAULT_EARTH_APPEARANCE,
-  DEFAULT_SPACE_APPEARANCE,
-} from "./earth/earthConfig";
+export { DEFAULT_EARTH_APPEARANCE } from "./earth/earthConfig";
 
 export default function InteractiveModel({
   appearance: appearanceOverrides,
@@ -35,6 +33,7 @@ export default function InteractiveModel({
   motionControl,
 }) {
   const groupRef = useRef(null);
+  const cloudRef = useRef(null);
   const introProgressRef = useRef(0);
   // Safari puede etiquetar un click táctil como mouse; pointerdown conserva el tipo real.
   const touchGestureRef = useRef(false);
@@ -71,6 +70,13 @@ export default function InteractiveModel({
 
     if (reducedMotion) return;
 
+    if (cloudRef.current) {
+      cloudRef.current.rotation.y =
+        (cloudRef.current.rotation.y +
+          CLOUD_DRIFT_RADIANS_PER_SECOND * delta) %
+        (Math.PI * 2);
+    }
+
     const input =
       motionControl?.resolveInput(pointer) ?? pointer;
     const targetX = BASE_ROTATION.x - input.y * INTERACTION.strengthX;
@@ -103,7 +109,7 @@ export default function InteractiveModel({
       }
     >
       <EarthSurface appearance={appearance} />
-      <CloudLayer appearance={appearance} />
+      <CloudLayer appearance={appearance} meshRef={cloudRef} />
       <Atmosphere appearance={appearance} />
     </group>
   );
