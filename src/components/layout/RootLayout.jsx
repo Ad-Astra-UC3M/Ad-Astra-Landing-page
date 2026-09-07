@@ -1,5 +1,6 @@
 import { Outlet, ScrollRestoration } from "react-router";
 
+import BootcampLeadPopup from "../BootcampLeadPopup.jsx";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import SeoManager from "../seo/SeoManager.jsx";
@@ -22,6 +23,7 @@ export default function RootLayout() {
       </main>
       {!isJoinPage && <Footer />}
       <ScrollRestoration />
+      <BootcampLeadPopup />
     </>
   );
 }
