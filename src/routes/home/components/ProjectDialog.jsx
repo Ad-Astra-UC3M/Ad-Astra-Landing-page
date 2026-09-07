@@ -5,11 +5,11 @@ import {
 	DialogTitle,
 } from "@headlessui/react";
 import { X } from "lucide-react";
-import { DynamicIcon } from "lucide-react/dynamic";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 import Button from "../../../components/ui/Button";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
+import ProjectIcon from "./ProjectIcon";
 
 const easing = [0.22, 1, 0.36, 1];
 const detailSections = [
@@ -107,7 +107,7 @@ export default function ProjectDialog({ project, onClose }) {
 										<div className="grid gap-4">
 											{detailSections.map(({ key, title, icon }) => (
 												<section key={key} className="flex gap-3">
-													<DynamicIcon
+													<ProjectIcon
 														name={icon}
 														aria-hidden="true"
 														className="mt-0.5 size-5 shrink-0 text-brand-primary"
@@ -129,7 +129,7 @@ export default function ProjectDialog({ project, onClose }) {
 											<ul className="grid grid-cols-3 divide-x divide-brand-soft">
 												{project.fronts.map((front) => (
 													<li key={front.label} className="grid justify-items-center gap-2 px-2 text-center text-sm">
-														<DynamicIcon
+														<ProjectIcon
 															name={front.icon}
 															aria-hidden="true"
 															className="size-6 text-brand-primary"
@@ -145,7 +145,7 @@ export default function ProjectDialog({ project, onClose }) {
 								<div className="mt-5 grid gap-4 rounded-lg bg-brand-accent/10 p-4 sm:grid-cols-2 sm:divide-x sm:divide-brand-soft">
 									{project.audiences.map((audience) => (
 										<section key={audience.title} className="flex gap-3 sm:px-4 sm:first:pl-0">
-											<DynamicIcon
+											<ProjectIcon
 												name={audience.icon}
 												aria-hidden="true"
 												className="size-6 shrink-0 text-brand-primary"
