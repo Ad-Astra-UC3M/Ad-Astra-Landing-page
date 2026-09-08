@@ -59,7 +59,7 @@ export default function BootcampPage() {
 
 
 
-    const diffusionEvent = { title: "Evento de presentación · Ad Astra UC3M", image: calendar, ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260914", end: "20260915", schedule: "Lunes 14 de septiembre", summary: "Presentación, actividades variadas, regalos y sorpresas. Conoce al equipo y la iniciativa.", details: "Evento principal de presentación de Ad Astra UC3M: actividades variadas, regalos y sorpresas. Ven a conocer al equipo y descubre el objetivo de la iniciativa." };
+    const diffusionEvent = { title: "Evento de presentación · Ad Astra UC3M", image: calendar, ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260911", end: "20260912", schedule: "Viernes 11 de septiembre · pendiente de aprobación", summary: "Fecha y horario pendientes de aprobación por la UC3M.", details: "Evento de presentación de Ad Astra UC3M previsto para el 11 de septiembre. La fecha definitiva y el horario están pendientes de aprobación por la UC3M." };
 
     const morningEvents = [
         { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },

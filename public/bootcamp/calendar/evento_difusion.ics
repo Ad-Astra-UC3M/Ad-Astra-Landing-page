@@ -4,13 +4,13 @@ PRODID:-//Ad Astra UC3M//Actividades 2026//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:evento-presentacion-20260914@adastrauc3m.es
-DTSTAMP:20260906T120000Z
-DTSTART;VALUE=DATE:20260914
-DTEND;VALUE=DATE:20260915
+UID:evento-presentacion-20260911@adastrauc3m.es
+DTSTAMP:20260908T120000Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260912
 SUMMARY:Evento de presentación · Ad Astra UC3M
-DESCRIPTION:Presentación de Ad Astra\, actividades variadas\, regalos y sorpresas.
-STATUS:CONFIRMED
+DESCRIPTION:Evento previsto para el 11 de septiembre. La fecha definitiva y el horario están pendientes de aprobación por la UC3M.
+STATUS:TENTATIVE
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
