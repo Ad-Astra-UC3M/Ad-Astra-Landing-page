@@ -49,6 +49,7 @@ function getAttribution(search) {
 
 export default function BootcampLeadPopup() {
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const { scrollYProgress } = useScroll();
   const [attribution, setAttribution] = useState(() => getAttribution(location.search));
   const shownRef = useRef(sessionStorage.getItem(SEEN_KEY) === "true");
@@ -58,6 +59,7 @@ export default function BootcampLeadPopup() {
   }, [location.search]);
 
   const openPopup = useCallback(() => {
+    if (!isHomePage) return;
     if (shownRef.current) return;
 
     shownRef.current = true;
@@ -72,14 +74,16 @@ export default function BootcampLeadPopup() {
         hiddenFields: attribution,
       });
     });
-  }, [attribution]);
+  }, [attribution, isHomePage]);
 
   useEffect(() => {
-    if (attribution.utm_source === "qr") openPopup();
-  }, [attribution.utm_source, openPopup]);
+    if (isHomePage && attribution.utm_source === "qr") openPopup();
+  }, [attribution.utm_source, isHomePage, openPopup]);
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    if (attribution.utm_source !== "qr" && progress >= 0.3) openPopup();
+    if (isHomePage && attribution.utm_source !== "qr" && progress >= 0.3) {
+      openPopup();
+    }
   });
 
   return null;

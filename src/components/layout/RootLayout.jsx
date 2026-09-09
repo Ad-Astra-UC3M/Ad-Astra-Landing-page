@@ -23,7 +23,7 @@ export default function RootLayout() {
       </main>
       {!isJoinPage && <Footer />}
       <ScrollRestoration />
-      <BootcampLeadPopup />
+      {location.pathname === "/" && <BootcampLeadPopup />}
     </>
   );
 }
