@@ -65,13 +65,14 @@ export default function BootcampPage() {
         { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },
         { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20260916T110000", end: "20260916T140000", schedule: "Miércoles 16 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de mañana." },
         { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20260917T110000", end: "20260917T140000", schedule: "Jueves 17 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de mañana." },
+        { title: "Eventos, Media, Partners + IT", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it_manana.ics", start: "20260917T110000", end: "20260917T140000", schedule: "Jueves 17 · 11:00–14:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT · turno de mañana." },
     ];
 
     const afternoonEvents = [
         { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4_tarde.ics", start: "20260915T150000", end: "20260915T170000", schedule: "Martes 15 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de tarde." },
         { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine_tarde.ics", start: "20260916T150000", end: "20260916T170000", schedule: "Miércoles 16 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de tarde." },
         { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite_tarde.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de tarde." },
-        { title: "Eventos, Media, Partners + IT", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT." },
+        { title: "Eventos, Media, Partners + IT", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT · turno de tarde." },
       ];
 
 
@@ -140,7 +141,7 @@ export default function BootcampPage() {
 				Mañana · 11:00–14:00
 			  </p>
 
-        <div className="grid w-full max-w-6xl gap-4 mt-4 mb-8 md:grid-cols-3">
+        <div className="grid w-full max-w-6xl gap-4 mt-4 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                 {morningEvents.map((event) => (
                     <button
                         key={event.title}

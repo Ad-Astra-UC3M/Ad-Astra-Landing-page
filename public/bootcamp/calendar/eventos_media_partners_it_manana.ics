@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ad Astra UC3M//Bootcamp 2026//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:eventos-media-partners-it-manana-20260917@adastrauc3m.es
+DTSTAMP:20260909T120000Z
+DTSTART:20260917T090000Z
+DTEND:20260917T120000Z
+SUMMARY:Bootcamp Eventos\, Media\, Partners e IT · turno de mañana
+LOCATION:UC3M\, Campus de Getafe
+DESCRIPTION:Sesión de mañana del Bootcamp de Eventos\, Media\, Partners e IT de Ad Astra UC3M.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
