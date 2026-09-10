@@ -5,12 +5,15 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:evento-presentacion-20260911@adastrauc3m.es
-DTSTAMP:20260908T120000Z
-DTSTART;VALUE=DATE:20260911
-DTEND;VALUE=DATE:20260912
-SUMMARY:Evento de presentación · Ad Astra UC3M
-DESCRIPTION:Evento previsto para el 11 de septiembre. La fecha definitiva y el horario están pendientes de aprobación por la UC3M.
-STATUS:TENTATIVE
-TRANSP:TRANSPARENT
+DTSTAMP:20260910T080000Z
+DTSTART:20260911T113000Z
+DTEND:20260911T133000Z
+SUMMARY:Meet & Greet · Ad Astra UC3M
+DESCRIPTION:Meet & Greet de Ad Astra UC3M. Construye tus aviones de papel
+  y ponlos a prueba en la diana\, beerpong y trivia aeroespacial.
+  Hamburguesas gratis (hasta agotar existencias).
+LOCATION:Jardines Centrales\, UC3M · Campus de Leganés
+STATUS:CONFIRMED
+TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR

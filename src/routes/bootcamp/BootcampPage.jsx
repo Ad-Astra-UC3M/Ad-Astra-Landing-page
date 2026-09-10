@@ -1,7 +1,6 @@
 import jet from "../../assets/bootcamp/jet.png";
 import satsigma from "../../assets/bootcamp/sat.png";
 import rocket from "../../assets/bootcamp/rocket.png";
-import calendar from "../../assets/bootcamp/calendar.png";
 import operations from "../../assets/bootcamp/events-media-partners-it.png";
 import bootcampVideo from "../../assets/bootcamp/background.mp4";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
@@ -59,7 +58,7 @@ export default function BootcampPage() {
 
 
 
-    const diffusionEvent = { title: "Evento de presentación · Ad Astra UC3M", image: calendar, ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260911", end: "20260912", schedule: "Viernes 11 de septiembre · pendiente de aprobación", summary: "Fecha y horario pendientes de aprobación por la UC3M.", details: "Evento de presentación de Ad Astra UC3M previsto para el 11 de septiembre. La fecha definitiva y el horario están pendientes de aprobación por la UC3M." };
+    const diffusionEvent = { title: "Meet & Greet · Ad Astra UC3M", image: "/bootcamp/meet-greet-illustration.jpg", ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260911T133000", end: "20260911T153000", schedule: "Viernes 11 de septiembre · 13:30–15:30", location: "Jardines Centrales · UC3M · Campus de Leganés", summary: "Jardines Centrales · Campus de Leganés. Diana con aviones de papel, beerpong sin alcohol y trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias.", details: "Meet & Greet de Ad Astra UC3M. Viernes 11 de septiembre de 2026, de 13:30 a 15:30, en los Jardines Centrales del Campus de Leganés. Diana con aviones de papel, beerpong sin alcohol y trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias." };
 
     const morningEvents = [
         { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },
