@@ -70,7 +70,7 @@ export default function BootcampLeadPopup() {
         layout: "modal",
         width: 560,
         overlay: true,
-        autoClose: 3000,
+        autoClose: 60000,
         hiddenFields: attribution,
       });
     });
