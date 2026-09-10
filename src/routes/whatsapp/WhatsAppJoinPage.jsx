@@ -6,7 +6,7 @@ import WhatsAppGroupButton from "../../components/WhatsAppGroupButton.jsx";
  */
 export default function WhatsAppJoinPage() {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-transparent p-4">
+    <section className="flex min-h-screen items-center justify-center bg-[#fcfdf4] p-4">
       <WhatsAppGroupButton />
     </section>
   );
