@@ -10,6 +10,9 @@
 /join
   X-Robots-Tag: noindex, follow
 
+/unirse-whatsapp
+  X-Robots-Tag: noindex, follow
+
 /sponsors
   X-Robots-Tag: noindex, follow
 

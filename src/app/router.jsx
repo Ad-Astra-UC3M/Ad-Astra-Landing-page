@@ -6,6 +6,7 @@ import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
 import JoinPage from "../routes/join/JoinPage.jsx";
+import WhatsAppJoinPage from "../routes/whatsapp/WhatsAppJoinPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
 			},
             { path: "team", element: <Navigate to="/#about" replace /> },
             { path: "join", element: <JoinPage /> },
+            { path: "unirse-whatsapp", element: <WhatsAppJoinPage /> },
             { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },

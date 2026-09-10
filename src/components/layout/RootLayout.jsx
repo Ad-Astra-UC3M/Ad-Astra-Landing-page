@@ -13,15 +13,16 @@ export default function RootLayout() {
   const location = useLocation();
 
   const isJoinPage = location.pathname === "/join";
+  const isEmbeddedPage = location.pathname === "/unirse-whatsapp";
 
   return (
     <>
       <SeoManager />
-      {!isJoinPage && <Navbar />}
+      {!isJoinPage && !isEmbeddedPage && <Navbar />}
       <main>
         <Outlet />
       </main>
-      {!isJoinPage && <Footer />}
+      {!isJoinPage && !isEmbeddedPage && <Footer />}
       <ScrollRestoration />
       {location.pathname === "/" && <BootcampLeadPopup />}
     </>
