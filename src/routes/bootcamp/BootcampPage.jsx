@@ -59,7 +59,6 @@ export default function BootcampPage() {
 
 
 
-    const diffusionEvent = { title: "Meet & Greet · Ad Astra UC3M", image: "/bootcamp/meet-greet-illustration.jpg", ics: "/bootcamp/calendar/evento_difusion.ics", start: "20260911T133000", end: "20260911T153000", schedule: "Viernes 11 de septiembre · 13:30–15:30", location: "Jardines Centrales · UC3M · Campus de Leganés", summary: "Jardines Centrales · Campus de Leganés. Diana con aviones de papel, beerpong sin alcohol y trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias.", details: "Meet & Greet de Ad Astra UC3M. Viernes 11 de septiembre de 2026, de 13:30 a 15:30, en los Jardines Centrales del Campus de Leganés. Diana con aviones de papel, beerpong sin alcohol y trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias." };
 
     const morningEvents = [
         { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },
@@ -110,19 +109,6 @@ export default function BootcampPage() {
 				Guarda tus fechas
 			</p>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setSelectedEvent(diffusionEvent)}
-          className="group flex min-h-24 w-full max-w-2xl min-w-0 items-center gap-4 rounded-lg bg-brand-accent px-5 py-4 text-left text-brand-ink shadow-[0_10px_28px_rgba(20,23,64,0.18)] transition-[filter,transform] duration-200 hover:-translate-y-0.5 hover:brightness-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-4 focus-visible:ring-offset-brand-ink motion-reduce:transform-none motion-reduce:transition-none"
-        >
-          <img src={diffusionEvent.image} alt="" className="h-16 w-24 shrink-0 rounded-md object-contain" />
-          <span className="min-w-0">
-            <strong className="block font-astra-display text-xs uppercase leading-relaxed sm:text-sm">{diffusionEvent.title}</strong>
-            <small className="mt-1 block text-sm font-bold leading-snug opacity-85">{diffusionEvent.schedule}</small>
-            <small className="mt-2 block max-w-lg text-sm leading-relaxed opacity-80">{diffusionEvent.summary}</small>
-          </span>
-        </button>
 
         <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-shadow-astra-blue-medium bg-brand-accent px-4 py-2 rounded-lg sm:px-20 mt-8">
 				Mañana · 11:00–14:00

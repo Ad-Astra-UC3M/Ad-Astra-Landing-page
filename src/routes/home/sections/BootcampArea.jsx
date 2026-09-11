@@ -79,9 +79,9 @@ export default function BootcampArea() {
                             id="bootcamp-preview-title"
                             className="relative z-10 mx-auto max-w-2xl text-2xl text-white md:text-3xl"
                         >
-                            ¡Apúntate al evento Ad Astra en el Meet &amp; Greet del viernes 11 de septiembre y únete a nuestros Bootcamps para llevar tus habilidades al siguiente nivel!
+                            ¡Únete al Bootcamp de Ad Astra y lleva tus habilidades al siguiente nivel!
                         </TextSpanWrapper2>
-            <p className="relative z-10 mx-auto mt-4 max-w-2xl text-white">Diana con aviones de papel, beerpong, trivia y más. Además, hamburguesas gratis, hasta agotar existencias.</p>
+            <p className="relative z-10 mx-auto mt-4 max-w-2xl text-white">Del 15 al 17 de septiembre. Elige tus sesiones de mañana o tarde y conoce nuestros proyectos y equipos.</p>
             <a href="/join" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
             <Button2
             label="¡PARTICIPA AQUÍ!"
