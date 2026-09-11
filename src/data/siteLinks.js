@@ -23,6 +23,11 @@ export const socialLinks = [
 		label: "Instagram",
 		href: "https://www.instagram.com/adastrauc3m/",
 	},
+	{
+		platform: "tiktok",
+		label: "TikTok",
+		href: "https://www.tiktok.com/@adastrauc3m",
+	},
 ];
 
 const SPONSOR_EMAIL = "sponsors@adastrauc3m.es";
