@@ -5,12 +5,13 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:eventos-media-partners-it-manana-20260917@adastrauc3m.es
-DTSTAMP:20260909T120000Z
+DTSTAMP:20260912T170351Z
+SEQUENCE:1
 DTSTART:20260917T090000Z
-DTEND:20260917T120000Z
+DTEND:20260917T110000Z
 SUMMARY:Bootcamp Eventos\, Media\, Partners e IT · turno de mañana
-LOCATION:UC3M\, Campus de Getafe
-DESCRIPTION:Sesión de mañana del Bootcamp de Eventos\, Media\, Partners e IT de Ad Astra UC3M.
+LOCATION:UC3M · Campus de Getafe · Aula 18.0.A14
+DESCRIPTION:Mañana\; misma actividad. Campus Getafe\, aula 18.0.A14.
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT

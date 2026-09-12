@@ -12,10 +12,10 @@ import WhatsAppGroupButton from "../../components/WhatsAppGroupButton.jsx";
 export default function BootcampPage() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  function openGoogleCalendar({ title, start, end, location, details }) {
+  function openGoogleCalendar({ title, calendarTitle, start, end, location, details }) {
       const url = new URL("https://calendar.google.com/calendar/render");
       url.searchParams.set("action", "TEMPLATE");
-      url.searchParams.set("text", title);
+      url.searchParams.set("text", calendarTitle ?? title);
       url.searchParams.set("dates", `${start}/${end}`);
       url.searchParams.set("ctz", "Europe/Madrid");
       if (location) url.searchParams.set("location", location);
@@ -61,17 +61,17 @@ export default function BootcampPage() {
 
 
     const morningEvents = [
-        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T140000", schedule: "Martes 15 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de mañana." },
-        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20260916T110000", end: "20260916T140000", schedule: "Miércoles 16 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de mañana." },
-        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20260917T110000", end: "20260917T140000", schedule: "Jueves 17 · 11:00–14:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de mañana." },
-        { title: "Eventos, Media, Partners + IT", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it_manana.ics", start: "20260917T110000", end: "20260917T140000", schedule: "Jueves 17 · 11:00–14:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT · turno de mañana." },
+        { title: "Rocket A4", calendarTitle: "Bootcamp Rocket A4 · turno de mañana", image:rocket, ics: "/bootcamp/calendar/rocket_a4.ics", start: "20260915T110000", end: "20260915T130000", schedule: "Martes 15 · 11:00–13:00", location: "UC3M · Campus de Leganés · Aula 7.1.J05", details: "Bootcamp Rocket A4 · turno de mañana. Martes 15 de septiembre de 2026, 11:00–13:00. Campus de Leganés · Aula 7.1.J05. Esta sesión repite la actividad del turno de tarde; elige un único turno." },
+        { title: "Jet Engine", calendarTitle: "Bootcamp Jet Engine · turno de mañana", image:jet, ics: "/bootcamp/calendar/jet_engine.ics", start: "20260916T110000", end: "20260916T130000", schedule: "Miércoles 16 · 11:00–13:00", location: "UC3M · Campus de Leganés · Aula 7.0.J03", details: "Bootcamp Jet Engine · turno de mañana. Miércoles 16 de septiembre de 2026, 11:00–13:00. Campus de Leganés · Aula 7.0.J03. Esta sesión repite la actividad del turno de tarde; elige un único turno." },
+        { title: "Model Satellite", calendarTitle: "Bootcamp Model Satellite · turno de mañana", image:satsigma, ics: "/bootcamp/calendar/model_satellite.ics", start: "20260917T110000", end: "20260917T130000", schedule: "Jueves 17 · 11:00–13:00", location: "UC3M · Campus de Leganés · Aula 7.1.J08", details: "Bootcamp Model Satellite · turno de mañana. Jueves 17 de septiembre de 2026, 11:00–13:00. Campus de Leganés · Aula 7.1.J08. Esta sesión repite la actividad del turno de tarde; elige un único turno." },
+        { title: "Eventos, Media, Partners e IT", calendarTitle: "Bootcamp Eventos, Media, Partners e IT · turno de mañana", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it_manana.ics", start: "20260917T110000", end: "20260917T130000", schedule: "Jueves 17 · 11:00–13:00", location: "UC3M · Campus de Getafe · Aula 18.0.A14", details: "Bootcamp Eventos, Media, Partners e IT · turno de mañana. Jueves 17 de septiembre de 2026, 11:00–13:00. Campus de Getafe · Aula 18.0.A14. Esta sesión repite la actividad del turno de tarde; elige un único turno." },
     ];
 
     const afternoonEvents = [
-        { title: "Rocket A4", image:rocket, ics: "/bootcamp/calendar/rocket_a4_tarde.ics", start: "20260915T150000", end: "20260915T170000", schedule: "Martes 15 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Rocket A4 · turno de tarde." },
-        { title: "Jet Engine", image:jet, ics: "/bootcamp/calendar/jet_engine_tarde.ics", start: "20260916T150000", end: "20260916T170000", schedule: "Miércoles 16 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Jet Engine · turno de tarde." },
-        { title: "Model Satellite", image:satsigma, ics: "/bootcamp/calendar/model_satellite_tarde.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Leganés", details: "Bootcamp Model Satellite · turno de tarde." },
-        { title: "Eventos, Media, Partners + IT", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Getafe", details: "Bootcamp de Eventos, Media, Partners e IT · turno de tarde." },
+        { title: "Rocket A4", calendarTitle: "Bootcamp Rocket A4 · turno de tarde", image:rocket, ics: "/bootcamp/calendar/rocket_a4_tarde.ics", start: "20260915T150000", end: "20260915T170000", schedule: "Martes 15 · 15:00–17:00", location: "UC3M · Campus de Leganés · Aula 7.1.J05", details: "Bootcamp Rocket A4 · turno de tarde. Martes 15 de septiembre de 2026, 15:00–17:00. Campus de Leganés · Aula 7.1.J05. Esta sesión repite la actividad del turno de mañana; elige un único turno." },
+        { title: "Jet Engine", calendarTitle: "Bootcamp Jet Engine · turno de tarde", image:jet, ics: "/bootcamp/calendar/jet_engine_tarde.ics", start: "20260916T150000", end: "20260916T170000", schedule: "Miércoles 16 · 15:00–17:00", location: "UC3M · Campus de Leganés · Aula 7.0.J02", details: "Bootcamp Jet Engine · turno de tarde. Miércoles 16 de septiembre de 2026, 15:00–17:00. Campus de Leganés · Aula 7.0.J02. Esta sesión repite la actividad del turno de mañana; elige un único turno." },
+        { title: "Model Satellite", calendarTitle: "Bootcamp Model Satellite · turno de tarde", image:satsigma, ics: "/bootcamp/calendar/model_satellite_tarde.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Leganés · Aula 7.1.J08", details: "Bootcamp Model Satellite · turno de tarde. Jueves 17 de septiembre de 2026, 15:00–17:00. Campus de Leganés · Aula 7.1.J08. Esta sesión repite la actividad del turno de mañana; elige un único turno." },
+        { title: "Eventos, Media, Partners e IT", calendarTitle: "Bootcamp Eventos, Media, Partners e IT · turno de tarde", image:operations, ics: "/bootcamp/calendar/eventos_media_partners_it.ics", start: "20260917T150000", end: "20260917T170000", schedule: "Jueves 17 · 15:00–17:00", location: "UC3M · Campus de Getafe · Aula 18.0.A11", details: "Bootcamp Eventos, Media, Partners e IT · turno de tarde. Jueves 17 de septiembre de 2026, 15:00–17:00. Campus de Getafe · Aula 18.0.A11. Esta sesión repite la actividad del turno de mañana; elige un único turno." },
       ];
 
 
@@ -111,7 +111,7 @@ export default function BootcampPage() {
         </div>
 
         <p className="text-md z-20 mx-auto text-center font-astra-display uppercase tracking-[0.16em] text-shadow-astra-blue-medium bg-brand-accent px-4 py-2 rounded-lg sm:px-20 mt-8">
-				Mañana · 11:00–14:00
+				Mañana · 11:00–13:00
 			  </p>
 
         <div className="grid w-full max-w-6xl gap-4 mt-4 mb-8 sm:grid-cols-2 lg:grid-cols-4">
