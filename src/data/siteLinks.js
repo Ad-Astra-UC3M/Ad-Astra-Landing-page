@@ -30,7 +30,7 @@ export const socialLinks = [
 	},
 ];
 
-const SPONSOR_EMAIL = "sponsors@adastrauc3m.es";
+const SPONSOR_EMAIL = "partnerships@adastrauc3m.es";
 
 export function getSponsorEmailLink(projectName) {
 	const subject = projectName
