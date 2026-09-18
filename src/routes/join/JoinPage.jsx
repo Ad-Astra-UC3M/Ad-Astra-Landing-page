@@ -4,7 +4,7 @@ export default function JoinPage() {
       <script async src="https://tally.so/widgets/embed.js" />
       <iframe
         className="absolute inset-0 size-full border-0"
-        data-tally-src="https://tally.so/r/ZjBQZe"
+        data-tally-src="https://tally.so/r/b5ob9g"
         frameBorder="0"
         loading="eager"
         marginHeight="0"

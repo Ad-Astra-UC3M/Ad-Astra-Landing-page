@@ -5,6 +5,7 @@ import RootLayout from "../components/layout/RootLayout.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
+import RegistrationPrivacyPolicyPage from "../routes/inscripcion/RegistrationPrivacyPolicyPage.jsx";
 import JoinPage from "../routes/join/JoinPage.jsx";
 import WhatsAppJoinPage from "../routes/whatsapp/WhatsAppJoinPage.jsx";
 
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
             { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },
+            { path: "inscripcion/politica-de-privacidad", element: <RegistrationPrivacyPolicyPage /> },
         ]
     }
 ]);

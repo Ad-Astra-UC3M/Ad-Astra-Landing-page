@@ -297,7 +297,7 @@ export default function BootcampPrivacyPolicyPage() {
         <PolicySection number="7" title="¿Durante cuánto tiempo conservaremos los datos?">
           <ul className={listClassName}>
             <li>
-              <strong>Si no continúas en el proceso:</strong> eliminaremos tus datos 90 días después de que
+              <strong>Si no continúas en el proceso:</strong> eliminaremos tus datos 12 meses después de que
               finalice la última actividad a la que te hayas apuntado.
             </li>
             <li>
