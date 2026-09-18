@@ -66,25 +66,25 @@ export default function BootcampArea() {
             <img
                 src={flyer768}
                 srcSet={`${flyer480} 480w, ${flyer768} 768w, ${flyer960} 960w`}
-                sizes="(min-width: 768px) 448px, calc(100vw - 3rem)"
-                width="1672"
-                height="941"
+                sizes="(min-width: 1024px) 960px, calc(100vw - 3rem)"
+                width="1916"
+                height="821"
                 loading="lazy"
                 decoding="async"
-                alt="Ilustración del Bootcamp de Ad Astra"
-                className="mx-auto -mt-4 mb-4 h-auto w-full max-w-md"
+                alt="Inscripciones abiertas para Ad Astra"
+                className="mx-auto -mt-4 mb-4 h-auto w-full max-w-3xl"
             />
             <TextSpanWrapper2
                             as="h1"
                             id="bootcamp-preview-title"
                             className="relative z-10 mx-auto max-w-2xl text-2xl text-white md:text-3xl"
                         >
-                            ¡Únete al Bootcamp de Ad Astra y lleva tus habilidades al siguiente nivel!
+                            ¡Únete a Ad Astra y lleva tus habilidades al siguiente nivel!
                         </TextSpanWrapper2>
-            <p className="relative z-10 mx-auto mt-4 max-w-2xl text-white">Del 15 al 17 de septiembre. Elige tus sesiones de mañana o tarde y conoce nuestros proyectos y equipos.</p>
+            <p className="relative z-10 mx-auto mt-4 max-w-2xl text-white">¡Inscripciones finalmente abiertas! Únete a nuestra comunidad, participa en nuestros eventos o proyectos, consigue creditos y oportunidades en nuestra Talent Database.</p>
             <a href="/join" target="_blank" rel="noopener noreferrer" className="relative z-10 mt-8 inline-block">
             <Button2
-            label="¡PARTICIPA AQUÍ!"
+            label="¡INSCRÍBETE AQUÍ!"
             className="w-full sm:w-auto text-white text-xs font-astra-display"
             style={{ "--bg": "#f59e0b", "--white": "#fff8e1" }}
             />
