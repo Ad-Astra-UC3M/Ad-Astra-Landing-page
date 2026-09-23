@@ -11,11 +11,11 @@ export const projectsPreviewData = [
 		longName: "Modelo de satélite con guiado activo",
 		slogan: "UNA MISIÓN NO TERMINA HASTA RECUPERAR SUS DATOS.",
 		description:
-			"SIGMA explora un sistema de descenso activo que combina guiado, telemetría y recuperación para convertir una misión compleja en aprendizaje real.",
+			"SIGMA explora un sistema de descenso con control activo que combina guiado, telemetría y recuperación para convertir una misión compleja en aprendizaje real.",
 		mission:
-			"Alcanzar la altura prevista es solo la mitad del reto. SIGMA explora cómo mantener el control durante el descenso, transmitir información útil y facilitar la recuperación del sistema.",
+			"Alcanzar la altura prevista es solo la mitad del reto. El equipo ya cuenta con un estudio preliminar de la estructura, aviónica y métodos de separación. El siguiente hito es modelar un símil digital del sistema en Simulink para desarrollar el futuro algoritmo de control.",
 		whyItMatters:
-			"Conecta control, software, electrónica y mecánica alrededor de un único reto: descender, comunicar y recuperar.",
+			"Permite el desarrollo de un algoritmo de control y la electrónica necesaria para futuros proyectos dentro del campo del control activo. Uniendo control, software, electrónica y mecánica alrededor de un único reto: descender, comunicar y recuperar.",
 		metrics: [
 			{
 				icon: "gauge",
@@ -47,7 +47,7 @@ export const projectsPreviewData = [
 				title: "Si quieres colaborar",
 				icon: "handshake",
 				description:
-					"El acceso a herramientas de simulación y medios de ensayo puede convertir la documentación preliminar en modelos contrastables.",
+					"Herramientas de simulación especializadas o instalaciones de ensayo pueden acelerar el paso del concepto a prototipo y la mejora del mismo.",
 			},
 		],
 	},
