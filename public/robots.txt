@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /email-assets/
 
 Sitemap: https://adastrauc3m.es/sitemap.xml
