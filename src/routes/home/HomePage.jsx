@@ -13,7 +13,7 @@ export default function HomePage() {
 		<>
 			<HeroSection />
 			<AboutUsPreviewSection />
-			<BootcampArea />
+			{/* <BootcampArea /> */}
 			<ProjectsPreviewSection />
 			<TeamPreviewSection />
 			<TechnicalAreasSection />
