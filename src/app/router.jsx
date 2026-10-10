@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 
 import ErrorPage from "../components/ErrorPage.jsx";
 import RootLayout from "../components/layout/RootLayout.jsx";
+import AssociatesPrivacyPolicyPage from "../routes/asociados/AssociatesPrivacyPolicyPage.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
             { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },
+            { path: "politica-de-privacidad-asociados", element: <AssociatesPrivacyPolicyPage /> },
             { path: "inscripcion/politica-de-privacidad", element: <RegistrationPrivacyPolicyPage /> },
         ]
     }

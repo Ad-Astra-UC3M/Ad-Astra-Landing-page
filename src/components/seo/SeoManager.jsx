@@ -21,10 +21,13 @@ const ROUTE_TITLES = {
   "/sponsors": `Colabora con Ad Astra | ${SITE_NAME}`,
   "/bootcamp": `Bootcamp | ${SITE_NAME}`,
   "/bootcamp/politica-de-privacidad": `Política de privacidad del Bootcamp Ad Astra | ${SITE_NAME}`,
+  "/politica-de-privacidad-asociados": "Política de privacidad de asociados | Ad Astra UC3M",
   "/inscripcion/politica-de-privacidad": "Política de privacidad de la inscripción | Ad Astra UC3M",
 };
 
 const ROUTE_DESCRIPTIONS = {
+  "/politica-de-privacidad-asociados":
+    "Política de privacidad de Ad Astra UC3M: inscripción y gestión interna, Talent Database y contenidos audiovisuales. Versión 1.0, de 10 de octubre de 2026.",
   "/inscripcion/politica-de-privacidad": REGISTRATION_PRIVACY_DESCRIPTION,
 };
 
