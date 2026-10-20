@@ -57,7 +57,7 @@ export default function SponsorsPreviewSection() {
 
 						<div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
 							<Button
-								href={getSponsorEmailLink()}
+								href={getSponsorEmailLink()} // Cambiar en un futuro
 								color="amber"
 								size="lg"
 								className="w-full sm:w-auto"

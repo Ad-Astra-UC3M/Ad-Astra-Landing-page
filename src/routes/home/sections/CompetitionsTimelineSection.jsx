@@ -2,6 +2,8 @@ import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
 import { Link } from "react-router";
 import { Timeline } from "../../../components/ui/Timeline";
 
+// Cambiar por completado y meter imágenes
+
 const competitions = [
   {
     id: "association-today",

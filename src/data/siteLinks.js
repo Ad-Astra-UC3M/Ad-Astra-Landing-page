@@ -1,7 +1,7 @@
 export const sectionLinks = {
 	home: "/#home",
 	projects: "/#projects",
-	sponsors: "/#sponsors",
+	sponsors: "/sponsors",
 	about: "/#about",
 	join: "/join",
 };

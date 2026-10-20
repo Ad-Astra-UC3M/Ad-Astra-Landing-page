@@ -7,6 +7,8 @@ import NavDropdown from "./NavDropdown";
 import { useEffect, useState, useRef } from "react";
 import { sectionLinks } from "../../data/siteLinks";
 
+
+
 const navLinkClassName =
 	"inline-flex items-center px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent";
 

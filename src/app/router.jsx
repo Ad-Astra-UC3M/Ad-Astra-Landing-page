@@ -9,6 +9,7 @@ import HomePage from "../routes/home/HomePage.jsx";
 import RegistrationPrivacyPolicyPage from "../routes/inscripcion/RegistrationPrivacyPolicyPage.jsx";
 import JoinPage from "../routes/join/JoinPage.jsx";
 import WhatsAppJoinPage from "../routes/whatsapp/WhatsAppJoinPage.jsx";
+import SponsorsPage from "../routes/sponsors/SponsorsPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
             { path: "team", element: <Navigate to="/#about" replace /> },
             { path: "join", element: <JoinPage /> },
             { path: "unirse-whatsapp", element: <WhatsAppJoinPage /> },
-            { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
+            { path: "sponsors", element: <SponsorsPage /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },
             { path: "politica-de-privacidad-asociados", element: <AssociatesPrivacyPolicyPage /> },
