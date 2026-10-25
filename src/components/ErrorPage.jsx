@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-export default function ErrorPage() {
-  return <></>;
-}
-=======
 import boyImage from "../assets/error/niño.png"; // ← ajusta el nombre/extensión
 import girlImage from "../assets/error/niña.png"; // ← ajusta el nombre/extensión
 import error404 from "../assets/error/404.PNG";
@@ -62,4 +57,3 @@ export default function ErrorPage() {
   );
 }
 
->>>>>>> Stashed changes

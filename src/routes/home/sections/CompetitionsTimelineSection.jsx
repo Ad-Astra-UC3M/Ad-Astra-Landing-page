@@ -1,13 +1,10 @@
 import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
 import { Timeline } from "../../../components/ui/Timeline";
 
-<<<<<<< Updated upstream
-=======
 // Cambiar por completado y meter imágenes
 // Para marcar una entrada como terminada, añade la prop `completed` al
 // EventEntry / CompetitionEntry: el badge pasa a verde con "Completado".
 
->>>>>>> Stashed changes
 const competitions = [
   {
     id: "association-today",
@@ -15,8 +12,6 @@ const competitions = [
     content: <AssociationMilestone />,
   },
   {
-<<<<<<< Updated upstream
-=======
     id: "presentation-september-2026",
     title: "11 sept.",
     content: (
@@ -51,7 +46,6 @@ const competitions = [
     ),
   },
   {
->>>>>>> Stashed changes
     id: "sigma-2026",
     title: "2026",
     content: (
@@ -99,8 +93,6 @@ const competitions = [
   },
 ];
 
-<<<<<<< Updated upstream
-=======
 // Badge de estado compartido: verde con check si está completado,
 // color de acento en cualquier otro caso.
 function StatusBadge({ completed = false, children }) {
@@ -168,7 +160,6 @@ function EventEntry({
   );
 }
 
->>>>>>> Stashed changes
 function CompetitionEntry({
   project,
   status,
