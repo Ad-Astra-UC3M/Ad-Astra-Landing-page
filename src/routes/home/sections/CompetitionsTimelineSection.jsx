@@ -1,6 +1,13 @@
 import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
 import { Timeline } from "../../../components/ui/Timeline";
 
+<<<<<<< Updated upstream
+=======
+// Cambiar por completado y meter imágenes
+// Para marcar una entrada como terminada, añade la prop `completed` al
+// EventEntry / CompetitionEntry: el badge pasa a verde con "Completado".
+
+>>>>>>> Stashed changes
 const competitions = [
   {
     id: "association-today",
@@ -8,6 +15,43 @@ const competitions = [
     content: <AssociationMilestone />,
   },
   {
+<<<<<<< Updated upstream
+=======
+    id: "presentation-september-2026",
+    title: "11 sept.",
+    content: (
+      <EventEntry
+        title="Meet & Greet"
+        schedule="11 de septiembre de 2026 · 13:30–15:30"
+        location="Jardines Centrales · UC3M · Campus de Leganés"
+        // TODO: pon aquí el enlace real del post de Instagram
+        //instagramUrl="https://www.instagram.com/p/XXXXXXXXXXX/"
+      >
+        Conoce a Ad Astra con diana de aviones de papel, beerpong sin alcohol y
+        trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias.
+        compe
+      </EventEntry>
+    ),
+  },
+  {
+    id: "bootcamps-september-2026",
+    title: "15–17 sept.",
+    content: (
+      <EventEntry
+        title="Boot camps Ad Astra"
+        schedule="15–17 de septiembre de 2026 · 11:00–13:00 o 15:00–17:00"
+        location="UC3M · Campus de Leganés y Getafe"
+        // TODO: pon aquí el enlace real del post de Instagram
+        //instagramUrl="https://www.instagram.com/p/XXXXXXXXXXX/"
+      >
+        Rocket A4 el día 15, Jet Engine el 16 y Model Satellite el 17 en Leganés.
+        Eventos, Media, Partners e IT el día 17 en Getafe. Elige tu bootcamp y
+        turno de mañana o tarde.
+      </EventEntry>
+    ),
+  },
+  {
+>>>>>>> Stashed changes
     id: "sigma-2026",
     title: "2026",
     content: (
@@ -55,9 +99,80 @@ const competitions = [
   },
 ];
 
+<<<<<<< Updated upstream
+=======
+// Badge de estado compartido: verde con check si está completado,
+// color de acento en cualquier otro caso.
+function StatusBadge({ completed = false, children }) {
+  if (completed) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-[#dfe9bd] px-3 py-1 text-sm font-semibold text-[#28412e]">
+        <CheckIcon aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
+        Completado
+      </span>
+    );
+  }
+
+  return (
+    <span className="rounded-full bg-brand-accent px-3 py-1 text-sm font-semibold text-brand-ink">
+      {children}
+    </span>
+  );
+}
+
+const linkClasses =
+  "group mt-6 inline-flex items-center gap-2 font-semibold text-brand-primary underline decoration-brand-accent decoration-2 underline-offset-4 transition-colors hover:text-brand-ink focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-primary";
+
+const arrowClasses =
+  "transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0";
+
+function EventEntry({
+  title,
+  schedule,
+  location,
+  status = "Inscripciones abiertas",
+  completed = true,
+  instagramUrl,
+  children,
+}) {
+  return (
+    <div className="max-w-2xl border-y border-brand-primary/15 py-7 md:py-9">
+      <div className="mb-5 flex flex-wrap items-center gap-3">
+        <StatusBadge completed={completed}>{status}</StatusBadge>
+        <span className="text-sm font-medium text-brand-ink/65">Ad Astra UC3M</span>
+      </div>
+
+      <h3 className="text-3xl text-brand-primary md:text-5xl">{title}</h3>
+
+      <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-brand-ink/80 md:text-lg">
+        {children}
+      </p>
+      <p className="mt-4 text-sm font-semibold text-brand-primary">{schedule}</p>
+      <p className="mt-3 text-sm font-medium text-brand-ink/65">{location}</p>
+
+      {instagramUrl && (
+        <a
+          className={linkClasses}
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Ver la publicación de Instagram sobre ${title}`}
+        >
+          Ver en Instagram
+          <span aria-hidden="true" className={arrowClasses}>
+            <ArrowUpRightIcon />
+          </span>
+        </a>
+      )}
+    </div>
+  );
+}
+
+>>>>>>> Stashed changes
 function CompetitionEntry({
   project,
   status,
+  completed = false,
   competition,
   detail,
   href,
@@ -66,32 +181,25 @@ function CompetitionEntry({
   return (
     <div className="max-w-2xl border-y border-brand-primary/15 py-7 md:py-9">
       <div className="mb-5 flex flex-wrap items-center gap-3">
-        <span className="rounded-full bg-brand-accent px-3 py-1 text-sm font-semibold text-brand-ink">
-          {status}
-        </span>
+        <StatusBadge completed={completed}>{status}</StatusBadge>
         <span className="text-sm font-medium text-brand-ink/65">TEKNOFEST</span>
       </div>
 
-      <h3 className="text-3xl text-brand-primary md:text-5xl">
-        {project}
-      </h3>
+      <h3 className="text-3xl text-brand-primary md:text-5xl">{project}</h3>
 
       <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-brand-ink/80 md:text-lg">
         {children}
       </p>
 
       <a
-        className="mt-6 inline-flex group items-center gap-2 font-semibold text-brand-primary underline decoration-brand-accent decoration-2 underline-offset-4 transition-colors hover:text-brand-ink focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-primary"
+        className={linkClasses}
         href={href}
         target="_blank"
         rel="noreferrer"
       >
         {competition}
         {detail && <span className="font-medium text-brand-ink/65">· {detail}</span>}
-        <span
-          aria-hidden="true"
-          className="transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 motion-reduce:group-hover:translate-y-0"
-        >
+        <span aria-hidden="true" className={arrowClasses}>
           <ArrowUpRightIcon />
         </span>
       </a>
@@ -103,10 +211,7 @@ function AssociationMilestone() {
   return (
     <div className="max-w-2xl border-y border-brand-primary/15 py-7 md:py-9">
       <div className="mb-5 flex flex-wrap items-center gap-3">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#dfe9bd] px-3 py-1 text-sm font-semibold text-[#28412e]">
-          <CheckIcon aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={3} />
-          Completado
-        </span>
+        <StatusBadge completed />
         <span className="text-sm font-medium text-brand-ink/65">
           ~20 miembros · 3 proyectos
         </span>

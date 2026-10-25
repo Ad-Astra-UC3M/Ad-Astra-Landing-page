@@ -1,5 +1,21 @@
 import { RocketIcon } from "lucide-react";
+<<<<<<< Updated upstream
 import sponsorCollaborationVideo from "../../../assets/sponsors/sponsor-collaboration.webm";
+=======
+
+import brandPoster from "../../../assets/about/brand-poster.png";
+import buildTogether from "../../../assets/about/build-together.png";
+import carryTheRocket from "../../../assets/about/carry-the-rocket.png";
+import planTheOrbit from "../../../assets/about/plan-the-orbit.png";
+import sharedHorizon from "../../../assets/about/shared-horizon.png";
+
+//import meetGreet from "../../../assets/events/meet-greet.jpg";
+//import bootcamp from "../../../assets/events/bootcamp.jpg";
+//import workshop from "../../../assets/events/workshop.jpg";
+//import team from "../../../assets/events/team.jpg";
+//import launch from "../../../assets/events/launch.jpg";
+
+>>>>>>> Stashed changes
 import Button from "../../../components/ui/Button";
 import CursorBlob from "../../../components/ui/CursorBlob";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
