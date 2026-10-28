@@ -3,12 +3,11 @@ import * as THREE from "three";
 const TEXTURE_ROOT = "/textures/solar-system-scope";
 
 export const EARTH_TEXTURES = {
-  day: `${TEXTURE_ROOT}/earth-day-4k.jpg`,
-  night: `${TEXTURE_ROOT}/earth-night-4k.png`,
-  clouds: `${TEXTURE_ROOT}/earth-clouds-4k.webp`,
-  normal: `${TEXTURE_ROOT}/earth-normal.png`,
-  specular: `${TEXTURE_ROOT}/earth-specular.png`,
-  stars: `${TEXTURE_ROOT}/stars-milky-way-4k.jpg`,
+  day: `${TEXTURE_ROOT}/earth-day-2k.webp`,
+  night: `${TEXTURE_ROOT}/earth-night-2k.webp`,
+  clouds: `${TEXTURE_ROOT}/earth-clouds-2k.webp`,
+  normal: `${TEXTURE_ROOT}/earth-normal-2k.webp`,
+  specular: `${TEXTURE_ROOT}/earth-specular-2k.webp`,
 };
 
 export const SUN_DIRECTION = new THREE.Vector3(-5, 3.5, 1.5).normalize();
@@ -44,15 +43,6 @@ export const DEFAULT_EARTH_APPEARANCE = Object.freeze({
   atmosphereColor: "#70b8ff",
   atmosphereThickness: 0.018,
   scale: 1.45,
-});
-
-export const DEFAULT_SPACE_APPEARANCE = Object.freeze({
-  panoramaIntensity: 0.72,
-  panoramaBlurriness: 0.025,
-  starCount: 5200,
-  starSize: 2.5,
-  starSaturation: 0.12,
-  starSpeed: 0.05,
 });
 
 export function resolveAppearance(defaults, overrides) {

@@ -10,6 +10,9 @@
 /join
   X-Robots-Tag: noindex, follow
 
+/unirse-whatsapp
+  X-Robots-Tag: noindex, follow
+
 /sponsors
   X-Robots-Tag: noindex, follow
 
@@ -17,4 +20,7 @@
   X-Robots-Tag: noindex, follow
 
 /bootcamp/politica-de-privacidad
+  X-Robots-Tag: noindex, follow
+
+/inscripcion/politica-de-privacidad
   X-Robots-Tag: noindex, follow

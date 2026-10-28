@@ -2,9 +2,14 @@ import { createBrowserRouter, Navigate } from "react-router";
 
 import ErrorPage from "../components/ErrorPage.jsx";
 import RootLayout from "../components/layout/RootLayout.jsx";
+import AssociatesPrivacyPolicyPage from "../routes/asociados/AssociatesPrivacyPolicyPage.jsx";
 import BootcampPage from "../routes/bootcamp/BootcampPage.jsx";
 import BootcampPrivacyPolicyPage from "../routes/bootcamp/BootcampPrivacyPolicyPage.jsx";
 import HomePage from "../routes/home/HomePage.jsx";
+import RegistrationPrivacyPolicyPage from "../routes/inscripcion/RegistrationPrivacyPolicyPage.jsx";
+import JoinPage from "../routes/join/JoinPage.jsx";
+import WhatsAppJoinPage from "../routes/whatsapp/WhatsAppJoinPage.jsx";
+import SponsorsPage from "../routes/sponsors/SponsorsPage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -28,10 +33,13 @@ const router = createBrowserRouter([
 				element: <Navigate to="/?project=jet-engine#projects" replace />,
 			},
             { path: "team", element: <Navigate to="/#about" replace /> },
-            { path: "join", element: <Navigate to="/#join" replace /> },
-            { path: "sponsors", element: <Navigate to="/#sponsors" replace /> },
+            { path: "join", element: <JoinPage /> },
+            { path: "unirse-whatsapp", element: <WhatsAppJoinPage /> },
+            { path: "sponsors", element: <SponsorsPage /> },
             { path: "bootcamp", element: <BootcampPage /> },
             { path: "bootcamp/politica-de-privacidad", element: <BootcampPrivacyPolicyPage /> },
+            { path: "politica-de-privacidad-asociados", element: <AssociatesPrivacyPolicyPage /> },
+            { path: "inscripcion/politica-de-privacidad", element: <RegistrationPrivacyPolicyPage /> },
         ]
     }
 ]);

@@ -1,5 +1,4 @@
 import { RocketIcon } from "lucide-react";
-
 import brandPoster from "../../../assets/about/brand-poster.png";
 import buildTogether from "../../../assets/about/build-together.png";
 import carryTheRocket from "../../../assets/about/carry-the-rocket.png";
@@ -15,8 +14,16 @@ import sharedHorizon from "../../../assets/about/shared-horizon.png";
 import Button from "../../../components/ui/Button";
 import CursorBlob from "../../../components/ui/CursorBlob";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
-import ViewportVideo from "../../../components/ui/ViewportVideo";
+import ImgStack from "../../../components/ui/ImgStack";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
+
+const illustrations = [
+	{ src: brandPoster, surface: "light", alt: "" },
+	{ src: buildTogether, surface: "light", alt: "", padded: true },
+	{ src: carryTheRocket, surface: "night", alt: "", padded: true },
+	{ src: planTheOrbit, surface: "night", alt: "", padded: true },
+	{ src: sharedHorizon, surface: "light", alt: "", padded: true },
+];
 
 export default function SponsorsPreviewSection() {
 	return (
@@ -44,6 +51,7 @@ export default function SponsorsPreviewSection() {
 						<TextSpanWrapper
 							as="h2"
 							id="sponsors-preview-title"
+							animateOnViewport
 							className="max-w-xl text-4xl text-brand-ink md:text-5xl"
 						>
 							Haz posible el siguiente hito.
@@ -56,7 +64,7 @@ export default function SponsorsPreviewSection() {
 
 						<div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
 							<Button
-								href={getSponsorEmailLink()}
+								href={getSponsorEmailLink()} // Cambiar en un futuro
 								color="amber"
 								size="lg"
 								className="w-full sm:w-auto"
@@ -76,10 +84,9 @@ export default function SponsorsPreviewSection() {
 						</div>
 					</div>
 
-					<ViewportVideo
-						src={sponsorCollaborationVideo}
-						className="aspect-video"
-					/>
+					<div className="flex min-w-0 justify-center">
+						<ImgStack images={illustrations} />
+					</div>
 				</div>
 			</CursorBlob>
 		</section>

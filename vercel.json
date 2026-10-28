@@ -1,5 +1,19 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/email-assets/:path*",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noimageindex" }
+      ]
+    },
+    {
+      "source": "/email-assets/gmail-v1/:file.png",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

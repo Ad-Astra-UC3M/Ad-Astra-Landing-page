@@ -6,6 +6,8 @@ const SITE_NAME = "Ad Astra UC3M";
 const HOME_TITLE = "Ad Astra UC3M | Asociación Aeroespacial";
 const HOME_DESCRIPTION =
   "Ad Astra UC3M es una asociación estudiantil de ingeniería aeroespacial. Dreaming is Looking: conoce nuestros proyectos y colabora con el futuro aeroespacial.";
+const REGISTRATION_PRIVACY_DESCRIPTION =
+  "Información de privacidad de la solicitud para incorporarse al equipo o a la comunidad de Ad Astra UC3M y de la Talent Database opcional.";
 
 const ROUTE_TITLES = {
   "/": HOME_TITLE,
@@ -14,10 +16,19 @@ const ROUTE_TITLES = {
   "/projects/rocket-a4": `Rocket A4 | ${SITE_NAME}`,
   "/projects/jet-engine": `Jet Engine | ${SITE_NAME}`,
   "/team": `Equipo | ${SITE_NAME}`,
-  "/join": `Únete | ${SITE_NAME}`,
+  "/join": "Formulario de inscripción al Bootcamp Ad Astra UC3M",
+  "/unirse-whatsapp": `Únete a WhatsApp | ${SITE_NAME}`,
   "/sponsors": `Colabora con Ad Astra | ${SITE_NAME}`,
   "/bootcamp": `Bootcamp | ${SITE_NAME}`,
   "/bootcamp/politica-de-privacidad": `Política de privacidad del Bootcamp Ad Astra | ${SITE_NAME}`,
+  "/politica-de-privacidad-asociados": "Política de privacidad de asociados | Ad Astra UC3M",
+  "/inscripcion/politica-de-privacidad": "Política de privacidad de la inscripción | Ad Astra UC3M",
+};
+
+const ROUTE_DESCRIPTIONS = {
+  "/politica-de-privacidad-asociados":
+    "Política de privacidad de Ad Astra UC3M: inscripción y gestión interna, Talent Database y contenidos audiovisuales. Versión 1.0, de 10 de octubre de 2026.",
+  "/inscripcion/politica-de-privacidad": REGISTRATION_PRIVACY_DESCRIPTION,
 };
 
 const INDEXABLE_ROUTES = new Set(["/"]);
@@ -67,6 +78,7 @@ export default function SeoManager() {
   useEffect(() => {
     const normalizedPath = normalizePathname(pathname);
     const title = ROUTE_TITLES[normalizedPath] ?? `Página no encontrada | ${SITE_NAME}`;
+    const description = ROUTE_DESCRIPTIONS[normalizedPath] ?? HOME_DESCRIPTION;
     const isIndexable = INDEXABLE_ROUTES.has(normalizedPath);
     const pageUrl = `${SITE_URL}${normalizedPath === "/" ? "/" : normalizedPath}`;
     const robots = isIndexable
@@ -76,14 +88,14 @@ export default function SeoManager() {
     document.title = title;
     document.documentElement.lang = "es";
 
-    setMeta("name", "description", HOME_DESCRIPTION);
+    setMeta("name", "description", description);
     setMeta("name", "robots", robots);
     setMeta("name", "googlebot", robots);
     setMeta("property", "og:title", title);
-    setMeta("property", "og:description", HOME_DESCRIPTION);
+    setMeta("property", "og:description", description);
     setMeta("property", "og:url", pageUrl);
     setMeta("name", "twitter:title", title);
-    setMeta("name", "twitter:description", HOME_DESCRIPTION);
+    setMeta("name", "twitter:description", description);
 
     if (isIndexable) {
       setLink("canonical", `${SITE_URL}/`);

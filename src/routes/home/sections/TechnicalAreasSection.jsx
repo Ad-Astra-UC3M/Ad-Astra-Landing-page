@@ -61,6 +61,7 @@ export default function TechnicalAreasSection() {
 					<TextSpanWrapper
 						as="h2"
 						id="technical-areas-title"
+						animateOnViewport
 						className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl"
 					>
 						Ingeniería que conecta disciplinas

@@ -9,9 +9,9 @@ import {
 import vertexShader from "./shaders/surface.vert.glsl?raw";
 import fragmentShader from "./shaders/clouds.frag.glsl?raw";
 
-export default function CloudLayer({ appearance }) {
+export default function CloudLayer({ appearance, meshRef }) {
   const clouds = useTexture(EARTH_TEXTURES.clouds);
-  configureSurfaceTexture(clouds, true);
+  configureSurfaceTexture(clouds);
 
   const uniforms = useMemo(
     () => ({
@@ -30,7 +30,7 @@ export default function CloudLayer({ appearance }) {
   );
 
   return (
-    <mesh scale={1.006}>
+    <mesh ref={meshRef} scale={1.006}>
       <sphereGeometry args={[1, 128, 64]} />
       <shaderMaterial
         depthWrite={false}

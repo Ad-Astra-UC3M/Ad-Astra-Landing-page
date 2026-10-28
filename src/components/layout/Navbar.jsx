@@ -2,10 +2,12 @@ import { Link } from "react-router";
 
 import HamburgerMenu from "../ui/HamburgerMenu";
 import navItems from "../../data/navItems";
-import FullLogo from "../../assets/full_logo.png";
+import LogoMark from "../../assets/navbar-logo.svg";
 import NavDropdown from "./NavDropdown";
 import { useEffect, useState, useRef } from "react";
 import { sectionLinks } from "../../data/siteLinks";
+
+
 
 const navLinkClassName =
 	"inline-flex items-center px-3 py-2 font-normal underline-offset-6 transition duration-200 hover:text-brand-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent";
@@ -66,23 +68,25 @@ export default function Navbar() {
 			<div className="flex h-full flex-1 items-center justify-start">
 				<Link
 					to={sectionLinks.home}
-					className="flex h-full items-center justify-start"
+					className="flex h-full flex-1 items-center justify-start"
 				>
 					<img
-						src={FullLogo}
-						alt="Ad Astra UC3M Logo"
-						className="h-full w-auto"
+						src={LogoMark}
+						alt="Ad Astra UC3M"
+						width="180"
+						height="50"
+						className="h-10 w-auto"
 					/>
 				</Link>
 			</div>
-			<div className="hidden flex-1 justify-center md:flex">
+			<div className="hidden flex-1 justify-center min-[890px]:flex">
 				<DesktopNavbar />
 			</div>
 			<div className="flex flex-1 justify-end">
-				<div className="hidden md:block">
+				<div className="hidden min-[890px]:block">
 					<JoinButton />
 				</div>
-				<div className="md:hidden">
+				<div className="min-[890px]:hidden">
 					<MobileNavbar />
 				</div>
 			</div>

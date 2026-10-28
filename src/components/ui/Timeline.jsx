@@ -54,6 +54,7 @@ export function Timeline({
       <header className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <TextSpanWrapper
           as="h2"
+          animateOnViewport
           className="mb-4 max-w-4xl text-3xl text-brand-primary md:text-5xl"
         >
           {title}

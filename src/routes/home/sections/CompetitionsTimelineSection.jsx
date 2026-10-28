@@ -1,4 +1,5 @@
 import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
+import { Link } from "react-router";
 import { Timeline } from "../../../components/ui/Timeline";
 
 // Cambiar por completado y meter imágenes
@@ -19,8 +20,7 @@ const competitions = [
         title="Meet & Greet"
         schedule="11 de septiembre de 2026 · 13:30–15:30"
         location="Jardines Centrales · UC3M · Campus de Leganés"
-        // TODO: pon aquí el enlace real del post de Instagram
-        //instagramUrl="https://www.instagram.com/p/XXXXXXXXXXX/"
+        instagramUrl="https://www.instagram.com/reel/DdJ3o5ooEZn/?mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA=="
       >
         Conoce a Ad Astra con diana de aviones de papel, beerpong sin alcohol y
         trivia aeroespacial. 100 hamburguesas gratis, hasta agotar existencias.
@@ -36,8 +36,7 @@ const competitions = [
         title="Boot camps Ad Astra"
         schedule="15–17 de septiembre de 2026 · 11:00–13:00 o 15:00–17:00"
         location="UC3M · Campus de Leganés y Getafe"
-        // TODO: pon aquí el enlace real del post de Instagram
-        //instagramUrl="https://www.instagram.com/p/XXXXXXXXXXX/"
+        instagramUrl="https://www.linkedin.com/posts/ad-astra-uc3m_adastra-uc3m-aerospaceengineering-activity-7506428578608119808-oi84"
       >
         Rocket A4 el día 15, Jet Engine el 16 y Model Satellite el 17 en Leganés.
         Eventos, Media, Partners e IT el día 17 en Getafe. Elige tu bootcamp y
@@ -222,8 +221,8 @@ export default function CompetitionsTimelineSection() {
   return (
     <Timeline
       data={competitions}
-      title="Competiciones en el horizonte"
-      description="Tres retos internacionales guían la preparación técnica de nuestros equipos. Las fechas de 2027 son objetivos internos hasta la publicación del calendario oficial."
+      title="Eventos y competiciones en el horizonte"
+      description="Conoce al equipo en la presentación y participa en nuestros bootcamps. Tres retos internacionales guían nuestra preparación técnica; las fechas de 2027 son objetivos internos hasta la publicación del calendario oficial."
       withBackground={false}
       className="font-astra-serif font-medium"
     />

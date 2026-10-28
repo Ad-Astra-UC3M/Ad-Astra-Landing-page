@@ -1,30 +1,41 @@
-import { Component, Suspense, useCallback, useEffect, useState } from "react";
+import {
+  Component,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
 
 import AnimatedWordmark from "../../../components/brand/AnimatedWordmark";
 import Button from "../../../components/ui/Button";
 import EarthLoadingFallback from "../components/EarthLoadingFallback";
-import InteractiveModel, { SpaceBackground } from "../components/InteractiveModel";
+import InteractiveModel from "../components/InteractiveModel";
+import StarfieldCanvas from "../components/earth/StarfieldCanvas";
+import useEarthMotionControl from "../components/earth/useEarthMotionControl";
+import useReducedMotion from "../components/earth/useReducedMotion";
 import { getSponsorEmailLink, sectionLinks } from "../../../data/siteLinks";
 
-// Controles visuales del hero. Estos valores sobreescriben los defaults de
-// earthConfig.js sin necesidad de tocar los shaders GLSL.
-const EARTH_APPEARANCE = {
-  sunlight: 0.98,
-  terminatorSoftness: 0.4,
-  cityBrightness: 1.32,
-  oceanGlint: 0.13,
-  cloudOpacity: 0.68,
-  atmosphereStrength: 0.24,
-  scale: 1.45,
-};
+function getMotionHint(status) {
+  if (status === "requesting") {
+    return "Confirma el permiso para controlar la Tierra con el movimiento.";
+  }
 
-const SPACE_APPEARANCE = {
-  panoramaIntensity: 0.72,
-  starCount: 5200,
-  starSize: 2.5,
-};
+  if (status === "prompt") {
+    return "Toca la Tierra para activar el movimiento.";
+  }
+
+  if (status === "no-data") {
+    return "El sensor no responde. Toca la Tierra para reintentar.";
+  }
+
+  if (status === "denied") {
+    return "Movimiento no activado. La Tierra sigue respondiendo al tacto.";
+  }
+
+  return null;
+}
 
 function SceneReady({ onReady }) {
   useEffect(() => {
@@ -39,7 +50,7 @@ function CanvasUnavailable({ onUnavailable }) {
     onUnavailable();
   }, [onUnavailable]);
 
-  return <div className="absolute inset-0 bg-black" />;
+  return null;
 }
 
 class HeroCanvasErrorBoundary extends Component {
@@ -55,7 +66,7 @@ class HeroCanvasErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <div className="absolute inset-0 bg-black" />;
+      return null;
     }
 
     return this.props.children;
@@ -66,6 +77,9 @@ export default function HeroSection() {
   const [earthIntroStarted, setEarthIntroStarted] = useState(false);
   const [sceneReady, setSceneReady] = useState(false);
   const [sceneUnavailable, setSceneUnavailable] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const motionControl = useEarthMotionControl({ reducedMotion });
+  const { status: motionStatus, activateFromGesture } = motionControl;
   const handleEarthIntroStart = useCallback(
     () => setEarthIntroStarted(true),
     [],
@@ -75,39 +89,81 @@ export default function HeroSection() {
     () => setSceneUnavailable(true),
     [],
   );
+  const configureCanvas = useCallback(({ gl }) => {
+    gl.setClearColor(0x000000, 0);
+  }, []);
 
+  const motionHint = getMotionHint(motionStatus);
+  const motionActionLabel =
+    motionStatus === "no-data"
+      ? "Reintentar el control por movimiento"
+      : "Activar el control por movimiento";
   return (
     <section
 			id="home"
+			data-motion-status={motionStatus}
 			className="relative isolate flex min-h-dvh items-center justify-center overflow-hidden bg-black"
 		>
       <div className="absolute inset-0" aria-hidden="true">
+        <StarfieldCanvas />
         <HeroCanvasErrorBoundary onError={handleSceneUnavailable}>
           <Canvas
             camera={{ position: [0, 0, 5], fov: 50 }}
             dpr={[1, 1.5]}
+            onCreated={configureCanvas}
+            className="absolute inset-0 h-full w-full"
+            style={{ touchAction: "pan-y" }}
             fallback={
               <CanvasUnavailable onUnavailable={handleSceneUnavailable} />
             } 
             gl={{
-              alpha: false,
+              alpha: true,
               antialias: true,
+              premultipliedAlpha: false,
               powerPreference: "high-performance",
               toneMapping: THREE.ACESFilmicToneMapping,
               toneMappingExposure: 0.92,
             }}
           >
             <Suspense fallback={null}>
-              <SpaceBackground appearance={SPACE_APPEARANCE} />
               <InteractiveModel
-                appearance={EARTH_APPEARANCE}
                 introStarted={earthIntroStarted}
+                motionControl={motionControl}
               />
               <SceneReady onReady={handleSceneReady} />
             </Suspense>
           </Canvas>
         </HeroCanvasErrorBoundary>
       </div>
+
+      {motionHint && (
+        <p
+          className="pointer-events-none absolute left-1/2 top-24 z-20 flex min-h-11 w-[min(22rem,calc(100%-3rem))] -translate-x-1/2 items-center justify-center rounded-lg border border-brand-surface/30 bg-brand-ink/85 px-4 py-2 text-center text-sm text-brand-surface shadow-[0_8px_24px_rgba(0,0,0,0.28)] backdrop-blur-sm"
+          role="status"
+          aria-live="polite"
+        >
+          {motionHint}
+        </p>
+      )}
+
+      {motionHint &&
+        motionStatus !== "requesting" &&
+        motionStatus !== "denied" && (
+          <button
+            type="button"
+            onClick={activateFromGesture}
+            className="sr-only focus:not-sr-only focus:absolute focus:left-1/2 focus:top-24 focus:z-30 focus:min-h-11 focus:-translate-x-1/2 focus:rounded-lg focus:border focus:border-brand-surface/30 focus:bg-brand-ink focus:px-4 focus:py-2 focus:text-sm focus:text-brand-surface focus:outline-none focus:ring-2 focus:ring-brand-accent"
+          >
+            {motionActionLabel}
+          </button>
+        )}
+
+      <p className="sr-only" aria-live="polite">
+        {motionStatus === "active" &&
+          "Control por movimiento activado."}
+        {motionStatus === "denied" &&
+          "No se activó el movimiento. Puedes seguir controlando la Tierra con el tacto."}
+      </p>
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,8,0.42)_100%)]" />
 

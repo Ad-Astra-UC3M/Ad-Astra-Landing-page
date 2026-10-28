@@ -15,7 +15,7 @@ void main() {
   float diffuse = max(lightFacing, 0.0);
   vec3 cloudColor = vec3(0.7, 0.78, 0.88) * (0.06 + diffuse * sunlight * 0.92);
 
-  gl_FragColor = vec4(cloudColor, cloudSample.a * daylight * cloudOpacity);
+  gl_FragColor = vec4(cloudColor, cloudSample.r * daylight * cloudOpacity);
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
 }

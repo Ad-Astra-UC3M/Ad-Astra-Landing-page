@@ -17,28 +17,38 @@ import useReducedMotion from "./earth/useReducedMotion";
 
 const INTRO_DURATION_SECONDS = 0.78;
 const INTRO_SCALE_RATIO = 0.015;
+const MAX_TOUCH_TAP_DISTANCE = 12;
+const CLOUD_ORBIT_SECONDS = 450;
+const CLOUD_DRIFT_RADIANS_PER_SECOND = (Math.PI * 4) / CLOUD_ORBIT_SECONDS;
 
 function easeOutQuart(progress) {
   return 1 - (1 - progress) ** 4;
 }
 
-export { default as SpaceBackground } from "./earth/SpaceBackground";
-export {
-  DEFAULT_EARTH_APPEARANCE,
-  DEFAULT_SPACE_APPEARANCE,
-} from "./earth/earthConfig";
+export { DEFAULT_EARTH_APPEARANCE } from "./earth/earthConfig";
 
 export default function InteractiveModel({
   appearance: appearanceOverrides,
   introStarted = false,
+  motionControl,
 }) {
   const groupRef = useRef(null);
+  const cloudRef = useRef(null);
   const introProgressRef = useRef(0);
+  // Safari puede etiquetar un click táctil como mouse; pointerdown conserva el tipo real.
+  const touchGestureRef = useRef(false);
   const reducedMotion = useReducedMotion();
   const appearance = useMemo(
     () => resolveAppearance(DEFAULT_EARTH_APPEARANCE, appearanceOverrides),
     [appearanceOverrides],
   );
+
+  const handleClick = (event) => {
+    if (!touchGestureRef.current || !(event.delta <= MAX_TOUCH_TAP_DISTANCE)) return;
+
+    event.stopPropagation();
+    motionControl?.activateFromGesture();
+  };
 
   useFrame(({ pointer }, delta) => {
     if (!groupRef.current) return;
@@ -60,8 +70,17 @@ export default function InteractiveModel({
 
     if (reducedMotion) return;
 
-    const targetX = BASE_ROTATION.x - pointer.y * INTERACTION.strengthX;
-    const targetY = BASE_ROTATION.y + pointer.x * INTERACTION.strengthY;
+    if (cloudRef.current) {
+      cloudRef.current.rotation.y =
+        (cloudRef.current.rotation.y +
+          CLOUD_DRIFT_RADIANS_PER_SECOND * delta) %
+        (Math.PI * 2);
+    }
+
+    const input =
+      motionControl?.resolveInput(pointer) ?? pointer;
+    const targetX = BASE_ROTATION.x - input.y * INTERACTION.strengthX;
+    const targetY = BASE_ROTATION.y + input.x * INTERACTION.strengthY;
 
     groupRef.current.rotation.x = THREE.MathUtils.damp(
       groupRef.current.rotation.x,
@@ -81,12 +100,16 @@ export default function InteractiveModel({
     <group
       ref={groupRef}
       rotation={Object.values(BASE_ROTATION)}
+      onPointerDown={(event) => {
+        touchGestureRef.current = event.pointerType === "touch";
+      }}
+      onClick={handleClick}
       scale={
         reducedMotion ? appearance.scale : appearance.scale * INTRO_SCALE_RATIO
       }
     >
       <EarthSurface appearance={appearance} />
-      <CloudLayer appearance={appearance} />
+      <CloudLayer appearance={appearance} meshRef={cloudRef} />
       <Atmosphere appearance={appearance} />
     </group>
   );

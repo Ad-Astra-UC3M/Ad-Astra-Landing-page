@@ -36,8 +36,26 @@ function InstagramIcon({ className }) {
 	);
 }
 
+function TikTokIcon({ className }) {
+	return (
+		<svg
+			aria-hidden="true"
+			className={className}
+			fill="none"
+			stroke="currentColor"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			strokeWidth="2"
+			viewBox="0 0 24 24"
+		>
+			<path d="M14 3h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.75V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3Z" />
+		</svg>
+	);
+}
+
 const socialIcons = {
 	instagram: InstagramIcon,
+	tiktok: TikTokIcon,
 	linkedin: LinkedInIcon,
 };
 

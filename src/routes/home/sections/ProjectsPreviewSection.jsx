@@ -1,9 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import { useLocation, useNavigate } from "react-router";
 import Button from "../../../components/ui/Button";
-import { DynamicIcon } from "lucide-react/dynamic";
 import TextSpanWrapper from "../../../components/ui/TextSpanWrapper";
 import ProjectDialog from "../components/ProjectDialog";
+import ProjectIcon from "../components/ProjectIcon";
 import { projectsPreviewData } from "./projectsPreviewData";
 import { motion, stagger } from "motion/react";
 import { projectLinks, sectionLinks } from "../../../data/siteLinks";
@@ -54,6 +54,7 @@ export default function ProjectsPreviewSection() {
 						<TextSpanWrapper
 							as="h2"
 							id="projects-cards-title"
+							animateOnViewport
 							className="mb-4 max-w-4xl text-3xl text-brand-surface md:text-5xl"
 						>
 							Proyectos que nos elevan al espacio
@@ -124,7 +125,7 @@ function ProjectCard({ projectData, onOpen }) {
 				{projectData.metrics.map((metric) => (
 					<div key={metric.label} className="flex gap-3 py-3 first:pt-0">
 						<span className="h-fit rounded-full bg-brand-soft/50 p-2">
-							<DynamicIcon name={metric.icon} size={22} />
+							<ProjectIcon name={metric.icon} size={22} />
 						</span>
 						<div>
 							<p className="flex flex-wrap items-baseline gap-x-2">

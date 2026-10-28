@@ -1,9 +1,9 @@
 export const sectionLinks = {
 	home: "/#home",
 	projects: "/#projects",
-	sponsors: "/#sponsors",
+	sponsors: "/sponsors",
 	about: "/#about",
-	join: "/#join",
+	join: "/join",
 };
 
 export const projectLinks = {
@@ -23,9 +23,14 @@ export const socialLinks = [
 		label: "Instagram",
 		href: "https://www.instagram.com/adastrauc3m/",
 	},
+	{
+		platform: "tiktok",
+		label: "TikTok",
+		href: "https://www.tiktok.com/@adastrauc3m",
+	},
 ];
 
-const SPONSOR_EMAIL = "sponsors@adastrauc3m.es";
+const SPONSOR_EMAIL = "partnerships@adastrauc3m.es";
 
 export function getSponsorEmailLink(projectName) {
 	const subject = projectName
