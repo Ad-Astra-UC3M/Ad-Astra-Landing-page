@@ -20,18 +20,18 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <HomePage /> },
             { path: "projects", element: <Navigate to="/#projects" replace /> },
-			{
-				path: "projects/sigma",
-				element: <Navigate to="/?project=sigma#projects" replace />,
-			},
-			{
-				path: "projects/rocket-a4",
-				element: <Navigate to="/?project=rocket-a4#projects" replace />,
-			},
-			{
-				path: "projects/jet-engine",
-				element: <Navigate to="/?project=jet-engine#projects" replace />,
-			},
+            {
+                path: "projects/sigma",
+                element: <Navigate to="/?project=sigma#projects" replace />,
+            },
+            {
+                path: "projects/rocket-a4",
+                element: <Navigate to="/?project=rocket-a4#projects" replace />,
+            },
+            {
+                path: "projects/jet-engine",
+                element: <Navigate to="/?project=jet-engine#projects" replace />,
+            },
             { path: "team", element: <Navigate to="/#about" replace /> },
             { path: "join", element: <JoinPage /> },
             { path: "unirse-whatsapp", element: <WhatsAppJoinPage /> },
@@ -41,6 +41,14 @@ const router = createBrowserRouter([
             { path: "politica-de-privacidad-asociados", element: <AssociatesPrivacyPolicyPage /> },
             { path: "inscripcion/politica-de-privacidad", element: <RegistrationPrivacyPolicyPage /> },
         ]
+    },
+    {
+        path: "/404",
+        element: <ErrorPage />,
+    },
+    {
+        path: "*",
+        element: <ErrorPage />,
     }
 ]);
 
